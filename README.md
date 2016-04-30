@@ -3,7 +3,7 @@
 ##Installation Instructions:
 
 #####Step 1: Open terminal
-#####Step 2: Go to the myProject folder within Team-Blue
+#####Step 2: Go to the PitchEvaluator folder
 #####Step 3: run
 ``` "steroids update"```
 #####Step 3: run 
