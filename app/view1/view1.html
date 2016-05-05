@@ -1,1 +1,13 @@
 <p>This is the partial for view 1.</p>
+
+<body ng-controller="TeamListCtrl">
+	<p>Total number of teams: {{teams.length}}</p>
+
+	<ul>
+		<li ng-repeat="team in teams">
+			<span>{{team.name}}</span>
+			<p>{{team.product}}</p>
+			<p>{{team.score}}</p>
+		</li>
+	</ul>
+</body>
