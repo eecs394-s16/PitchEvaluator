@@ -13,10 +13,10 @@ angular.module('myApp.view1', ['ngRoute'])
 
 }]);*/
 
+.controller('TeamListCtrl', function ($scope, $firebaseObject, $firebaseArray) {
+	var ref = new Firebase("https://pitchevaluator.firebaseio.com/");
 
-//mine
-.controller('TeamListCtrl', function ($scope) {
-	$scope.teams = [
+	var teams = [
 		{'name': 'Team Blue',
 		'product': 'CrowdStorm',
 		'score' : '7'},
@@ -27,4 +27,8 @@ angular.module('myApp.view1', ['ngRoute'])
 		'product': 'Geovibes',
 		'score' : '9'}
 	];
+	ref.child('teams').set(teams);
+
+	$scope.anything = $firebaseObject(ref);
+	$scope.teamList = $firebaseArray(ref.child('teams'));
 });
