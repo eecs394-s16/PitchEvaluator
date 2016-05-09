@@ -1,25 +1,27 @@
-<h1>Aggregate Page</h1>
-
-<p>This is the partial for view 1.</p>
-
-<p>
-  {{hello}}
-</p>
-
-<body>
-	<ul>
-		<li ng-repeat="team in teamList">
-			<p>{{team.name}}</p>
-			<p>{{team.product}}</p>
-			<p>{{team.score}}</p>
-			<p>Q1 Value: {{team.q1Val}}</p>
-			<p>Q1 Comment: {{team.q1Comment}}</p>
-			<p>Q2 Value: {{team.q2Val}}</p>
-			<p>Q2 Comment: {{team.q2Comment}}</p>
-			<p>Q3 Value: {{team.q3Val}}</p>
-			<p>Q3 Comment: {{team.q3Comment}}</p>
-			<p>Q4 Value: {{team.q4Val}}</p>
-			<p>Q4 Comment: {{team.q4Comment}}</p>
-		</li>
-	</ul>
-</body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Team Data</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<th>Team</th>
+					<th>Need</th>
+					<th>Demo</th>
+					<th>Biz.</th>
+				</thead>
+				<tbody ng-repeat="team in teamList">
+					<tr>
+						<td>{{team.name}}</td>
+						<td>{{team.q1Val}}</td>
+						<td>{{team.q2Val}}</td>
+						<td>{{team.q3Val}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
