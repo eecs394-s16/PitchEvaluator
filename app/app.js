@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('PitchEvaluator', ['ngRoute'])
+  .module('PitchEvaluator', ['ngRoute', 'firebase'])
   .config(function($routeProvider) {
   $routeProvider
     .when('/view1', {
