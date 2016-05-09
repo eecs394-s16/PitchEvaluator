@@ -43,8 +43,7 @@ angular
 									q4cmt: cmt4
 								 });
 			}
-		};
-
+		}
 	};
 	
 
