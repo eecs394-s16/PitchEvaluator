@@ -6,12 +6,9 @@
 					<h4>Currently grading:</h4>
 				</div>
 				<div class="col-md-2">
-					<select class="form-control">
+					<select id="team-select" class="form-control">
 						<option disabled selected>Pick a team...</option>
-						<option>Team Blue</option>
-						<option>Team Gold</option>
-						<option>Team Red</option>
-						<option>Team Green</option>
+						<option ng-repeat="team in teamList">{{team.name}}</option>
 					</select>		
 				</div>
 			</div>
@@ -24,31 +21,31 @@
 						<div class="panel-body">
 					   		<fieldset>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="1">
 					   				1
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="2">
 					   				2
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="3">
 					   				3
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="4">
 					   				4
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="5">
 					   				5
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="6">
 					   				6
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio">
+					   				<input name="q1radio" type="radio" value="7">
 					   				7
 					   			</label>
 						   		<div class="input-textarea">
@@ -65,31 +62,31 @@
 						<div class="panel-body">
 					   		<fieldset>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="1">
 					   				1
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="2">
 					   				2
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="3">
 					   				3
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="4">
 					   				4
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="5">
 					   				5
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input name="q2radio" type="radio" value="6">
 					   				6
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio">
+					   				<input n ame="q2radio" type="radio" value="7">
 					   				7
 					   			</label>
 						   		<div class="input-textarea">
@@ -106,31 +103,31 @@
 						<div class="panel-body">
 					   		<fieldset>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="1">
 					   				1
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="2">
 					   				2
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="3">
 					   				3
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="4">
 					   				4
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="5">
 					   				5
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="6">
 					   				6
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio">
+					   				<input name="q3radio" type="radio" value="7">
 					   				7
 					   			</label>
 						   		<div class="input-textarea">
@@ -147,11 +144,11 @@
 						<div class="panel-body">
 					   		<fieldset>
 					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio">
+					   				<input name="q4radio" type="radio" value="1">
 					   				Yes
 					   			</label>
 					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio">
+					   				<input name="q4radio" type="radio"  value="0">
 					   				No
 					   			</label>
 						   		<div class="input-textarea">
@@ -161,7 +158,7 @@
 					   		</fieldset>
 					   	</div>
 				    </div>
-				  	<button type="submit" class="btn btn-default btn-submit">Submit</button>
+				  	<button type="submit" class="btn btn-default btn-submit" ng-click="onSubmit()">Submit</button>
 				</form>
 			</div>
 		</div>

@@ -26,5 +26,7 @@ angular
 		'score' : '10'});*/
 
 //Pulling the FirebaseArray into scope
+
 	$scope.teamList = $firebaseArray(ref.child('teams'));
+	console.log($scope.teamList);
   })
