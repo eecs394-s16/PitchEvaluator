@@ -1,7 +1,7 @@
 'use strict';
 angular
-  .module('PitchEvaluator')
-  .controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray) {
+.module('PitchEvaluator')
+.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray) {
   	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
 
 	var teamList = $firebaseArray(teamsRef);
@@ -28,11 +28,11 @@ angular
 				curTeamIndex = i;
 				curTeamKey = teamList.$keyAt(curTeamIndex);
 				curTeamObject = $firebaseObject(teamsRef.child(curTeamKey))
-			//Updating a Team:
-				//Create a reference to the team:
+				//Updating a Team:
+					//Create a reference to the team:
 				curTeamRef = teamsRef.child(curTeamKey);
 
-				//Utilize the "update()" function
+					//Utilize the "update()" function
 				curTeamRef.update({ q1Val: q1,
 									q1cmt: cmt1,
 									q2Val: q2,
@@ -45,6 +45,4 @@ angular
 			}
 		}
 	};
-	
-
-  })
+});
