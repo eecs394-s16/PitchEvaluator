@@ -10,6 +10,11 @@ angular
 	$scope.curTeamIndex;
 	$scope.curTeamKey;
 	var curTeamObject;
+	var curTeamRef;
+	$scope.q1;
+	$scope.q2;
+	$scope.q3;
+	$scope.q4;
 
 	$scope.onSubmit = function() {
 		$scope.curTeamName = document.getElementById("team-select").value;
@@ -29,10 +34,18 @@ angular
 				$scope.curTeamIndex = i;
 				//console.log(i);
 				$scope.curTeamKey = $scope.teamList.$keyAt($scope.curTeamIndex);
-
 				var curTeamObject = $firebaseObject(teamsRef.child($scope.curTeamKey));
 
-				curTeamObject.$bindTo($scope, "curTeam").then(function() {
+		//Updating a Team:
+			//Create a reference to the team:
+				curTeamRef = teamsRef.child($scope.curTeamKey);
+			//Utilize the "update()" function
+				curTeamRef.update({ q1Val: $scope.q1 });
+//				curTeamRef.update({ q2Val: $scope.q2 });
+				curTeamRef.update({ q1Comment: $scope.cmt1, q2Comment: $scope.cmt2, q3Comment: $scope.cmt3, q4Comment: $scope.cmt4});
+
+	// *****OLD/FLAWED Data Binding
+				/*curTeamObject.$bindTo($scope, "curTeam").then(function() {
 				//console.log($scope.curTeam);
 				$scope.curTeam.q1Comment = $scope.cmt1;
 				$scope.curTeam.q2Comment = $scope.cmt2;
@@ -42,16 +55,11 @@ angular
 				$scope.curTeam.q2Val = $scope.q2;
 				$scope.curTeam.q3Val = $scope.q3;
 				$scope.curTeam.q4Val = $scope.q4;
-			});
+			});*/
 			}
 		};
 		//$scope.curTeamObject = $scope.teamList.$getRecord($scope.curTeamKey);
-		
-
 //		console.log($scope.curTeamObject);
-		
-
-
 		// console.log(document.getElementById("q1textarea").value);
 	};
 	
