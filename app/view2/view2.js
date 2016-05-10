@@ -10,6 +10,33 @@ angular
 	var curTeamName, curTeamIndex, curTeamKey, curTeamObject, curTeamRef;
 	var q1, q2, q3, q4, cmt1, cmt2, cmt3, cmt4;
 
+	var dbUpdate = function(team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4) {
+		if (q1 != undefined) {
+			team.update({q1Val: q1});
+		}
+		if (q2 != undefined) {
+			team.update({q2Val: q2});
+		}
+		if (q3 != undefined) {
+			team.update({q3Val: q3});
+		}
+		if (q4 != undefined) {
+			team.update({q4Val: q4});
+		}
+		if (cmt1 != "") {
+			team.update({q1cmt: cmt1});
+		}
+		if (cmt2 != "") {
+			team.update({q2cmt: cmt2});
+		}
+		if (cmt3 != "") {
+			team.update({q3cmt: cmt3});
+		}
+		if (cmt4 != "") {
+			team.update({q4cmt: cmt4});
+		}										
+	}
+
 	$scope.onSubmit = function() {
 		curTeamName = document.getElementById("team-select").value;
 		
@@ -28,20 +55,10 @@ angular
 				curTeamIndex = i;
 				curTeamKey = teamList.$keyAt(curTeamIndex);
 				curTeamObject = $firebaseObject(teamsRef.child(curTeamKey))
-				//Updating a Team:
-					//Create a reference to the team:
+			
 				curTeamRef = teamsRef.child(curTeamKey);
 
-					//Utilize the "update()" function
-				curTeamRef.update({ q1Val: q1,
-									q1cmt: cmt1,
-									q2Val: q2,
-									q2cmt: cmt2,
-									q3Val: q3,
-									q3cmt: cmt3,
-									q4Val: q4,
-									q4cmt: cmt4
-								 });
+				dbUpdate(curTeamRef, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4);
 			}
 		}
 	};
