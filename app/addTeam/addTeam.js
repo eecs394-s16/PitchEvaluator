@@ -19,22 +19,16 @@ angular
           product: this.product,
           desc: this.desc
         }
-        return temp
+        return temp;
       }
     }
+
     $scope.addTeam = function() {
       var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
-      // var newTeam = new Team($scope.name,$scope.product,$scope.desc);
+      var newTeam = new Team($scope.name,$scope.product,$scope.desc);
 
-      // $firebaseArray(teamsRef).$add(newTeam.parse())
-      // teamsRef.child($scope.name).set()
-      var team = teamsRef.child($scope.name);
-      team.child('name').set($scope.name);
-      team.child('product').set($scope.product);
-      team.child('desc').set($scope.desc);
-      console.log($scope.name);
-      console.log($scope.product);
-      console.log($scope.desc);
+      teamsRef.push(newTeam);
+
       $location.path('#/view1');
     }
 

@@ -69,5 +69,7 @@ angular
 				dbUpdate(curTeamRef, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 			}
 		}
+
+      $location.path('#/view1');
 	};
 });
