@@ -52,3 +52,27 @@
 .dropdown {
   display: inline;
 }
+
+
+.name {
+  font-weight: bold;
+}
+.product {
+  text-indent: 10px;
+  font-style: italic;
+}
+.metric {
+  /*text-align: center;*/
+}
+.value {
+  /*text-align: center;*/
+}
+.comment {
+  /*text-indent: 10px;*/
+}
+
+#addTeamForm {
+  width: auto;
+  margin:0 auto;
+  text-align: center;
+}

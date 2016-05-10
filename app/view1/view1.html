@@ -8,22 +8,30 @@
 		<div class="col-md-12">
 			<table class="table">
 				<thead>
-					<th>Team</th>
-					<th>Need</th>
-					<th>Demo</th>
-					<th>Cust. Ins.</th>
-					<th>Biz.</th>
+					<th class="col-md-3">Team/Product</th>
+					<th class="col-md-3 metric">Problem/Need</th>
+					<th class="col-md-3 metric">Demo</th>
+					<th class="col-md-3 metric">Business</th>
 				</thead>
-				<tbody>
-					<tr ng-repeat="team in teamList">
-						<td>{{team.name}}</td>
-						<td>{{team.q1Val}}</td>
-						<td>{{team.q2Val}}</td>
-						<td>{{team.q3Val}}</td>
-						<td>{{team.q4Val}}</td>
+				<tbody ng-repeat="team in teamList">
+					<tr>
+						<td class="name">{{team.name}}</td>
+						<td class="value">{{team.q1Val}}</td>
+						<td class="value">{{team.q2Val}}</td>
+						<td class="value">{{team.q3Val}}</td>
+
 					</tr>
+          <tr>
+            <td class="product">{{team.product}}</td>
+            <td class="comment">{{team.q1cmt}}</td>
+            <td class="comment">{{team.q2cmt}}</td>
+            <td class="comment">{{team.q3cmt}}</td>
+          </tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+  <div class="addTeam">
+    <a href="#/addTeam">Add a team</a>
+  </div>
 </div>
