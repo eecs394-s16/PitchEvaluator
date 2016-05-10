@@ -8,9 +8,9 @@ angular
 	$scope.teams = teamList;
 
 	var curTeamName, curTeamIndex, curTeamKey, curTeamObject, curTeamRef;
-	var q1, q2, q3, q4, cmt1, cmt2, cmt3, cmt4;
+	var q1, q2, q3, q4, q5, cmt1, cmt2, cmt3, cmt4, cmt5;
 
-	var dbUpdate = function(team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4) {
+	var dbUpdate = function(team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
 		if (q1 != undefined) {
 			team.update({q1Val: q1});
 		}
@@ -22,6 +22,9 @@ angular
 		}
 		if (q4 != undefined) {
 			team.update({q4Val: q4});
+		}
+		if (q5 != undefined) {
+			team.update({q5Val: q5});
 		}
 		if (cmt1 != "") {
 			team.update({q1cmt: cmt1});
@@ -35,6 +38,9 @@ angular
 		if (cmt4 != "") {
 			team.update({q4cmt: cmt4});
 		}										
+		if (cmt5 != "") {
+			team.update({q5cmt: cmt5});
+		}	
 	}
 
 	$scope.onSubmit = function() {
@@ -44,11 +50,13 @@ angular
 		q2 = $('input[name="q2radio"]:checked').val();
 		q3 = $('input[name="q3radio"]:checked').val();
 		q4 = $('input[name="q4radio"]:checked').val();
+		q5 = $('input[name="q5radio"]:checked').val();		
 
 		cmt1 = document.getElementById("q1textarea").value;
 		cmt2 = document.getElementById("q2textarea").value;
 		cmt3 = document.getElementById("q3textarea").value;
 		cmt4 = document.getElementById("q4textarea").value;
+		cmt5 = document.getElementById("q5textarea").value;
 		
 		for (var i = 0; i < teamList.length; i++) {
 			if (teamList[i].name == curTeamName) {
@@ -58,7 +66,7 @@ angular
 			
 				curTeamRef = teamsRef.child(curTeamKey);
 
-				dbUpdate(curTeamRef, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4);
+				dbUpdate(curTeamRef, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 			}
 		}
 	};

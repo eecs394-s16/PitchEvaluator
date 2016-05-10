@@ -11,14 +11,16 @@
 					<th>Team</th>
 					<th>Need</th>
 					<th>Demo</th>
+					<th>Cust. Ins.</th>
 					<th>Biz.</th>
 				</thead>
-				<tbody ng-repeat="team in teamList">
-					<tr>
+				<tbody>
+					<tr ng-repeat="team in teamList">
 						<td>{{team.name}}</td>
 						<td>{{team.q1Val}}</td>
 						<td>{{team.q2Val}}</td>
 						<td>{{team.q3Val}}</td>
+						<td>{{team.q4Val}}</td>
 					</tr>
 				</tbody>
 			</table>
