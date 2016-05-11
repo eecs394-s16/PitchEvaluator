@@ -2,6 +2,10 @@
 
 ##### Web application for pitch evaluation
 
+Waffle.io
+https://waffle.io/eecs394-s16/PitchEvaluator
+
+
 Install Instruction:
 --------------------
 
