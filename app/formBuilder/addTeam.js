@@ -2,7 +2,7 @@
 angular
   .module('PitchEvaluator')
   .controller('addTeamCtrl', function($scope, $firebaseObject, $firebaseArray, $location) {
-  	var ref = new Firebase("https://pitchevaluator.firebaseio.com/");
+    // var ref = new Firebase("https://pitchevaluator.firebaseio.com/team");
     $scope.name = "";
     $scope.product = "";
     $scope.desc = "";
@@ -22,14 +22,18 @@ angular
         return temp;
       }
     }
-
     $scope.addTeam = function() {
+      
       var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
       var newTeam = new Team($scope.name,$scope.product,$scope.desc);
 
       teamsRef.push(newTeam);
 
+
+      console.log($scope.name);
+      console.log($scope.product);
+      console.log($scope.desc);
       $location.path('#/view1');
     }
 
-  })
+  });

@@ -15,8 +15,8 @@ angular
         css : 'view2/view2.css'
       })
       .when('/formBuilder', {
-        templateUrl: 'formBuilder/formBuilder.html',
-        // controller: 'formBuilderCtrl'
+        templateUrl: 'formBuilder/addTeam.html',
+        controller: 'addTeamCtrl',
         css: 'addTeam.css'
       })
       .otherwise({
