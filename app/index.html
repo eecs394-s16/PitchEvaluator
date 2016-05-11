@@ -22,7 +22,9 @@
 </head>
 <body>
   <ul class=" nav nav-tabs" ng-controller="TabsCtrl">
-  <li ng-class="tabClass(tab)" ng-repeat="tab in tabs" tab="tab"><a href="{{tab.link}}" ng-click="setSelectedTab(tab)">{{tab.label}}</a></li>
+    <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
+      <a href="#{{tab.link}}">{{tab.label}}</a>
+    </li>
   </ul>
 
   <!--[if lt IE 7]>
@@ -48,7 +50,7 @@
   <script src="components/version/interpolate-filter.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-   <script>document.write('<base href="' + document.location + '" />');</script>
+  
 
   <script src="app.js"></script>
   <script src="TabsCtrl.js"></script> 
