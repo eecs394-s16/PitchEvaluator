@@ -1,0 +1,47 @@
+.panel-title {
+  font-weight: bold;
+}
+
+.radio-inline {
+  margin-right: 20px;
+}
+
+.input-textarea {
+  margin-top: 20px;
+}
+
+.btn-submit {
+  margin-bottom: 40px;
+}
+
+#teams-list {
+  margin-bottom: 20px;
+  margin-top: 30px;
+  padding-left: 15px;
+}
+#teams-list h4{
+	float: left;
+}
+#team-select{
+    float: left;
+    width: 30%;
+    margin-left: 20px;
+}
+						
+
+.dropdown {
+  display: inline;
+}
+
+
+.name {
+  font-weight: bold;
+}
+.product {
+  text-indent: 10px;
+  font-style: italic;
+}
+
+.form_submit{
+	float: right;
+}

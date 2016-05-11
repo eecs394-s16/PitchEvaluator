@@ -28,4 +28,6 @@ angular
 //Pulling the FirebaseArray into scope
 
 	$scope.teamList = $firebaseArray(ref.child('teams'));
+
   })
+

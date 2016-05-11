@@ -1,6 +1,6 @@
 /* app css stylesheet */
 
-.menu {
+/*.menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
@@ -28,39 +28,8 @@
   content: "";
   padding: 0;
 }
+*/
 
-.panel-title {
-  font-weight: bold;
-}
-
-.radio-inline {
-  margin-right: 20px;
-}
-
-.input-textarea {
-  margin-top: 20px;
-}
-
-.btn-submit {
-  margin-bottom: 40px;
-}
-
-#teams-list {
-  margin-bottom: 20px;
-}
-
-.dropdown {
-  display: inline;
-}
-
-
-.name {
-  font-weight: bold;
-}
-.product {
-  text-indent: 10px;
-  font-style: italic;
-}
 .metric {
   /*text-align: center;*/
 }

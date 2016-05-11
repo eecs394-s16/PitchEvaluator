@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" ng-style='view2.css'>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-11 col-md-offset-1">
 			<h1>Team Data</h1>
 		</div>
 	</div>
@@ -28,7 +28,12 @@
 			</table>
 		</div>
 	</div>
-    <div class="addTeam">
-    	<a href="#/formBuilder">Add a team</a>
+
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1">
+		    <div class="addTeam">
+		    	<a href="#/formBuilder" ng-click="setSelectedTab(formBuilder)"><b>Add a team</b></a>
+		    </div>
+	    </div>
     </div>
 </div>
