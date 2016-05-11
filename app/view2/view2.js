@@ -41,6 +41,11 @@ angular
 		if (cmt5 != "") {
 			team.update({q5cmt: cmt5});
 		}	
+		if (q1 != undefined && q2 != undefined && q3 != undefined & q4 != undefined) {
+			var teamavg = (parseFloat(q1) + parseFloat(q2) + parseFloat(q3) + parseFloat(q4))/4.0;
+			teamavg = teamavg.toFixed(2);
+			team.update({teamavgval: teamavg});
+		}
 	}
 
 	$scope.onSubmit = function() {
