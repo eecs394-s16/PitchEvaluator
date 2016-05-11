@@ -1,7 +1,7 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray) {
+.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray, $location) {
   	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
 
 	var teamList = $firebaseArray(teamsRef);

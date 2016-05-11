@@ -8,19 +8,21 @@
 		<div class="col-md-12">
 			<table class="table">
 				<thead>
-					<th class="col-md-2">Team/Product</th>
-					<th class="col-md-2 metric">Problem/Need</th>
-					<th class="col-md-2 metric">Demo</th>
-					<th class="col-md-2 metric">Customer Insight</th>
-					<th class="col-md-2 metric">Business</th>
+					<tr class="row">
+						<th class="col-xs-2">Team/Product</th>
+						<th class="col-xs-2 metric">Problem/Need</th>
+						<th class="col-xs-2 metric">Demo</th>
+						<th class="col-xs-2 metric">Cust. Insight</th>
+						<th class="col-xs-2 metric">Business</th>
+					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="team in teamList">
-						<td class="name">{{team.name}}</td>
-						<td class="value">{{team.q1Val}}</td>
-						<td class="value">{{team.q2Val}}</td>
-						<td class="value">{{team.q3Val}}</td>
-						<td class="value">{{team.q4Val}}</td>
+					<tr class="row" ng-repeat="team in teamList">
+						<td class="col-xs-2 name">{{team.name}}</td>
+						<td class="col-xs-2 value">{{team.q1Val}}</td>
+						<td class="col-xs-2 value">{{team.q2Val}}</td>
+						<td class="col-xs-2 value">{{team.q3Val}}</td>
+						<td class="col-xs-2 value">{{team.q4Val}}</td>
 					</tr>
 				</tbody>
 			</table>
