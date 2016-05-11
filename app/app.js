@@ -12,9 +12,10 @@ angular
         templateUrl: 'view2/view2.html',
         controller: 'View2Ctrl'
       })
-      .when('/addTeam', {
-        templateUrl: 'addTeam/addTeam.html',
-        controller: 'addTeamCtrl'
+      .when('/formBuilder', {
+        templateUrl: 'formBuilder/formBuilder.html',
+        // controller: 'formBuilderCtrl'
+        css: 'formBuilder/addTeam.css'
       })
       .otherwise({
         redirectTo: 'view1'

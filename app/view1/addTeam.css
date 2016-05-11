@@ -1,0 +1,9 @@
+#addTeamForm {
+  width: auto;
+  margin:0 auto;
+  text-align: center;
+}
+
+.btn_addTeam{
+	width: 100% !important;
+}
