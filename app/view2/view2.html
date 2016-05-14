@@ -1,14 +1,16 @@
 <div class="container">
 	<div class="row">
 			<div id="teams-list" class="row">
-				
+
 					<h4>Currently grading:</h4>
-				
+
 					<select id="team-select" class="form-control">
-						<option disabled selected>Pick a team...</option>
-						<option ng-repeat="team in teams">{{team.name}}</option>
-					</select>		
-			
+						<option ng-show="loadingTeams" disabled selected>Loading...</option>
+
+						<option ng-hide="loadingTeams" disabled selected>Pick a team...</option>
+						<option ng-hide="loadingTeams" ng-repeat="team in teams">{{team.name}}</option>
+					</select>
+
 		</div>
 	</div>
 	<div id="form" class="row">
@@ -51,7 +53,7 @@
 				   			<label for="q1textarea">Comments</label>
 				   			<textarea class="form-control" id="q1textarea" rows="3"></textarea>
 				   		</div>
-			   		</fieldset>						
+			   		</fieldset>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -92,7 +94,7 @@
 				   			<label for="q2textarea">Comments</label>
 				   			<textarea class="form-control" id="q2textarea" rows="3"></textarea>
 				   		</div>
-			   		</fieldset>						
+			   		</fieldset>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -133,7 +135,7 @@
 				   			<label for="q3textarea">Comments</label>
 				   			<textarea class="form-control" id="q3textarea" rows="3"></textarea>
 				   		</div>
-			   		</fieldset>						
+			   		</fieldset>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -174,7 +176,7 @@
 				   			<label for="q4textarea">Comments</label>
 				   			<textarea class="form-control" id="q4textarea" rows="3"></textarea>
 				   		</div>
-			   		</fieldset>						
+			   		</fieldset>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -194,7 +196,7 @@
 				   		<div class="input-textarea">
 				   			<label for="q5textarea">Why?</label>
 				   			<textarea class="form-control" id="q5textarea" rows="3"></textarea>
-				   		</div>				   			
+				   		</div>
 			   		</fieldset>
 			   	</div>
 		    </div>
