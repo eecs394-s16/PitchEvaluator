@@ -1,5 +1,8 @@
 <div class="container">
-	<div class="row">
+	<div id="form" class="row">
+
+		<form class="col-sm-12">
+
 			<div id="teams-list" class="row">
 
 				<div class="col-sm-6">
@@ -11,210 +14,216 @@
 						<option ng-hide="loadingTeams" ng-repeat="team in teams" ng-click="populate()">{{team.name}}</option>
 					</select>
 				</div>
-				<div class="col-sm-6">
-					<h4>Enter Grader Name:</h4>
-					<input class="form-control" id="grader-name"></input>
+				<div class="col-sm-4 col-sm-offset-2">
+					<h4 id="grader-name-label">Graded by:</h4>
+					<input required class="form-control" id="grader-name-input"></input>
 				</div>
+			</div>
 
-		</div>
-	</div>
-	<div id="form" class="row">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Problem/Need has evolved into a compelling value proposition.</h3>
+						</div>
+						<div class="panel-body">
+						<!-- <label>Score:
+							<input type = "range" min = "1" max = "7" step = "1" value = "1"  onchange="showScore(this.value)"></input>
+							<span id = "score">7</span>
+						</label> -->
+					   		<fieldset>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="1">
+					   				1
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="2">
+					   				2
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="3">
+					   				3
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="4">
+					   				4
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="5">
+					   				5
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="6">
+					   				6
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q1radio" type="radio" value="7">
+					   				7
+					   			</label>
+						   		<div class="input-textarea">
+						   			<label for="q1textarea">Comments</label>
+						   			<textarea class="form-control" id="q1textarea" rows="3"></textarea>
+						   		</div>
+					   		</fieldset>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Demo provided a good "feel" for the app.</h3>
+						</div>
+						<div class="panel-body">
+					   		<fieldset>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="1">
+					   				1
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="2">
+					   				2
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="3">
+					   				3
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="4">
+					   				4
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="5">
+					   				5
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="6">
+					   				6
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q2radio" type="radio" value="7">
+					   				7
+					   			</label>
+						   		<div class="input-textarea">
+						   			<label for="q2textarea">Comments</label>
+						   			<textarea class="form-control" id="q2textarea" rows="3"></textarea>
+						   		</div>
+					   		</fieldset>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Team demonstrated enough customer insight to show that next steps on customer acquisition/building a user base were clear.</h3>
+						</div>
+						<div class="panel-body">
+					   		<fieldset>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="1">
+					   				1
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="2">
+					   				2
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="3">
+					   				3
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="4">
+					   				4
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="5">
+					   				5
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="6">
+					   				6
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q3radio" type="radio" value="7">
+					   				7
+					   			</label>
+						   		<div class="input-textarea">
+						   			<label for="q3textarea">Comments</label>
+						   			<textarea class="form-control" id="q3textarea" rows="3"></textarea>
+						   		</div>
+					   		</fieldset>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Business model, financial model and/or ask made sense.</h3>
+						</div>
+						<div class="panel-body">
+					   		<fieldset>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="1">
+					   				1
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="2">
+					   				2
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="3">
+					   				3
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="4">
+					   				4
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="5">
+					   				5
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="6">
+					   				6
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q4radio" type="radio" value="7">
+					   				7
+					   			</label>
+						   		<div class="input-textarea">
+						   			<label for="q4textarea">Comments</label>
+						   			<textarea class="form-control" id="q4textarea" rows="3"></textarea>
+						   		</div>
+					   		</fieldset>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Do you think the team should continue working on the app?</h3>
+						</div>
+						<div class="panel-body">
+					   		<fieldset>
+					   			<label class="radio-inline">
+					   				<input name="q5radio" type="radio" value="1">
+					   				Yes
+					   			</label>
+					   			<label class="radio-inline">
+					   				<input name="q5radio" type="radio"  value="0">
+					   				No
+					   			</label>
+						   		<div class="input-textarea">
+						   			<label for="q5textarea">Why?</label>
+						   			<textarea class="form-control" id="q5textarea" rows="3"></textarea>
+						   		</div>
+					   		</fieldset>
+					   	</div>
+				    </div>
+				</div>
+			</div>
 
-		<form class="col-sm-12">
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Problem/Need has evolved into a compelling value proposition.</h3>
-				</div>
-				<div class="panel-body">
-				<!-- <label>Score:
-					<input type = "range" min = "1" max = "7" step = "1" value = "1"  onchange="showScore(this.value)"></input>
-					<span id = "score">7</span>
-				</label> -->
-			   		<fieldset>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="1">
-			   				1
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="2">
-			   				2
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="3">
-			   				3
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="4">
-			   				4
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="5">
-			   				5
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="6">
-			   				6
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q1radio" type="radio" value="7">
-			   				7
-			   			</label>
-				   		<div class="input-textarea">
-				   			<label for="q1textarea">Comments</label>
-				   			<textarea class="form-control" id="q1textarea" rows="3"></textarea>
-				   		</div>
-			   		</fieldset>
-				</div>
+			<div class="row">
+			    <div class="col-sm-11 col-xs-10">
+					<div class="panel panel-danger" id="slide-text">
+						<div class="panel-heading">You did not fill out all the required fields</div>
+					</div>
+			    </div>
+			    <div class="col-xs-1 col-sm-offset-0 col-xs-offset-1">
+				  	<button type="submit" id="submit-btn" class="btn btn-primary btn-submit form_submit" ng-click="onSubmit()">Submit</button>
+			    </div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Demo provided a good "feel" for the app.</h3>
-				</div>
-				<div class="panel-body">
-			   		<fieldset>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="1">
-			   				1
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="2">
-			   				2
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="3">
-			   				3
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="4">
-			   				4
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="5">
-			   				5
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="6">
-			   				6
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q2radio" type="radio" value="7">
-			   				7
-			   			</label>
-				   		<div class="input-textarea">
-				   			<label for="q2textarea">Comments</label>
-				   			<textarea class="form-control" id="q2textarea" rows="3"></textarea>
-				   		</div>
-			   		</fieldset>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Team demonstrated enough customer insight to show that next steps on customer acquisition/building a user base were clear.</h3>
-				</div>
-				<div class="panel-body">
-			   		<fieldset>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="1">
-			   				1
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="2">
-			   				2
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="3">
-			   				3
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="4">
-			   				4
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="5">
-			   				5
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="6">
-			   				6
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q3radio" type="radio" value="7">
-			   				7
-			   			</label>
-				   		<div class="input-textarea">
-				   			<label for="q3textarea">Comments</label>
-				   			<textarea class="form-control" id="q3textarea" rows="3"></textarea>
-				   		</div>
-			   		</fieldset>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Business model, financial model and/or ask made sense.</h3>
-				</div>
-				<div class="panel-body">
-			   		<fieldset>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="1">
-			   				1
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="2">
-			   				2
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="3">
-			   				3
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="4">
-			   				4
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="5">
-			   				5
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="6">
-			   				6
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q4radio" type="radio" value="7">
-			   				7
-			   			</label>
-				   		<div class="input-textarea">
-				   			<label for="q4textarea">Comments</label>
-				   			<textarea class="form-control" id="q4textarea" rows="3"></textarea>
-				   		</div>
-			   		</fieldset>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Do you think the team should continue working on the app?</h3>
-				</div>
-				<div class="panel-body">
-			   		<fieldset>
-			   			<label class="radio-inline">
-			   				<input name="q5radio" type="radio" value="1">
-			   				Yes
-			   			</label>
-			   			<label class="radio-inline">
-			   				<input name="q5radio" type="radio"  value="0">
-			   				No
-			   			</label>
-				   		<div class="input-textarea">
-				   			<label for="q5textarea">Why?</label>
-				   			<textarea class="form-control" id="q5textarea" rows="3"></textarea>
-				   		</div>
-			   		</fieldset>
-			   	</div>
-		    </div>
-			<div class="panel panel-danger" id="slide-text">
-				<div class="panel-heading">You did not fill out all the required fields</div>
-			</div>
-		  	<button type="submit" id="submit-btn" class="btn btn-primary btn-submit form_submit" ng-click="onSubmit()">Submit</button>
 		</form>
 	</div>
 </div>
