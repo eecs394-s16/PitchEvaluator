@@ -1,4 +1,5 @@
 'use strict';
+
 angular
   .module('PitchEvaluator')
   .controller('addTeamCtrl', function($scope, $firebaseObject, $firebaseArray, $location) {

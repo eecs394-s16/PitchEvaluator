@@ -13,6 +13,7 @@ angular
 	var curTeamName, curTeamIndex, curTeamKey, curTeamObject, curTeamRef;
 	var q1, q2, q3, q4, q5, cmt1, cmt2, cmt3, cmt4, cmt5;
 	var graderName;
+	var valid = false;
 
 	var reviewUpdate = function (team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
 		if (q1 != undefined) {
@@ -124,43 +125,55 @@ angular
 
 		graderName = document.getElementById("grader-name").value;
 
-    //@TODO: implemented user auth
-    var user = graderName;
+		if(cmt1 != "" || cmt2 != "" || cmt3 !== "" || cmt4 != "" || cmt5 != ""){
+	    	valid = true;
+	    	console.log("valid");
+	    }else{
+	    	var submt_alert = confirm("You didn't type in any comment/ Are you sure you want to submmit the form?");
+	    	valid = false;
+	    	console.log("invalid");
+	    }
 
-    var evaluation = new Evaluation(user, curTeamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 
-    for (var i = 0; i < teamList.length; i++) {
-		if (teamList[i].name == curTeamName) {
-	        var teamRef = teamsRef + "/" + teamList[i].$id;
-	        var team = new Firebase(teamRef);
-	        if (team.reviews) {
-	        	console.log('Woot');
-	        }
-	        else {
-	        	var reviews = team.child('reviews');
-	        	var reviewID;
-	        	var reviewToEdit;
-	        	var reviewArray = $firebaseArray(reviews);
-	        	reviewArray.$loaded().then(function() {
-	        		var userExists = false;
-		        	for (var i = 0; i < reviewArray.length; i++) {
-		        		if (reviewArray[i].user == evaluation.user && !userExists) {
-		        			userExists = true;
-		        			reviewID = reviewArray[i].$id;
-		        		}
-		        	};
-		        	if (userExists) {
-		        		reviewToEdit = reviews.child(reviewID);
-		        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
-		        	}
-		        	else {
-		        		reviews.push(evaluation);
-		        	}
-	        	});
-	        }
-      }
-    }
+	   if(valid == true || submt_alert == true){
+		    //@TODO: implemented user auth
+		    var user = graderName;
 
-    $location.path('#/view1');
-	};
+		    var evaluation = new Evaluation(user, curTeamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
+
+		    for (var i = 0; i < teamList.length; i++) {
+				if (teamList[i].name == curTeamName) {
+			        var teamRef = teamsRef + "/" + teamList[i].$id;
+			        var team = new Firebase(teamRef);
+			        if (team.reviews) {
+			        	console.log('Woot');
+			        }
+			        else {
+			        	var reviews = team.child('reviews');
+			        	var reviewID;
+			        	var reviewToEdit;
+			        	var reviewArray = $firebaseArray(reviews);
+			        	reviewArray.$loaded().then(function() {
+			        		var userExists = false;
+				        	for (var i = 0; i < reviewArray.length; i++) {
+				        		if (reviewArray[i].user == evaluation.user && !userExists) {
+				        			userExists = true;
+				        			reviewID = reviewArray[i].$id;
+				        		}
+				        	};
+				        	if (userExists) {
+				        		reviewToEdit = reviews.child(reviewID);
+				        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
+				        	}
+				        	else {
+				        		reviews.push(evaluation);
+				        	}
+			        	});
+			        }
+		      }
+		    }
+
+		    $location.path('#/view1');
+			}
+		};
 });
