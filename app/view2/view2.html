@@ -2,19 +2,24 @@
 	<div class="row">
 			<div id="teams-list" class="row">
 
+				<div class="col-sm-6">
 					<h4>Currently grading:</h4>
 
 					<select id="team-select" class="form-control">
 						<option ng-show="loadingTeams" disabled selected>Loading...</option>
-
 						<option ng-hide="loadingTeams" disabled selected>Pick a team...</option>
-						<option ng-hide="loadingTeams" ng-repeat="team in teams">{{team.name}}</option>
+						<option ng-hide="loadingTeams" ng-repeat="team in teams" ng-click="populate()">{{team.name}}</option>
 					</select>
+				</div>
+				<div class="col-sm-6">
+					<h4>Enter Grader Name:</h4>
+					<input class="form-control" id="grader-name"></input>
+				</div>
 
 		</div>
 	</div>
 	<div id="form" class="row">
-		<form >
+		<form class="col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Problem/Need has evolved into a compelling value proposition.</h3>

@@ -27,6 +27,12 @@
     width: 30%;
     margin-left: 20px;
 }
+
+#grader-name{
+    float: left;
+    width: 50%;
+    margin-left: 20px;
+}
 						
 
 .dropdown {

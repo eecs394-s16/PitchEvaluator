@@ -3,9 +3,12 @@
 angular
   .module('PitchEvaluator')
   .controller('View1Ctrl', function($scope, $firebaseObject, $firebaseArray) {
-  	var ref = new Firebase("https://pitchevaluator.firebaseio.com/");
+  	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
+	$scope.teamList = $firebaseArray(teamsRef);
 
-	$scope.teamList = $firebaseArray(ref.child('teams'));
+	
+
+	// var selectedTeam = teamsRef + "/" + teamList[i].$id;
 
   })
 

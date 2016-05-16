@@ -12,12 +12,24 @@ angular
         this.name=name;
         this.product=product;
         this.desc=desc;
+        this.avg1 = 0;
+        this.avg2 = 0;
+        this.avg3 = 0;
+        this.avg4 = 0;
+        this.avgYes = 0;
+        this.ovrAvg = 0;
       }
       parse() {
         var temp = {
           name: this.name,
           product: this.product,
-          desc: this.desc
+          desc: this.desc,
+          avg1: this.avg1,
+          avg2: this.avg2,
+          avg3: this.avg3,
+          avg4: this.avg4,
+          avgYes: this.avgYes,
+          ovrAvg: this.ovrAvg
         }
         return temp;
       }
