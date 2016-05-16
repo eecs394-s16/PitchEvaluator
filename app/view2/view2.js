@@ -52,22 +52,23 @@ angular
 		}
 	}
 
-  class Evaluation {
-    constructor(user, teamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
-      this.user = user;
-      this.teamName = teamName;
-      this.q1 = q1;
-      this.cmt1 = cmt1;
-      this.q2 = q2;
-      this.cmt2 = cmt2;
-      this.q3 = q3;
-      this.cmt3 = cmt3;
-      this.q4 = q4;
-      this.cmt4 = cmt4;
-      this.q5 = q5;
-      this.cmt5 = cmt5;
-    }
-  }
+	class Evaluation {
+	    constructor(user, teamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
+		    this.user = user;
+		    this.teamName = teamName;
+		    this.q1 = q1;
+		    this.cmt1 = cmt1;
+		    this.q2 = q2;
+		    this.cmt2 = cmt2;
+		    this.q3 = q3;
+		    this.cmt3 = cmt3;
+		    this.q4 = q4;
+		    this.cmt4 = cmt4;
+		    this.q5 = q5;
+		    this.cmt5 = cmt5;
+	    }
+	}
+
 	$scope.onSubmit = function() {
 		curTeamName = document.getElementById("team-select").value;
 
@@ -83,37 +84,25 @@ angular
 		cmt4 = document.getElementById("q4textarea").value;
 		cmt5 = document.getElementById("q5textarea").value;
 
-		// for (var i = 0; i < teamList.length; i++) {
-		// 	if (teamList[i].name == curTeamName) {
-		// 		curTeamIndex = i;
-		// 		curTeamKey = teamList.$keyAt(curTeamIndex);
-		// 		curTeamObject = $firebaseObject(teamsRef.child(curTeamKey))
-    //
-		// 		curTeamRef = teamsRef.child(curTeamKey);
-    //
-		// 		dbUpdate(curTeamRef, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
-		// 	}
-		// }
-
     //@TODO: implemented user auth
-    var user = "John Doe"
+    var user = "John Doe";
 
     var evaluation = new Evaluation(user, curTeamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
-    console.log(evaluation);
+
     for (var i = 0; i < teamList.length; i++) {
-			if (teamList[i].name == curTeamName) {
-        var teamRef = teamsRef + "/" + teamList[i].$id;
-        var team = new Firebase(teamRef);
-        if (team.reviews) {
-          console.log('Woot');
-        }
-        else {
-          var reviews = team.child('reviews');
-          reviews.push(evaluation);
-        }
+		if (teamList[i].name == curTeamName) {
+	        var teamRef = teamsRef + "/" + teamList[i].$id;
+	        var team = new Firebase(teamRef);
+	        if (team.reviews) {
+	        	console.log('Woot');
+	        }
+	        else {
+	        	var reviews = team.child('reviews');
+	        	reviews.push(evaluation);
+	        }
       }
     }
 
-    // $location.path('#/view1');
+    $location.path('#/view1');
 	};
 });
