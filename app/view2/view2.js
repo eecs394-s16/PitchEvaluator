@@ -54,9 +54,46 @@ angular
 	}
 
 	var calcAvg = function(team) {
-		var teamavg = (parseFloat(team.q1) + parseFloat(team.q2) + parseFloat(team.q3) + parseFloat(team.q4))/4.0;
-		teamavg = teamavg.toFixed(2);
-		team.update({teamavgval: teamavg});
+		var q1, q2, q3, q4;
+		var q1sum = 0;
+		var q2sum = 0;
+		var q3sum = 0;
+		var q4sum = 0;
+		var teamavg = 0;
+
+		var reviewArray = $firebaseArray(team.child('reviews'));
+
+		reviewArray.$loaded().then(function() {
+			for (var i = 0; i < reviewArray.length; i++) {
+				q1sum += parseFloat(reviewArray[i].q1);
+				q2sum += parseFloat(reviewArray[i].q2); 
+				q3sum += parseFloat(reviewArray[i].q3); 
+				q4sum += parseFloat(reviewArray[i].q4); 
+			};
+
+			q1 = q1sum/reviewArray.length;
+			q2 = q2sum/reviewArray.length;
+			q3 = q3sum/reviewArray.length;
+			q4 = q4sum/reviewArray.length;
+
+			teamavg = (q1 + q2 + q3 + q4)/4.0;
+
+			q1 = q1.toFixed(2);
+			q2 = q2.toFixed(2);
+			q3 = q3.toFixed(2);
+			q4 = q4.toFixed(2);
+			teamavg = teamavg.toFixed(2);
+
+			team.update({
+				q1Val: q1,
+				q2Val: q2,
+				q3Val: q3,
+				q4Val: q4,
+				ovrAvg: teamavg
+			});
+
+		});
+
 	}
 
 	var checkNull = function(q1, q2, q3, q4, q5) {
@@ -136,6 +173,7 @@ angular
 			        	if (userExists) {
 			        		reviewToEdit = reviews.child(reviewID);
 			        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
+			        		calcAvg(team);
 			        		$location.path('#/view1');
 			        	}
 			        	else {
@@ -148,11 +186,13 @@ angular
 			        			submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
 			        			if (submit_alert) {
 			        				reviews.push(evaluation);
+					        		calcAvg(team);
 			        				$location.path('#/view1');
 			        			}
 			        		}
 			        		else {
 			        			reviews.push(evaluation);
+				        		calcAvg(team);
 			        			$location.path('#/view1');
 			        		}
 			        	}
