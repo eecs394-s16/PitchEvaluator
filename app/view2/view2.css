@@ -36,6 +36,7 @@
 
 #slide-text{
   display: none;
+  font-weight: bold;
 }
 
 .dropdown {
