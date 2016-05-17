@@ -40,5 +40,31 @@
 		    	<a href="#/formBuilder" ng-click="setSelectedTab(formBuilder)"><b>Add a team</b></a>
 		    </div>
 	    </div>
-    </div>
+  </div>
+
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<table class="table">
+				<thead>
+					<tr class="row">
+						<th class="col-xs-4">Team/Product</th>
+						<th class="col-xs-4 metric">Team Average</th>
+						<th class="col-xs-4 metric">Rank</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'">
+						<td class="col-xs-4 name">{{team.name}}</td>
+						<td class="col-xs-4 value">{{team.ovrAvg}}</td>
+						<td class="col-xs-4 value">
+							<input ng-model="team.rank" ng-change='changeRanking(team.$id, team.rank)'>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
