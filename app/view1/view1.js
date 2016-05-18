@@ -9,8 +9,6 @@ angular
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
     })
 
-
-    
   	$scope.changeRanking = function(id, valueStr) {
       var value = Number(valueStr);
       var index;
@@ -55,5 +53,11 @@ angular
     }
 
 	// var selectedTeam = teamsRef + "/" + teamList[i].$id;
-
+    $scope.allowDrop = function(ev) {
+      ev.preventDefault();
+    }
+    $scope.drag = function(ev) {
+      console.log(ev)
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
   })

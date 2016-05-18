@@ -1,3 +1,4 @@
+<body>
 <div class="container" ng-style='view2.css'>
 	<div class="row">
 
@@ -56,7 +57,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'">
+					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'" draggable="true" ondragstart="drag(event)">
 						<td class="col-xs-4 name">{{team.name}}</td>
 						<td class="col-xs-4 value">{{team.ovrAvg}}</td>
 						<td class="col-xs-4 value">
@@ -68,3 +69,4 @@
 		</div>
 	</div>
 </div>
+</body>
