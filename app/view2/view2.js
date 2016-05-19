@@ -232,7 +232,6 @@ angular
 	}
 
 	$scope.onSubmit = function() {
-		teamCheck = document.getElementById("team-select").value;
 		curTeamName = $scope.selectedTeam;
 		
 		q1 = $("#q1slider").slider("option", "value");
@@ -249,7 +248,7 @@ angular
 
 		graderName = document.getElementById("grader-name-input").value;
 
-		if (teamCheck == "0" && graderName != "") {
+		if (curTeamName == null && graderName != "") {
 			$("#slide-text1").slideDown();
 			return;
 		}

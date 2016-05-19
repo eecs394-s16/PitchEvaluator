@@ -5,7 +5,6 @@ angular
   	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
   	$scope.teamList = $firebaseArray(teamsRef);
     $scope.teamList.$loaded(function() {
-      console.log('hi');
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
     })
 
