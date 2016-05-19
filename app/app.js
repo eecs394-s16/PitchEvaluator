@@ -14,8 +14,8 @@ angular
         controller: 'View2Ctrl',
         css : 'view2/view2.css'
       })
-      .when('/formBuilder', {
-        templateUrl: 'formBuilder/addTeam.html',
+      .when('/addTeam', {
+        templateUrl: 'addTeam/addTeam.html',
         controller: 'addTeamCtrl',
         css: 'addTeam.css'
       })

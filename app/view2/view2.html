@@ -10,7 +10,7 @@
 
 					<select id="team-select" class="form-control" ng-model="selectedTeam" ng-options="team.name as team.name for team in teams">
 						<option ng-show="loadingTeams" disabled selected>Loading...</option>
-						<option ng-hide="loadingTeams" disabled selected value="0">Pick a team...</option>
+						<option ng-hide="loadingTeams" disabled selected value="">Pick a team...</option>
 						<!-- <option ng-hide="loadingTeams" ng-repeat="team in teams" ng-value="{{team.name}}">{{team.name}}</option> -->
 					</select>
 				</div>
@@ -31,7 +31,7 @@
 								<div id="q1slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q1textarea">Comments</label>
-						   			<textarea class="form-control" id="q1textarea" rows="3"></textarea>
+						   			<textarea class="form-control" id="q1textarea" rows="1"></textarea>
 						   		</div>
 					   		</fieldset>
 						</div>
@@ -45,7 +45,7 @@
 					   			<div id="q2slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q2textarea">Comments</label>
-						   			<textarea class="form-control" id="q2textarea" rows="3"></textarea>
+						   			<textarea class="form-control" id="q2textarea" rows="1"></textarea>
 						   		</div>
 					   		</fieldset>
 						</div>
@@ -59,7 +59,7 @@
 					   			<div id="q3slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q3textarea">Comments</label>
-						   			<textarea class="form-control" id="q3textarea" rows="3"></textarea>
+						   			<textarea class="form-control" id="q3textarea" rows="1"></textarea>
 						   		</div>
 					   		</fieldset>
 						</div>
@@ -73,7 +73,7 @@
 					   			<div id="q4slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q4textarea">Comments</label>
-						   			<textarea class="form-control" id="q4textarea" rows="3"></textarea>
+						   			<textarea class="form-control" id="q4textarea" rows="1"></textarea>
 						   		</div>
 					   		</fieldset>
 						</div>
@@ -94,7 +94,7 @@
 					   			</label>
 						   		<div class="input-textarea">
 						   			<label for="q5textarea">Why?</label>
-						   			<textarea class="form-control" id="q5textarea" rows="3"></textarea>
+						   			<textarea class="form-control" id="q5textarea" rows="1"></textarea>
 						   		</div>
 					   		</fieldset>
 					   	</div>

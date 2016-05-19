@@ -1,12 +1,11 @@
 <body>
 <div class="container" ng-style='view2.css'>
 	<div class="row">
-
 		<div class="col-sm-10">
-
 			<h1>Team Data</h1>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-10">
 			<table class="table">
@@ -20,9 +19,9 @@
 						<th class="col-xs-2 metric">Team Average</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr class="row" ng-repeat="team in teamList">
-						<td class="col-xs-2 name" ng-click="saveTeam(team.name)"><a href="">{{team.name}}</a></td>
+				<tbody id="sortable">
+					<tr class="row" ng-repeat="team in teamList  | orderBy:'rank'">
+						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
@@ -33,38 +32,15 @@
 			</table>
 		</div>
 	</div>
+
 	<div class="row">
 
 		<div class="col-sm-10">
 
 		    <div class="addTeam">
-		    	<a href="#/formBuilder" ng-click="setSelectedTab(formBuilder)"><b>Add a team</b></a>
+		    	<button ng-click="setSelectedTab('addTeam')"><a href=""><b>Add a team</b></a></button>
 		    </div>
 	    </div>
   </div>
-
-	<br>
-	<br>
-
-	<div class="row">
-		<div class="col-sm-10">
-			<table class="table">
-				<thead>
-					<tr class="row">
-						<th class="col-xs-6">Team/Product</th>
-						<th class="col-xs-6 metric">Team Average</th>
-					</tr>
-				</thead>
-				
-				<tbody id="sortable">
-					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'">
-			    		<td class="col-xs-6 name">{{team.name}}</td>
-						<td class="col-xs-6 value">{{team.ovrAvg}}</td>
-					</tr>
-			    </tbody>
-		
-			</table>
-		</div>
-	</div>
 </div>
 </body>

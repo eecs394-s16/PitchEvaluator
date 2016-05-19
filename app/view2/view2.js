@@ -49,10 +49,11 @@ angular
 	}
 
 	function updateValues(review) {
-		$('input[name="q1radio"]').val([review.q1]);
-		$('input[name="q2radio"]').val([review.q2]);
-		$('input[name="q3radio"]').val([review.q3]);
-		$('input[name="q4radio"]').val([review.q4]);
+		$("#q1slider").slider( "option", "value", review.q1 );
+		$("#q2slider").slider( "option", "value", review.q2 );
+		$("#q3slider").slider( "option", "value", review.q3 );
+		$("#q4slider").slider( "option", "value", review.q4 );
+
 		$('input[name="q5radio"]').val([review.q5]);
 
 		document.getElementById("q1textarea").value = review.cmt1;
@@ -60,6 +61,8 @@ angular
 		document.getElementById("q3textarea").value = review.cmt3;
 		document.getElementById("q4textarea").value = review.cmt4;
 		document.getElementById("q5textarea").value = review.cmt5;
+
+		document.getElementById("grader-name-input").value = review.user;
 	}
 
 
@@ -100,7 +103,7 @@ angular
 			team.update({teamavgval: teamavg});
 		}
 	}
-	
+
 	$("#q1slider").slider({
 		min: 0,
 		step: 1,
@@ -114,7 +117,7 @@ angular
 			$("#q1slider").append(el);
 		}
 	});
-	
+
 	$("#q2slider").slider({
 		min: 0,
 		step: 1,
@@ -128,7 +131,7 @@ angular
 			$("#q2slider").append(el);
 		}
 	});
-	
+
 	$("#q3slider").slider({
 		min: 0,
 		step: 1,
@@ -142,7 +145,7 @@ angular
 			$("#q3slider").append(el);
 		}
 	});
-	
+
 	$("#q4slider").slider({
 		min: 0,
 		step: 1,
@@ -156,7 +159,7 @@ angular
 			$("#q4slider").append(el);
 		}
 	});
-	
+
 	var calcAvg = function(team) {
 		var q1, q2, q3, q4;
 		var q1sum = 0;
@@ -233,7 +236,7 @@ angular
 
 	$scope.onSubmit = function() {
 		curTeamName = $scope.selectedTeam;
-		
+
 		q1 = $("#q1slider").slider("option", "value");
 		q2 = $("#q2slider").slider("option", "value");
 		q3 = $("#q3slider").slider("option", "value");
@@ -260,8 +263,8 @@ angular
 
 	    var evaluation = new Evaluation(user, curTeamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 	    var submit_alert;
-		
-		
+
+
 
 		for (var i = 0; i < teamList.length; i++) {
 			if (teamList[i].name == curTeamName) {
