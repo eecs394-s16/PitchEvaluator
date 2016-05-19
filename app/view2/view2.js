@@ -1,7 +1,7 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray, $location) {
+.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray, $location, teamService) {
 	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
   	$scope.loadingTeams = true;
 	var teamList = $firebaseArray(teamsRef);
@@ -9,11 +9,59 @@ angular
 	    $scope.loadingTeams = false;
 	    $scope.teams = teamList;
 	});
-
+	$scope.selectedTeam=null;
 	var curTeamName, curTeamIndex, curTeamKey, curTeamObject, curTeamRef;
 	var q1, q2, q3, q4, q5, cmt1, cmt2, cmt3, cmt4, cmt5;
-	var graderName;
+	var graderName, teamCheck;
 	var valid = false;
+
+	if (teamService.get()) {
+		teamList.$loaded(function() {
+			$scope.selectedTeam=teamService.get();
+			teamService.set(null);
+
+			getData($scope.selectedTeam);
+		});
+	}
+
+	function getData(name) {
+		//@TODO: Change this user to the correct one
+		var user = "John Doe";
+		for (let team of teamList) {
+			if (team.name==$scope.selectedTeam) {
+				let teamRef = new Firebase("https://pitchevaluator.firebaseio.com/teams/" + team.$id)
+				if (teamRef.child('reviews')) {
+					var reviews = $firebaseArray(teamRef.child('reviews'));
+					reviews.$loaded(function() {
+						for (let review of reviews) {
+							if (review.user == user) {
+								console.log(review);
+								updateValues(review);
+
+								return review;
+							}
+						}
+					});
+				}
+				break;
+			}
+		}
+	}
+
+	function updateValues(review) {
+		$('input[name="q1radio"]').val([review.q1]);
+		$('input[name="q2radio"]').val([review.q2]);
+		$('input[name="q3radio"]').val([review.q3]);
+		$('input[name="q4radio"]').val([review.q4]);
+		$('input[name="q5radio"]').val([review.q5]);
+
+		document.getElementById("q1textarea").value = review.cmt1;
+		document.getElementById("q2textarea").value = review.cmt2;
+		document.getElementById("q3textarea").value = review.cmt3;
+		document.getElementById("q4textarea").value = review.cmt4;
+		document.getElementById("q5textarea").value = review.cmt5;
+	}
+
 
 	var reviewUpdate = function (team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
 		if (q1 != 0) {
@@ -184,7 +232,8 @@ angular
 	}
 
 	$scope.onSubmit = function() {
-		curTeamName = document.getElementById("team-select").value;
+		teamCheck = document.getElementById("team-select").value;
+		curTeamName = $scope.selectedTeam;
 		
 		q1 = $("#q1slider").slider("option", "value");
 		q2 = $("#q2slider").slider("option", "value");
@@ -200,7 +249,7 @@ angular
 
 		graderName = document.getElementById("grader-name-input").value;
 
-		if (curTeamName == "0" && graderName != "") {
+		if (teamCheck == "0" && graderName != "") {
 			$("#slide-text1").slideDown();
 			return;
 		}

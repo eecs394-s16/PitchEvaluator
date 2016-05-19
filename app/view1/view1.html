@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					<tr class="row" ng-repeat="team in teamList">
-						<td class="col-xs-2 name">{{team.name}}</td>
+						<td class="col-xs-2 name" ng-click="saveTeam(team.name)"><a href="">{{team.name}}</a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
@@ -51,20 +51,18 @@
 			<table class="table">
 				<thead>
 					<tr class="row">
-						<th class="col-xs-4">Team/Product</th>
-						<th class="col-xs-4 metric">Team Average</th>
-						<th class="col-xs-4 metric">Rank</th>
+						<th class="col-xs-6">Team/Product</th>
+						<th class="col-xs-6 metric">Team Average</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'" draggable="true" ondragstart="drag(event)">
-						<td class="col-xs-4 name">{{team.name}}</td>
-						<td class="col-xs-4 value">{{team.ovrAvg}}</td>
-						<td class="col-xs-4 value">
-							<input ng-model="team.rank" ng-change='changeRanking(team.$id, team.rank)'>
-						</td>
+				
+				<tbody id="sortable">
+					<tr class="row" ng-repeat="team in teamList | orderBy:'rank'">
+			    		<td class="col-xs-6 name">{{team.name}}</td>
+						<td class="col-xs-6 value">{{team.ovrAvg}}</td>
 					</tr>
-				</tbody>
+			    </tbody>
+		
 			</table>
 		</div>
 	</div>

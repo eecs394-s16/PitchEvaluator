@@ -19,6 +19,32 @@ angular
         controller: 'addTeamCtrl',
         css: 'addTeam.css'
       })
+      .when('/judgeInfo', {
+        templateUrl: 'judgeInfo/judgeInfo.html',
+        controller: 'judgeInfoCtrl',
+        css: 'judgeInfo.css'
+      })
+      .when('/judgeLogin', {
+        templateUrl: 'judgeLogin/judgeLogin.html',
+        controller: 'judgeLoginCtrl',
+        css: 'judgeLogin.css'
+      })
+      .when('/profLogin', {
+        templateUrl: 'profLogin/profLogin.html',
+        controller: 'profLoginCtrl',
+        css: 'profLogin.css'
+      })
+      .when('/teamLogin', {
+        templateUrl: 'teamLogin/teamLogin.html',
+        controller: 'teamLoginCtrl',
+        css: 'teamLogin.css'
+      })
+      .when('/teamSummary', {
+        templateUrl: 'teamSummary/teamSummary.html',
+        controller: 'teamSummaryCtrl',
+        css: 'teamSummary.css'
+
+      })
       .otherwise({
         redirectTo: 'view1'
       });

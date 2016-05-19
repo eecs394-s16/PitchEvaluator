@@ -5,7 +5,12 @@ angular
 	$scope.tabs = [
       { link : '/view1', label : 'View1' },
       { link : '/view2', label : 'View2' },
-      { link : '/formBuilder', label : 'formBuilder' }
+      { link : '/formBuilder', label : 'formBuilder' },
+      { link : '/judgeInfo', label : 'judgeInfo' }, 
+      { link : '/judgeLogin', label : 'judgeLogin' },
+      { link : '/profLogin', label : 'profLogin' },
+      { link : '/teamLogin', label : 'teamLogin' },
+      { link : '/teamSummary', label : 'teamSummary' }
     ]; 
     
   // $scope.selectedTab = $scope.tabs[0];    
