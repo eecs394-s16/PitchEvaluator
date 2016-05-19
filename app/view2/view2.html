@@ -10,7 +10,7 @@
 
 					<select id="team-select" class="form-control">
 						<option ng-show="loadingTeams" disabled selected>Loading...</option>
-						<option ng-hide="loadingTeams" disabled selected>Pick a team...</option>
+						<option ng-hide="loadingTeams" disabled selected value="0">Pick a team...</option>
 						<option ng-hide="loadingTeams" ng-repeat="team in teams" ng-click="populate()">{{team.name}}</option>
 					</select>
 				</div>
@@ -27,39 +27,8 @@
 							<h3 class="panel-title">Problem/Need has evolved into a compelling value proposition.</h3>
 						</div>
 						<div class="panel-body">
-						<!-- <label>Score:
-							<input type = "range" min = "1" max = "7" step = "1" value = "1"  onchange="showScore(this.value)"></input>
-							<span id = "score">7</span>
-						</label> -->
 					   		<fieldset>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="1">
-					   				1
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="2">
-					   				2
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="3">
-					   				3
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="4">
-					   				4
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="5">
-					   				5
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="6">
-					   				6
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q1radio" type="radio" value="7">
-					   				7
-					   			</label>
+								<div id="q1slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q1textarea">Comments</label>
 						   			<textarea class="form-control" id="q1textarea" rows="3"></textarea>
@@ -73,34 +42,7 @@
 						</div>
 						<div class="panel-body">
 					   		<fieldset>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="1">
-					   				1
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="2">
-					   				2
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="3">
-					   				3
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="4">
-					   				4
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="5">
-					   				5
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="6">
-					   				6
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q2radio" type="radio" value="7">
-					   				7
-					   			</label>
+					   			<div id="q2slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q2textarea">Comments</label>
 						   			<textarea class="form-control" id="q2textarea" rows="3"></textarea>
@@ -114,34 +56,7 @@
 						</div>
 						<div class="panel-body">
 					   		<fieldset>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="1">
-					   				1
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="2">
-					   				2
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="3">
-					   				3
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="4">
-					   				4
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="5">
-					   				5
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="6">
-					   				6
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q3radio" type="radio" value="7">
-					   				7
-					   			</label>
+					   			<div id="q3slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q3textarea">Comments</label>
 						   			<textarea class="form-control" id="q3textarea" rows="3"></textarea>
@@ -155,34 +70,7 @@
 						</div>
 						<div class="panel-body">
 					   		<fieldset>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="1">
-					   				1
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="2">
-					   				2
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="3">
-					   				3
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="4">
-					   				4
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="5">
-					   				5
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="6">
-					   				6
-					   			</label>
-					   			<label class="radio-inline">
-					   				<input name="q4radio" type="radio" value="7">
-					   				7
-					   			</label>
+					   			<div id="q4slider" class="ratingslider"></div>
 						   		<div class="input-textarea">
 						   			<label for="q4textarea">Comments</label>
 						   			<textarea class="form-control" id="q4textarea" rows="3"></textarea>
@@ -216,8 +104,11 @@
 
 			<div class="row">
 			    <div class="col-sm-11 col-xs-10">
-					<div class="panel panel-danger" id="slide-text">
-						<div class="panel-heading">You did not fill out all the required fields</div>
+					<div class="panel panel-danger" id="slide-text1">
+						<div class="panel-heading">Please select a team to grade.</div>
+					</div>
+					<div class="panel panel-danger" id="slide-text2">
+						<div class="panel-heading">Ratings must be positive values and Radio Buttons must be selected.</div>
 					</div>
 			    </div>
 			    <div class="col-xs-1 col-sm-offset-0 col-xs-offset-1">

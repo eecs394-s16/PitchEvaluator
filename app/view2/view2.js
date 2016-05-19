@@ -16,16 +16,16 @@ angular
 	var valid = false;
 
 	var reviewUpdate = function (team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5) {
-		if (q1 != undefined) {
+		if (q1 != 0) {
 			team.update({q1: q1});
 		}
-		if (q2 != undefined) {
+		if (q2 != 0) {
 			team.update({q2: q2});
 		}
-		if (q3 != undefined) {
+		if (q3 != 0) {
 			team.update({q3: q3});
 		}
-		if (q4 != undefined) {
+		if (q4 != 0) {
 			team.update({q4: q4});
 		}
 		if (q5 != undefined) {
@@ -46,13 +46,69 @@ angular
 		if (cmt5 != "") {
 			team.update({cmt5: cmt5});
 		}
-		if (q1 != undefined && q2 != undefined && q3 != undefined && q4 != undefined) {
+		if (q1 != 0 && q2 != 0 && q3 != 0 && q4 != 0) {
 			var teamavg = (parseFloat(q1) + parseFloat(q2) + parseFloat(q3) + parseFloat(q4))/4.0;
 			teamavg = teamavg.toFixed(2);
 			team.update({teamavgval: teamavg});
 		}
 	}
-
+	
+	$("#q1slider").slider({
+		min: 0,
+		step: 1,
+		max: 7,
+		value: 0
+	}).each(function() {
+		var opt = $(this).data().uiSlider.options;
+		var vals = opt.max - opt.min;
+		for (var i = 0; i <= vals; i++) {
+			var el = $('<label>' + (i + opt.min) + '</label>').css('left', (i/vals*100) + '%');
+			$("#q1slider").append(el);
+		}
+	});
+	
+	$("#q2slider").slider({
+		min: 0,
+		step: 1,
+		max: 7,
+		value: 0
+	}).each(function() {
+		var opt = $(this).data().uiSlider.options;
+		var vals = opt.max - opt.min;
+		for (var i = 0; i <= vals; i++) {
+			var el = $('<label>' + (i + opt.min) + '</label>').css('left', (i/vals*100) + '%');
+			$("#q2slider").append(el);
+		}
+	});
+	
+	$("#q3slider").slider({
+		min: 0,
+		step: 1,
+		max: 7,
+		value: 0
+	}).each(function() {
+		var opt = $(this).data().uiSlider.options;
+		var vals = opt.max - opt.min;
+		for (var i = 0; i <= vals; i++) {
+			var el = $('<label>' + (i + opt.min) + '</label>').css('left', (i/vals*100) + '%');
+			$("#q3slider").append(el);
+		}
+	});
+	
+	$("#q4slider").slider({
+		min: 0,
+		step: 1,
+		max: 7,
+		value: 0
+	}).each(function() {
+		var opt = $(this).data().uiSlider.options;
+		var vals = opt.max - opt.min;
+		for (var i = 0; i <= vals; i++) {
+			var el = $('<label>' + (i + opt.min) + '</label>').css('left', (i/vals*100) + '%');
+			$("#q4slider").append(el);
+		}
+	});
+	
 	var calcAvg = function(team) {
 		var q1, q2, q3, q4;
 		var q1sum = 0;
@@ -96,8 +152,8 @@ angular
 
 	}
 
-	var checkNull = function(q1, q2, q3, q4, q5) {
-		if (q1 != undefined && q2 != undefined && q3 != undefined && q4 != undefined && q5 != undefined) {
+	var checkZero = function(q1, q2, q3, q4, q5) {
+		if (q1 != 0 && q2 != 0 && q3 != 0 && q4 != 0 && q5 != undefined) {
 			return false;
 		}
 		return true;
@@ -129,11 +185,11 @@ angular
 
 	$scope.onSubmit = function() {
 		curTeamName = document.getElementById("team-select").value;
-
-		q1 = $('input[name="q1radio"]:checked').val();
-		q2 = $('input[name="q2radio"]:checked').val();
-		q3 = $('input[name="q3radio"]:checked').val();
-		q4 = $('input[name="q4radio"]:checked').val();
+		
+		q1 = $("#q1slider").slider("option", "value");
+		q2 = $("#q2slider").slider("option", "value");
+		q3 = $("#q3slider").slider("option", "value");
+		q4 = $("#q4slider").slider("option", "value");
 		q5 = $('input[name="q5radio"]:checked').val();
 
 		cmt1 = document.getElementById("q1textarea").value;
@@ -144,11 +200,20 @@ angular
 
 		graderName = document.getElementById("grader-name-input").value;
 
+		if (curTeamName == "0" && graderName != "") {
+			$("#slide-text1").slideDown();
+			return;
+		}
+		else {
+			$("#slide-text1").hide();
+		}
 	    //@TODO: implemented user auth
 	    var user = graderName;
 
 	    var evaluation = new Evaluation(user, curTeamName, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 	    var submit_alert;
+		
+		
 
 		for (var i = 0; i < teamList.length; i++) {
 			if (teamList[i].name == curTeamName) {
@@ -178,12 +243,13 @@ angular
 			        	}
 			        	else {
 			        		//check that (no radios) || (all comments) == null
-			        		if (checkNull(q1, q2, q3, q4, q5)) { //not all radios completed
+			        		if (checkZero(q1, q2, q3, q4, q5)) { //not all radios completed
 			        			//throw an error
-					        	$("#slide-text").slideDown();
+					        	$("#slide-text2").slideDown();
 			        		}
 			        		else if (isCmtsBlank(cmt1, cmt2, cmt3, cmt4, cmt5)) { //no comments
-			        			submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
+			        			$("#slide-text2").hide();
+								submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
 			        			if (submit_alert) {
 			        				reviews.push(evaluation);
 					        		calcAvg(team);

@@ -6,10 +6,6 @@ form {
   font-weight: bold;
 }
 
-.radio-inline {
-  margin-right: 20px;
-}
-
 .input-textarea {
   margin-top: 20px;
 }
@@ -45,9 +41,26 @@ form {
     margin-left: 1%;
 }
 
-#slide-text{
+#slide-text1{
   display: none;
   font-weight: bold;
+}
+
+#slide-text2{
+  display: none;
+  font-weight: bold;
+}
+
+.ratingslider label {
+    position: absolute;
+    width: 20px;
+    margin-left: -10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.input-textarea{
+	margin-top: 4%
 }
 
 .dropdown {
