@@ -8,10 +8,10 @@
 				<div class="col-sm-6">
 					<h4>Currently grading:</h4>
 
-					<select id="team-select" class="form-control">
+					<select id="team-select" class="form-control" ng-model="selectedTeam" ng-options="team.name as team.name for team in teams">
 						<option ng-show="loadingTeams" disabled selected>Loading...</option>
-						<option ng-hide="loadingTeams" disabled selected>Pick a team...</option>
-						<option ng-hide="loadingTeams" ng-repeat="team in teams" ng-click="populate()">{{team.name}}</option>
+						<option ng-hide="loadingTeams" disabled selected value="">Pick a team...</option>
+						<!-- <option ng-hide="loadingTeams" ng-repeat="team in teams" ng-value="{{team.name}}">{{team.name}}</option> -->
 					</select>
 				</div>
 				<div class="col-sm-4 col-sm-offset-2">

@@ -1,13 +1,18 @@
 'use strict';
-
 angular
   .module('PitchEvaluator')
-  .controller('View1Ctrl', function($scope, $firebaseObject, $firebaseArray) {
+  .controller('View1Ctrl', function($scope, $firebaseObject, $firebaseArray, $location, teamService) {
   	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
   	$scope.teamList = $firebaseArray(teamsRef);
     $scope.teamList.$loaded(function() {
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
     })
+
+    $scope.saveTeam = function(teamName) {
+      teamService.set(teamName);
+      $location.path('view2');
+    }
+
 
   	$scope.changeRanking = function(id, valueStr) {
       var value = Number(valueStr);

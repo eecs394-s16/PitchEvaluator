@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					<tr class="row" ng-repeat="team in teamList">
-						<td class="col-xs-2 name">{{team.name}}</td>
+						<td class="col-xs-2 name" ng-click="saveTeam(team.name)"><a href="">{{team.name}}</a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
