@@ -25,6 +25,7 @@
     <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
       <a href="#{{tab.link}}">{{tab.label}}</a>
     </li>
+    <span id="userli">{{user}}</span>
   </ul>
 
 
@@ -63,7 +64,8 @@
   <script src="profLogin/profLogin.js"></script>
   <script src="teamLogin/teamLogin.js"></script>
   <script src="teamSummary/teamSummary.js"></script>
-  <script src="services/teamService.js">
+  <script src="services/teamService.js"></script>
+  <script src="services/userService.js"></script>
 
   </script>
 </body>

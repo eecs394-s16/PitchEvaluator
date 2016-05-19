@@ -1,7 +1,7 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('TabsCtrl', function($scope, $location) {
+.controller('TabsCtrl', function($rootScope, $scope, $location) {
 	$scope.tabs = [
       { link : '/view1', label : 'View1' },
       { link : '/view2', label : 'View2' },
@@ -18,4 +18,5 @@ angular
         console.log(route);
     };
 
+	$rootScope.user = "JohnDoe";
  });
