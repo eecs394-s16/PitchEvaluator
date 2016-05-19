@@ -43,6 +43,7 @@ angular
         templateUrl: 'teamSummary/teamSummary.html',
         controller: 'teamSummaryCtrl',
         css: 'teamSummary.css'
+
       })
       .otherwise({
         redirectTo: 'view1'
