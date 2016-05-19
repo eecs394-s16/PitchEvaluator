@@ -12,5 +12,8 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-material": "^1.0.8"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
   }
 }
