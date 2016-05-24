@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody id="sortable">
-					<tr class="row" ng-repeat="team in teamList  | orderBy:'rank'">
+					<tr class="row table_row" ng-repeat="team in teamList  | orderBy:'rank'">
 						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>

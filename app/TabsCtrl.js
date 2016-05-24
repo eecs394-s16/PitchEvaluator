@@ -3,9 +3,9 @@ angular
 .module('PitchEvaluator')
 .controller('TabsCtrl', function($rootScope, $scope, $location) {
 	$scope.tabs = [
-      { link : '/view1', label : 'View1' },
-      { link : '/view2', label : 'View2' },
-      { link : '/addTeam', label : 'addTeam' },
+      { link : '/view1', label : 'Summary' },
+      { link : '/view2', label : 'Evaluation Form' },
+      { link : '/addTeam', label : 'Add Team' },
       { link : '/judgeInfo', label : 'judgeInfo' },
       { link : '/judgeLogin', label : 'judgeLogin' },
       { link : '/profLogin', label : 'profLogin' },

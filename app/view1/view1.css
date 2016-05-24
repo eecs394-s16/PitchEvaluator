@@ -14,3 +14,6 @@
 .addTeam{
 	padding-left: 8px;
 }
+tr:hover {
+ background: rgb(245, 238, 247) !important 
+}
