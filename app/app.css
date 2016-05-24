@@ -9,5 +9,35 @@
 .comment {
   /*text-indent: 10px;*/
 }
+html,body{
+	background: rgb(103, 58, 183);
+}
+.nav{
 
+	background: white;
+	/*margin-bottom: -10px;*/
+	margin-left: 10%;
+    width: 80%;
+    margin-top: 110px;
+    min-height: 40px;
+}
 
+.form_content{
+	background: rgb(245, 238, 247) !important;
+	background: white;
+	padding-left: 10%;
+	padding-right: 10%;
+	min-height: 1000px;
+}
+
+#title{
+	margin-left: 10%;
+    font-size: 3rem;
+    color: white;
+}
+#userli{
+	float: right;
+    margin-right: 5%;
+    font-size: 1.7rem;
+    color: white;
+}

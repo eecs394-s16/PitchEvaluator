@@ -104,6 +104,7 @@ angular
 		}
 	}
 
+
 	$("#q1slider").slider({
 		min: 0,
 		step: 1,
@@ -159,6 +160,8 @@ angular
 			$("#q4slider").append(el);
 		}
 	});
+
+	
 
 	var calcAvg = function(team) {
 		var q1, q2, q3, q4;

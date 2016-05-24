@@ -18,19 +18,21 @@
   <link rel="stylesheet" href="addTeam/addTeam.css">
   <link rel="stylesheet" href="view2/view2.css">
   <link rel="stylesheet" href="view1/view1.css">
-
 </head>
+
 <body>
+<br>
+  <span id='title'>PitchEvlauator</span>
+  <span id="userli">{{user}}</span>
   <ul class=" nav nav-tabs" ng-controller="TabsCtrl">
     <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
       <a href="#{{tab.link}}">{{tab.label}}</a>
     </li>
-    <span id="userli">{{user}}</span>
+    
   </ul>
-
-
-
-  <div ng-view></div>
+  <div class="form">
+    <div ng-view class="form_content"></div>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -51,8 +53,6 @@
   <script src="components/version/interpolate-filter.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-
-
 
   <script src="app.js"></script>
   <script src="TabsCtrl.js"></script>
