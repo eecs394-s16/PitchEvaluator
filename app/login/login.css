@@ -1,0 +1,31 @@
+ .container{
+ 	padding: 0;
+ 	background: rgb(103, 58, 183);
+
+ }
+ .logo{
+ 	margin-left：30%；
+ 	width: 160px;
+ }
+
+ .login_form{
+ 	
+ 	text-align:center;
+}
+.form_body{
+	background:rgba(255,255,255, 0.9);
+
+	padding:20px;
+	
+}
+input{
+	width: 100%;
+}
+
+.btn-primary{
+	background: rgb(103, 58, 183)!important;
+	font-size: 16px;
+}
+.right_space{
+	background: rgb(103, 58, 183);
+}

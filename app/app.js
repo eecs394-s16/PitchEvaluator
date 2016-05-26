@@ -48,7 +48,7 @@ angular
       .when('/login', {
         templateUrl: 'login/login.html',
         controller: 'loginCtrl',
-        css: 'login.css'
+        css: 'login/login.css'
       })
       .when('/newSession', {
         templateUrl: 'newSession/newSession.html',
