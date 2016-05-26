@@ -2,22 +2,32 @@
 
 <a href='#' onclick='downloadCSV({ filename: "stock-data.csv" });'>Download CSV</a>
 
-<script type="text/javascript">  
+<script type="text/javascript"> 
+
     var stockData = [
         {
-            Symbol: "AAPL",
-            Company: "Apple Inc.",
-            Price: "132.54"
+            Team_or_Product: "Team Blue",
+            Problem_or_Need: "2.00",
+            Demo: "2.00",
+            Customer_Insight: "2.00",
+            Business: "2.00",
+            Team_Average: "2.00"
         },
         {
-            Symbol: "INTC",
-            Company: "Intel Corporation",
-            Price: "33.45"
+            Team_or_Product: "NeW Team",
+            Problem_or_Need: "1.00",
+            Demo: "2.00",
+            Customer_Insight: "2.00",
+            Business: "3.00",
+            Team_Average: "2.00"
         },
         {
-            Symbol: "GOOG",
-            Company: "Google Inc",
-            Price: "554.52"
+            Team_or_Product: "Testi",
+            Problem_or_Need: "2.00",
+            Demo: "2.00",
+            Customer_Insight: "2.00",
+            Business: "2.00",
+            Team_Average: "2.00"
         },
     ];
 
@@ -58,7 +68,8 @@
         var csv = convertArrayOfObjectsToCSV({
             data: stockData
         });
-        if (csv == null) return;
+        if (csv == null)
+            return;
 
         filename = args.filename || 'export.csv';
 
