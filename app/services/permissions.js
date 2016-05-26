@@ -1,5 +1,5 @@
 angular
   .module('PitchEvaluator')
-  .factory('teamService', function($rootScope) {
+  .factory('permissionsService', function($rootScope) {
 
   });
