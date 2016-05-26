@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('View1Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService, userService, db_url) {
+  .controller('View1Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
 
     // if (!userService.get()) {
   	// 	$rootScope.loggedin = false;
@@ -9,6 +9,7 @@ angular
   	// 	$location.path('login')
   	// }
 
+    loggedinCheck.check();
     var teamsForCSV = [];
 
     var sessListRef = new Firebase(db_url+"/sessionList");
@@ -23,8 +24,8 @@ angular
             // to create the arrayOfObjects you'll print to CSV
             for (var i = 0; i < $scope.teamList.length; i++) {
               var curTeam = $scope.teamList[i];
-              var teamy = new Team(curTeam.name, curTeam.q1Val, 
-                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val, 
+              var teamy = new Team(curTeam.name, curTeam.q1Val,
+                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val,
                 curTeam.ovrAvg, curTeam.rank);
               teamsForCSV.push(teamy);
             }//end for loop
@@ -142,7 +143,7 @@ angular
         link = document.createElement('a');
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
- 
+
         document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

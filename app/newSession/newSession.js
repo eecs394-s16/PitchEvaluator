@@ -1,8 +1,11 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('newSessionCtrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, db_url) {
-    // var ref = new Firebase("https://pitchevaluator.firebaseio.com/team");
+  .controller('newSessionCtrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, db_url, loggedinCheck) {
+
+    loggedinCheck.check();
+
+
     $scope.name = "";
     $scope.desc = "";
     $scope.judgePass = "";

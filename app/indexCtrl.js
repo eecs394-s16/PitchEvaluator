@@ -1,18 +1,16 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('indexCtrl', function($rootScope, $scope, $location, userService) {
-	// if (!userService.get()) {
-	// 	$rootScope.loggedin = false;
-	// 	$rootScope.user = null;
-	// 	$location.path('login')
-	// }
+.controller('indexCtrl', function($rootScope, $scope, $location, userService, loggedinCheck) {
 
-	$rootScope.user = 'Admin';
-	$rootScope.role = 'Admin';
-	$rootScope.session = "Test Session";
-	$rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
-	$rootScope.loggedin = true;
+	loggedinCheck.check();
+
+	// TESTING PURPOSES..........
+	// $rootScope.user = 'Admin';
+	// $rootScope.role = 'Admin';
+	// $rootScope.session = "Test Session";
+	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
+	// $rootScope.loggedin = true;
 
 	$scope.logOut = function() {
 		userService.set(null);

@@ -1,7 +1,10 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('View2Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService) {
+.controller('View2Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService, loggedinCheck) {
+
+	loggedinCheck.check();
+
 	$scope.loadingTeams = true;
 	var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
 	var teamList = $firebaseArray(teamsRef);
@@ -161,7 +164,7 @@ angular
 		}
 	});
 
-	
+
 
 	var calcAvg = function(team) {
 		var q1, q2, q3, q4;

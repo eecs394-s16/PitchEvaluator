@@ -27,9 +27,11 @@ angular
         function(newValue, oldValue) {
             if (newValue=='Admin') {
               $scope.adminFlag = true;
+              $scope.user = 'Admin';
             }
             else {
               $scope.adminFlag = false;
+              $scope.user = '';
             }
         }
      );
