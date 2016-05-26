@@ -7,6 +7,7 @@
   <title>PitchEvaluator</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -18,22 +19,24 @@
   <link rel="stylesheet" href="addTeam/addTeam.css">
   <link rel="stylesheet" href="view2/view2.css">
   <link rel="stylesheet" href="view1/view1.css">
+  <link rel="stylesheet" href="newSession/newSession.css">
+
 </head>
+<body ng-controller="indexCtrl">
+  <div ng-show="loggedin">
+    <ul class=" nav nav-tabs" >
+      <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
+        <a href="#{{tab.link}}">{{tab.label}}</a>
+      </li>
+      <li style="float:right; margin-right:3%"><button type="button" ng-click="logOut()">Logout</button></li>
+      <li style="float:right; margin-right:3%"><span id="userli">{{user}}</span></li>
+      <li style="float:right; margin-right:3%">{{session}}</li>
+      <li style="float:right; margin-right:3%">{{role}}</li>
+    </ul>
 
-<body>
-<br>
-  <span id='title'>PitchEvaluator</span>
-  <span id="userli">{{user}}</span>
-  <ul class=" nav nav-tabs" ng-controller="TabsCtrl">
-    <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
-      <a href="#{{tab.link}}">{{tab.label}}</a>
-    </li>
-    
-  </ul>
-  
- <div ng-view class="form_content"></div>
-
-
+  </div>
+    <div ng-view></div>
+</body>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
@@ -55,8 +58,8 @@
   <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
   <script src="app.js"></script>
-  <script src="TabsCtrl.js"></script>
   <script src="view1/view1.js"></script>
+  <script src="indexCtrl.js"></script>
   <script src="view2/view2.js"></script>
   <script src="addTeam/addTeam.js"></script>
   <script src="judgeInfo/judgeInfo.js"></script>
@@ -66,7 +69,7 @@
   <script src="teamSummary/teamSummary.js"></script>
   <script src="services/teamService.js"></script>
   <script src="services/userService.js"></script>
-
-  </script>
-</body>
+  <script src="services/permissions.js"></script>
+  <script src="login/login.js"></script>
+  <script src="newSession/newSession.js"></script>
 </html>

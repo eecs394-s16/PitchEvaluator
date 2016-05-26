@@ -1,12 +1,32 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('View1Ctrl', function($scope, $firebaseObject, $firebaseArray, $location, teamService) {
-  	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
-  	$scope.teamList = $firebaseArray(teamsRef);
-    $scope.teamList.$loaded(function() {
-      $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
-    })
+  .controller('View1Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService, userService, db_url) {
+
+    // if (!userService.get()) {
+  	// 	$rootScope.loggedin = false;
+  	// 	$rootScope.user = null;
+  	// 	$location.path('login')
+  	// }
+
+    var sessListRef = new Firebase(db_url+"/sessionList");
+    var temp = new $firebaseArray(sessListRef);
+    temp.$loaded(function() {
+      temp.forEach(function(session) {
+        if (session.name==$rootScope.session) {
+          $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
+          $scope.teamList.$loaded(function() {
+            $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
+          })
+        }
+      });
+    });
+
+  	// $scope.teamList = $firebaseArray(teamsRef);
+    // $scope.teamList.$loaded(function() {
+    //   $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
+    // })
+
 
     //Function to store the team in the teamService
     $scope.saveTeam = function(teamName) {

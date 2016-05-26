@@ -2,6 +2,7 @@
 
 angular
   .module('PitchEvaluator', ['ngRoute', 'firebase'])
+  .constant('db_url', "https://pitchevaluator.firebaseio.com/")
   .config(function($routeProvider) {
     $routeProvider
       .when('/view1', {
@@ -43,7 +44,16 @@ angular
         templateUrl: 'teamSummary/teamSummary.html',
         controller: 'teamSummaryCtrl',
         css: 'teamSummary.css'
-
+      })
+      .when('/login', {
+        templateUrl: 'login/login.html',
+        controller: 'loginCtrl',
+        css: 'login.css'
+      })
+      .when('/newSession', {
+        templateUrl: 'newSession/newSession.html',
+        controller: 'newSessionCtrl',
+        css: 'newSession.css'
       })
       .otherwise({
         redirectTo: 'view1'

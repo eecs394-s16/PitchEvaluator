@@ -1,9 +1,9 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('View2Ctrl', function($scope, $firebaseObject, $firebaseArray, $location, teamService) {
-	var teamsRef = new Firebase("https://pitchevaluator.firebaseio.com/teams");
-  	$scope.loadingTeams = true;
+.controller('View2Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService) {
+	$scope.loadingTeams = true;
+	var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
 	var teamList = $firebaseArray(teamsRef);
 	teamList.$loaded(function() {
 	    $scope.loadingTeams = false;
@@ -26,7 +26,7 @@ angular
 
 	function getData(name) {
 		//@TODO: Change this user to the correct one
-		var user = "John Doe";
+		var user = $rootScope.user;
 		for (let team of teamList) {
 			if (team.name==$scope.selectedTeam) {
 				let teamRef = new Firebase("https://pitchevaluator.firebaseio.com/teams/" + team.$id)
@@ -252,7 +252,8 @@ angular
 		cmt4 = document.getElementById("q4textarea").value;
 		cmt5 = document.getElementById("q5textarea").value;
 
-		graderName = document.getElementById("grader-name-input").value;
+		// graderName = document.getElementById("grader-name-input").value;
+		graderName = $rootScope.user;
 
 		if (curTeamName == null && graderName != "") {
 			$("#slide-text1").slideDown();
@@ -274,7 +275,7 @@ angular
 		        var teamRef = teamsRef + "/" + teamList[i].$id;
 		        var team = new Firebase(teamRef);
 		        if (team.reviews) {
-		        	console.log('Woot');
+		        	// console.log('Woot');
 		        }
 		        else {
 		        	var reviews = team.child('reviews');
