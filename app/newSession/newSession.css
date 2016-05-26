@@ -1,0 +1,9 @@
+#createSessionForm {
+  width: auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.btn_createSession{
+	width: 100% !important;
+}

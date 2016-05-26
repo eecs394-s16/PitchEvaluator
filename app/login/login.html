@@ -1,0 +1,34 @@
+<div class="container">
+  <div ng-show="loading">
+    Loading....
+  </div>
+  <div ng-hide="loading">
+    <div style="width:200px; margin: 0 auto; text-align:center;">
+    <br>
+    Session:
+    <br>
+    <select id="session-select" class="form-control" ng-model="session" ng-options="session.name as session.name for session in sessionsArr">
+      <option ng-show="loadingSessions" disabled selected>Loading...</option>
+      <option ng-hide="loadingSessions" disabled selected value="">Select a session...</option>
+    </select>
+    <br>Role:<br>
+    <select class="form-control" ng-model="role" ng-options="role as role for role in roles">
+      <option disabled selected value="">Select your role...</option>
+    </select>
+    <br ng-hide="adminFlag">
+    <span ng-hide="adminFlag">Name:</span>
+    <br ng-hide="adminFlag">
+    <input type="text" placeholder="Your name" ng-model="user" ng-hide="adminFlag">
+    <br>
+    Password:
+    <br>
+    <input type="password" placeholder="Password" ng-model="pass">
+    <br>
+    <br>
+    <input type="button" value="Login" ng-click="login()">
+    <br>
+    <br>
+    <span id="warning" ng-show="warning" style="color:red;">*Invalid login</span>
+    </div>
+  </div>
+</div>
