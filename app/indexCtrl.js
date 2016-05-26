@@ -2,11 +2,17 @@
 angular
 .module('PitchEvaluator')
 .controller('indexCtrl', function($rootScope, $scope, $location, userService) {
-	if (!userService.get()) {
-		$rootScope.loggedin = false;
-		$rootScope.user = null;
-		$location.path('login')
-	}
+	// if (!userService.get()) {
+	// 	$rootScope.loggedin = false;
+	// 	$rootScope.user = null;
+	// 	$location.path('login')
+	// }
+
+	$rootScope.user = 'Admin';
+	$rootScope.role = 'Admin';
+	$rootScope.session = "Test Session";
+	$rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
+	$rootScope.loggedin = true;
 
 	$scope.logOut = function() {
 		userService.set(null);
