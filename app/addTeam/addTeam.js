@@ -7,6 +7,7 @@ angular
     $scope.product = "";
     $scope.desc = "";
     $scope.teamPass = ""
+    $scope.warning = true;
 
     class Team {
       constructor(name,product,desc, teamPass) {
@@ -41,15 +42,38 @@ angular
     $scope.addTeam = function() {
 
       if (!$rootScope.session) {
-        return ('Invalid or No Session');
+        $scope.warning = true;
+        document.querySelector("#warning").innerHTML = "*Invalid or No Session";
+        throw new Error('Invalid or No Session');
+        // return;
       }
       var newTeam = new Team($scope.name,$scope.product,$scope.desc, $scope.teamPass);
       var ref = new Firebase($rootScope.sessionRef);
       ref.once("value", function(snapshot) {
         var count = snapshot.child("teams").numChildren();
         newTeam.rank = count+1;
-        ref.child('teams').push(newTeam);
-        $location.path('#/view1');
+        var refTeams = new Firebase($rootScope.sessionRef + "/teams")
+        var teams = new $firebaseArray(refTeams);
+        teams.$loaded(function() {
+          var exists = false;
+          teams.forEach(function(team) {
+            if (exists) return;
+            if (team.name==$scope.name) {
+              exists = true;
+              return;
+            }
+          });
+          if (exists) {
+            document.querySelector("#warning").innerHTML = "*Team already exists";
+            throw new Error('Team already exists');
+            // return;
+          }
+          else {
+            $scope.warning = false;
+            ref.child('teams').push(newTeam);
+            $location.path('#/view1');
+          }
+        });
       });
 
 
