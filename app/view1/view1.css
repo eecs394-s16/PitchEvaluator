@@ -1,18 +1,6 @@
-.container{
-	
-	padding-left: 110px;
-	margin-left: 0;
-	margin-right: 0;
-	background: white;
-	box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14),0 2px 16px 1px rgba(0,0,0,0.12),0 4px 5px -2px rgba(0,0,0,0.2);
-	width: 100%;
-	min-width: 992px;
-	min-height: 1000px;
-
-}
 .addTeam{
 	padding-left: 8px;
 }
 tr:hover {
- background: rgb(245, 238, 247) !important 
+	background: rgb(245, 238, 247);
 }
