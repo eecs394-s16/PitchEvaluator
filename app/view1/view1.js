@@ -17,29 +17,54 @@ angular
 
 
     var teamsForCSV = [];
+    var fullCSV = [];
+    var tempTeam = [];
+    var teamArray = [];
 
     var sessListRef = new Firebase(db_url+"/sessionList");
     var temp = new $firebaseArray(sessListRef);
     temp.$loaded(function() {
       temp.forEach(function(session) {
         if (session.name==$rootScope.session) {
+          var teamsRef = new Firebase(session.ref+"/teams");
+          $scope.teamArray = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList.$loaded(function() {
             $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
 
             // to create the arrayOfObjects you'll print to CSV
             for (var i = 0; i < $scope.teamList.length; i++) {
+              //to make the simple team
               var curTeam = $scope.teamList[i];
-              var teamy = new Team(curTeam.name, curTeam.q1Val,
-                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val,
+              var teamy = new Team(curTeam.name, curTeam.q1Val, 
+                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val, 
                 curTeam.ovrAvg, curTeam.rank);
               teamsForCSV.push(teamy);
             }//end for loop
 
-          })
-        }
-      });
-    });
+            //data snapshot
+            teamsRef.once("value", function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {
+                var teamSnap = childSnapshot;
+                var reviewsSnap = teamSnap.child("reviews");
+                // console.log("team has" + reviewsSnap.numChildren() + "reviews");
+                reviewsSnap.forEach(function(childSnapshot) {
+                  //save each review as an object, from which you can grab field's
+                  var rev = childSnapshot.val();
+                  var fullEval = new Eval(rev.teamName, rev.user, rev.q1, rev.cmt1, rev.q2, rev.cmt2, rev.q3, rev.cmt3,
+                    rev.q4, rev.cmt4, rev.cmt5);
+                  fullCSV.push(fullEval);
+                  tempTeam.push(fullEval);
+                }); //end review loop
+                teamArray.push(tempTeam);
+                tempTeam = [];
+              }); //end team loop
+            });
+
+          }) //end teamList.$loaded
+        } //end if
+      }); //end temp.forEach
+    }); //end temp.$loaded
 
     //Function to store the team in the teamService
     $scope.saveTeam = function(teamName) {
@@ -91,12 +116,29 @@ angular
     class Team {
       constructor(ToP, PoN, Demo, CI, Business, TA, rank) {
         this.Team_or_Product = ToP;
-          this.Problem_or_Need = PoN;
-          this.Demo = Demo;
-          this.Customer_Insight = CI;
-          this.Business = Business;
-          this.Team_Average = TA;
-          this.Rank = rank
+        this.Problem_or_Need = PoN;
+        this.Demo = Demo;
+        this.Customer_Insight = CI;
+        this.Business = Business;
+        this.Team_Average = TA;
+        this.Rank = rank;
+      }
+  }
+
+    class Eval {
+      constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI, 
+        CIComments, Business, BusinessComments, GenComments) {
+        this.Team_Name = teamName;
+        this.Reviewer = Reviewer;
+        this.Problem_or_Need = PoN;
+        this.Problem_or_Need_Comments = PoNComments;
+        this.Demo = Demo;
+        this.Demo_Comments = DemoComments;
+        this.Customer_Insight = CI;
+        this.Customer_Insight_Comments = CIComments;
+        this.Business = Business;
+        this.Business_Comments = BusinessComments;
+        this.General_Comments = GenComments;
       }
   }
 
@@ -149,10 +191,56 @@ angular
         link = document.createElement('a');
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
+ 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    $scope.downloadFullCSV = function(args) {
+      var data, filename, link;
+      var csv = convertArrayOfObjectsToCSV({
+        data: fullCSV
+      });
+      if (csv == null)
+        return;
+      filename = args.filename || 'export.csv';
+       if (!csv.match(/^data:text\/csv/i)) {
+            csv = 'data:text/csv;charset=utf-8,' + csv;
+        }
+        data = encodeURI(csv);
+
+        link = document.createElement('a');
+        link.setAttribute('href', data);
+        link.setAttribute('download', filename);
+ 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    $scope.downloadTeamCSV = function(args) {
+      var data, filename, link, index;
+      index = args.index;
+      console.log(index);
+      var csv = convertArrayOfObjectsToCSV({
+        data: teamArray[index]
+      });
+      if (csv == null)
+        return;
+      filename = args.filename || 'export.csv';
+       if (!csv.match(/^data:text\/csv/i)) {
+            csv = 'data:text/csv;charset=utf-8,' + csv;
+        }
+        data = encodeURI(csv);
+
+        link = document.createElement('a');
+        link.setAttribute('href', data);
+        link.setAttribute('download', filename);
 
         document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
 });

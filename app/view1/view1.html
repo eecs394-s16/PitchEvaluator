@@ -33,18 +33,30 @@
 		</div>
 	</div>
 
-	<h1>Download Team Data</h1>
+	<h1>Download Summary Data</h1>
 
-	<a href='#' ng-click='downloadCSV({ filename: "team-data.csv" })'>Download Team Data CSV</a>
+	<a href='#' ng-click='downloadCSV({ filename: "summary-data.csv" })'>Download CSV Summary Data without Comments</a>
+	<br>
+	<a href="#" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>Download CSV Summary Data with Comments</a>
 
-	<!-- <div class="row">
+	<h1>Download an Individual Team's Data</h1>
 
-		<div class="col-sm-10">
+	<div class="col-sm-10">
+		<table>
+			<thead>
+				<tr class="row">
+					<th class="col-xs-6">Team/Product</th>
+					<th class="col-xs-6">Download CSV</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="row table_row" ng-repeat="team in teamArray">
+					<td class="col-xs-6">{{team.name}}</td>
+					<td class="col-xs-6"><a href='#' ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'>{{team.name}} CSV</a></td>
+				</tr>
+			</tbody>
+		</table>		
+	</div>
 
-		    <div class="addTeam">
-		    	<button  class ="btn btn-primary " ng-click="setSelectedTab('addTeam')"><b>Add a team</b></button>
-		    </div>
-	    </div>
-  </div> -->
 </div>
 </body>
