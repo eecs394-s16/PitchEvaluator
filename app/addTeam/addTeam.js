@@ -1,9 +1,12 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('addTeamCtrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, db_url,loggedinCheck) {
+  .controller('addTeamCtrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, db_url,loggedinCheck) {
 
     loggedinCheck.check();
+    if (!permissionsService.isPermitted('addTeam')) {
+      $location.path('view1');
+    }
 
     $scope.name = "";
     $scope.product = "";

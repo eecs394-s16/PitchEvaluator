@@ -1,10 +1,15 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('indexCtrl', function($rootScope, $scope, $location, userService, loggedinCheck) {
+.controller('indexCtrl', function($rootScope, $scope, $location, userService, loggedinCheck, permissionsService) {
 
 	// loggedinCheck.check();
-
+	userService.set(null);
+	$rootScope.user = null;
+	$rootScope.loggedin = false;
+	$rootScope.session = null;
+	$rootScope.role = null;
+	$rootScope.sessionRef = null;
 	// // TESTING PURPOSES..........
 	// $rootScope.user = 'Admin';
 	// $rootScope.role = 'Admin';
@@ -13,6 +18,26 @@ angular
 	// $rootScope.loggedin = true;
 	// userService.set('Admin');
 	// // END
+	$rootScope.$watch(function(rootScope) {return rootScope.role},
+		function() {
+			if ($rootScope.role == 'Admin') {
+				$scope.tabs = [
+			      { link : '/view1', label : 'Overview' },
+			      { link : '/view2', label : 'Review' },
+			      { link : '/addTeam', label : 'Add Team' },
+						{ link : '/newSession', label : 'Create Session'},
+			    ];
+			}
+			else if ($rootScope.role == 'Judge') {
+				$scope.tabs = [
+			      { link : '/view1', label : 'Overview' },
+			      { link : '/view2', label : 'Review' }
+			    ];
+			}
+			else {
+				$scope.tabs = [{ link : '/login', label : 'TemViewNotImplemented' }];
+			}
+		});
 
 	$scope.adminFlag = false;
 
@@ -25,19 +50,6 @@ angular
 		$rootScope.sessionRef = null;
 		$location.path('login');
 	}
-
-	$scope.tabs = [
-      	{ link : '/view1', label : 'Overview' },
-      	{ link : '/view2', label : 'Review' },
-      	{ link : '/addTeam', label : 'Add Team' },
-	    // { link : '/judgeInfo', label : 'judgeInfo' },
-	    // { link : '/judgeLogin', label : 'judgeLogin' },
-	    // { link : '/profLogin', label : 'profLogin' },
-	    // { link : '/teamLogin', label : 'teamLogin' },
-      	// { link : '/teamSummary', label : 'teamSummary' },
-		{ link : '/newSession', label : 'Create Session'},
-		// { link : '/login', label : 'Login' }
-    ];
 
   	$scope.isActive = function(route) {
         return route === $location.path();

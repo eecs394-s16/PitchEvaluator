@@ -1,15 +1,21 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('View1Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
+  .controller('View1Ctrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
 
-    // if (!userService.get()) {
-  	// 	$rootScope.loggedin = false;
-  	// 	$rootScope.user = null;
-  	// 	$location.path('login')
-  	// }
 
     loggedinCheck.check();
+    if (!permissionsService.isPermitted('Overview')) {
+      if ($rootScope.role != 'Team') {
+        $location.path('login');
+      }
+      else {
+        
+      }
+
+    }
+
+
     var teamsForCSV = [];
 
     var sessListRef = new Firebase(db_url+"/sessionList");

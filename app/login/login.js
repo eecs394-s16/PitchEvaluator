@@ -76,7 +76,6 @@ angular
               var ref = new Firebase(session.ref+'/teams');
               var teams = new $firebaseArray(ref);
               teams.$loaded(function() {
-                console.log(teams);
                 var booly = false;
                 teams.forEach(function(team) {
                   if (booly) return;
@@ -107,7 +106,7 @@ angular
             temp.forEach(function(session) {
               if (session.name== $scope.session) {
                 $rootScope.sessionRef = session.ref;
-                console.log($rootScope.sessionRef);
+                // console.log($rootScope.sessionRef);
                 password = null;
                 $scope.loading = false;
                 $location.path('view1');

@@ -1,10 +1,12 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('newSessionCtrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, db_url, loggedinCheck) {
+  .controller('newSessionCtrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, db_url, loggedinCheck) {
 
     loggedinCheck.check();
-
+    if (!permissionsService.isPermitted('newSession')) {
+      $location.path('view1');
+    }
 
     $scope.name = "";
     $scope.desc = "";

@@ -1,9 +1,12 @@
 'use strict';
 angular
 .module('PitchEvaluator')
-.controller('View2Ctrl', function($rootScope, $scope, $firebaseObject, $firebaseArray, $location, teamService, loggedinCheck) {
+.controller('View2Ctrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, teamService, loggedinCheck) {
 
 	loggedinCheck.check();
+	if (!permissionsService.isPermitted('Review')) {
+		$location.path('view1');
+	}
 
 	$scope.loadingTeams = true;
 	var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
