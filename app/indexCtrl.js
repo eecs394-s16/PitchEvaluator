@@ -70,7 +70,6 @@ angular
             }
             else {
               $scope.adminFlag = false;
-              $scope.user = '';
             }
         }
      );
