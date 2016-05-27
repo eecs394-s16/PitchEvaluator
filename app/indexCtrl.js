@@ -14,6 +14,8 @@ angular
 	// userService.set('Admin');
 	// // END
 
+	$scope.adminFlag = false;
+
 	$scope.logOut = function() {
 		userService.set(null);
 		$rootScope.user = null;
@@ -25,21 +27,34 @@ angular
 	}
 
 	$scope.tabs = [
-      { link : '/view1', label : 'Overview' },
-      { link : '/view2', label : 'Review' },
-      { link : '/addTeam', label : 'Add Team' },
-      // { link : '/judgeInfo', label : 'judgeInfo' },
-      // { link : '/judgeLogin', label : 'judgeLogin' },
-      // { link : '/profLogin', label : 'profLogin' },
-      // { link : '/teamLogin', label : 'teamLogin' },
-      // { link : '/teamSummary', label : 'teamSummary' },
-			{ link : '/newSession', label : 'Create Session'},
-			// { link : '/login', label : 'Login' }
+      	{ link : '/view1', label : 'Overview' },
+      	{ link : '/view2', label : 'Review' },
+      	{ link : '/addTeam', label : 'Add Team' },
+	    // { link : '/judgeInfo', label : 'judgeInfo' },
+	    // { link : '/judgeLogin', label : 'judgeLogin' },
+	    // { link : '/profLogin', label : 'profLogin' },
+	    // { link : '/teamLogin', label : 'teamLogin' },
+      	// { link : '/teamSummary', label : 'teamSummary' },
+		{ link : '/newSession', label : 'Create Session'},
+		// { link : '/login', label : 'Login' }
     ];
 
-  $scope.isActive = function(route) {
+  	$scope.isActive = function(route) {
         return route === $location.path();
     };
+
+    $scope.$watch(function(scope) { return scope.role },
+        function(newValue, oldValue) {
+            if (newValue=='Admin') {
+              $scope.adminFlag = true;
+              $scope.user = 'Admin';
+            }
+            else {
+              $scope.adminFlag = false;
+              $scope.user = '';
+            }
+        }
+     );
 
 	// $scope.isLogged = function(label) {
 	// 	if (label=="Login") {

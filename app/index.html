@@ -25,17 +25,23 @@
 <body ng-controller="indexCtrl">
   <div class="container-fluid">
     <div class="row">
+      <div class="col-sm-4 col-sm-offset-8">
+        <ul id="userinfo-ul">
+          <li class="userli">{{session}}</li>
+          <li class="userli">{{user}}</li>
+          <li class="userli" ng-hide="adminFlag">{{role}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1" ng-show="loggedin">
-            <ul class="nav nav-tabs" >
+            <ul class="nav nav-tabs">
               <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
                 <a href="#{{tab.link}}">{{tab.label}}</a>
               </li>
               <li style="float:right; margin-right:3%"><button type="button" ng-click="logOut()">Logout</button></li>
-              <li style="float:right; margin-right:3%"><span id="userli">{{user}}</span></li>
-              <li style="float:right; margin-right:3%">{{session}}</li>
-              <li style="float:right; margin-right:3%">{{role}}</li>
             </ul>
           </div>
         </div>
