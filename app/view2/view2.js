@@ -10,8 +10,8 @@ angular
 	}
 
 	$scope.toggleText= [];
-	for (let i=0; i<5; i++) {
-		$scope.toggleText.push('Add a Comment');
+	for (let i=0; i<6; i++) {
+		$scope.toggleText.push('Add Comment');
 	}
 
 	$scope.loadingTeams = true;
