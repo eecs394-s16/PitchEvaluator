@@ -31,6 +31,20 @@ angular
 			getData(newValue);
 		});
 
+	var commentShowings = {
+		1: false,
+		2: false,
+		3: false,
+		4: false,
+		5: false
+	}
+	$scope.checkComment = function(num) {
+		return commentShowings[num];
+	}
+	$scope.showComment = function(num) {
+		commentShowings[num] = true;
+	}
+
 	function getData(name) {
 		//@TODO: Change this user to the correct one
 		var user = $rootScope.user;

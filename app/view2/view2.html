@@ -25,7 +25,10 @@
 							<div class="panel-body">
 						   		<fieldset>
 									<div id="q1slider" class="ratingslider"></div>
-							   		<div class="input-textarea">
+										<div class="input-textarea" ng-hide="checkComment(1)">
+											<button class="btn btn-primary" ng-click="showComment(1)">Add a Comment</button>
+										</div>
+							   		<div class="input-textarea" ng-show="checkComment(1)">
 							   			<label for="q1textarea">Comments</label>
 							   			<textarea class="form-control" id="q1textarea" rows="1"></textarea>
 							   		</div>
@@ -39,7 +42,10 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q2slider" class="ratingslider"></div>
-							   		<div class="input-textarea">
+										<div class="input-textarea" ng-hide="checkComment(2)">
+											<button class="btn btn-primary" ng-click="showComment(2)">Add a Comment</button>
+										</div>
+							   		<div class="input-textarea" ng-show="checkComment(2)">
 							   			<label for="q2textarea">Comments</label>
 							   			<textarea class="form-control" id="q2textarea" rows="1"></textarea>
 							   		</div>
@@ -53,7 +59,10 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q3slider" class="ratingslider"></div>
-							   		<div class="input-textarea">
+										<div class="input-textarea" ng-hide="checkComment(3)">
+											<button class="btn btn-primary" ng-click="showComment(3)">Add a Comment</button>
+										</div>
+							   		<div class="input-textarea" ng-show="checkComment(3)">
 							   			<label for="q3textarea">Comments</label>
 							   			<textarea class="form-control" id="q3textarea" rows="1"></textarea>
 							   		</div>
@@ -67,7 +76,10 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q4slider" class="ratingslider"></div>
-							   		<div class="input-textarea">
+										<div class="input-textarea" ng-hide="checkComment(4)">
+											<button class="btn btn-primary" ng-click="showComment(4)">Add a Comment</button>
+										</div>
+							   		<div class="input-textarea" ng-show="checkComment(4)">
 							   			<label for="q4textarea">Comments</label>
 							   			<textarea class="form-control" id="q4textarea" rows="1"></textarea>
 							   		</div>
@@ -88,7 +100,10 @@
 						   				<input name="q5radio" type="radio"  value="0">
 						   				No
 						   			</label>
-							   		<div class="input-textarea">
+										<div class="input-textarea" ng-hide="checkComment(5)">
+											<button class="btn btn-primary" ng-click="showComment(5)">Add a Comment</button>
+										</div>
+							   		<div class="input-textarea" ng-show="checkComment(5)">
 							   			<label for="q5textarea">Why?</label>
 							   			<textarea class="form-control" id="q5textarea" rows="1"></textarea>
 							   		</div>
@@ -113,6 +128,6 @@
 				</div>
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>
 </div>
