@@ -25,8 +25,8 @@
 							<div class="panel-body">
 						   		<fieldset>
 									<div id="q1slider" class="ratingslider"></div>
-										<div class="input-textarea" ng-hide="checkComment(1)">
-											<button class="btn btn-primary" ng-click="showComment(1)">Add a Comment</button>
+										<div class="input-textarea">
+											<button class="btn btn-primary btn_comments(1)" ng-click="showComment(1)">{{toggleText[1]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(1)">
 							   			<label for="q1textarea">Comments</label>
@@ -42,8 +42,8 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q2slider" class="ratingslider"></div>
-										<div class="input-textarea" ng-hide="checkComment(2)">
-											<button class="btn btn-primary" ng-click="showComment(2)">Add a Comment</button>
+										<div class="input-textarea">
+											<button class="btn btn-primary btn_comments(2)" id="btn_comments(2)"ng-click="showComment[2]">{{toggleText[2]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(2)">
 							   			<label for="q2textarea">Comments</label>
@@ -59,8 +59,8 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q3slider" class="ratingslider"></div>
-										<div class="input-textarea" ng-hide="checkComment(3)">
-											<button class="btn btn-primary" ng-click="showComment(3)">Add a Comment</button>
+										<div class="input-textarea">
+											<button class="btn btn-primary btn_comments(3)" ng-click="showComment(3)">{{toggleText[3]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(3)">
 							   			<label for="q3textarea">Comments</label>
@@ -76,8 +76,8 @@
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q4slider" class="ratingslider"></div>
-										<div class="input-textarea" ng-hide="checkComment(4)">
-											<button class="btn btn-primary" ng-click="showComment(4)">Add a Comment</button>
+										<div class="input-textarea">
+											<button class="btn btn-primary btn_comments(4)" ng-click="showComment(4)">{{toggleText[4]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(4)">
 							   			<label for="q4textarea">Comments</label>
@@ -100,8 +100,8 @@
 						   				<input name="q5radio" type="radio"  value="0">
 						   				No
 						   			</label>
-										<div class="input-textarea" ng-hide="checkComment(5)">
-											<button class="btn btn-primary" ng-click="showComment(5)">Add a Comment</button>
+										<div class="input-textarea">
+											<button class="btn btn-primary btn_comments(5)" ng-click="showComment(5)">{{toggleText[5]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(5)">
 							   			<label for="q5textarea">Why?</label>

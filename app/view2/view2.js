@@ -4,8 +4,14 @@ angular
 .controller('View2Ctrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, teamService, loggedinCheck) {
 
 	loggedinCheck.check();
+
 	if (!permissionsService.isPermitted('Review')) {
 		$location.path('view1');
+	}
+
+	$scope.toggleText= [];
+	for (let i=0; i<5; i++) {
+		$scope.toggleText.push('Add a Comment');
 	}
 
 	$scope.loadingTeams = true;
@@ -45,9 +51,11 @@ angular
 		return commentShowings[num];
 	}
 	$scope.showComment = function(num) {
-		commentShowings[num] = true;
+		commentShowings[num] = commentShowings[num] === false ? true: false;
+		
+		$scope.toggleText[num] = commentShowings[num] ? 'Hide Comment' : 'Add Comment';
+		console.log($scope.toggleText);
 	}
-
 	function getData(name) {
 		//@TODO: Change this user to the correct one
 		var user = $rootScope.user;
