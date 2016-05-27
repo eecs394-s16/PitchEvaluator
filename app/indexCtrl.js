@@ -3,14 +3,16 @@ angular
 .module('PitchEvaluator')
 .controller('indexCtrl', function($rootScope, $scope, $location, userService, loggedinCheck) {
 
-	loggedinCheck.check();
+	// loggedinCheck.check();
 
-	// TESTING PURPOSES..........
+	// // TESTING PURPOSES..........
 	// $rootScope.user = 'Admin';
 	// $rootScope.role = 'Admin';
 	// $rootScope.session = "Test Session";
 	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
 	// $rootScope.loggedin = true;
+	// userService.set('Admin');
+	// // END
 
 	$scope.logOut = function() {
 		userService.set(null);

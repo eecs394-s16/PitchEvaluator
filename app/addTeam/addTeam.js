@@ -9,7 +9,7 @@ angular
     $scope.product = "";
     $scope.desc = "";
     $scope.teamPass = ""
-    $scope.warning = true;
+    $scope.warning = false;
 
     class Team {
       constructor(name,product,desc, teamPass) {
@@ -66,6 +66,7 @@ angular
             }
           });
           if (exists) {
+            $scope.warning = true;
             document.querySelector("#warning").innerHTML = "*Team already exists";
             throw new Error('Team already exists');
             // return;
