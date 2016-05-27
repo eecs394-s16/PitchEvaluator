@@ -22,35 +22,58 @@ angular
 		teamList.$loaded(function() {
 			$scope.selectedTeam=teamService.get();
 			teamService.set(null);
-
 			getData($scope.selectedTeam);
 		});
 	}
 
+	$scope.$watch(function(scope) {return scope.selectedTeam},
+		function(oldValue, newValue) {
+			getData(newValue);
+		});
+
 	function getData(name) {
 		//@TODO: Change this user to the correct one
 		var user = $rootScope.user;
+		var booly = false;
 		for (let team of teamList) {
 			if (team.name==$scope.selectedTeam) {
-				let teamRef = new Firebase("https://pitchevaluator.firebaseio.com/teams/" + team.$id)
+				let teamRef = new Firebase($rootScope.sessionRef+"/teams/"+team.$id);
 				if (teamRef.child('reviews')) {
 					var reviews = $firebaseArray(teamRef.child('reviews'));
 					reviews.$loaded(function() {
 						for (let review of reviews) {
 							if (review.user == user) {
-								console.log(review);
+								// console.log(review);
 								updateValues(review);
-
+								booly = true;
 								return review;
 							}
 						}
 					});
+				}
+				if (!booly) {
+					resetValues();
 				}
 				break;
 			}
 		}
 	}
 
+	function resetValues() {
+		$("#q1slider").slider( "option", "value", 0 );
+		$("#q2slider").slider( "option", "value", 0 );
+		$("#q3slider").slider( "option", "value", 0 );
+		$("#q4slider").slider( "option", "value", 0 );
+
+		$('input[name="q5radio"]').val([null]);
+
+		document.getElementById("q1textarea").value = null;
+		document.getElementById("q2textarea").value = null;
+		document.getElementById("q3textarea").value = null;
+		document.getElementById("q4textarea").value = null;
+		document.getElementById("q5textarea").value = null;
+
+	}
 	function updateValues(review) {
 		$("#q1slider").slider( "option", "value", review.q1 );
 		$("#q2slider").slider( "option", "value", review.q2 );
@@ -64,8 +87,6 @@ angular
 		document.getElementById("q3textarea").value = review.cmt3;
 		document.getElementById("q4textarea").value = review.cmt4;
 		document.getElementById("q5textarea").value = review.cmt5;
-
-		document.getElementById("grader-name-input").value = review.user;
 	}
 
 
@@ -277,51 +298,46 @@ angular
 			if (teamList[i].name == curTeamName) {
 		        var teamRef = teamsRef + "/" + teamList[i].$id;
 		        var team = new Firebase(teamRef);
-		        if (team.reviews) {
-		        	// console.log('Woot');
-		        }
-		        else {
-		        	var reviews = team.child('reviews');
-		        	var reviewID;
-		        	var reviewToEdit;
-		        	var reviewArray = $firebaseArray(reviews);
-		        	reviewArray.$loaded().then(function() {
-		        		var userExists = false;
-			        	for (var i = 0; i < reviewArray.length; i++) {
-			        		if (reviewArray[i].user == evaluation.user && !userExists) {
-			        			userExists = true;
-			        			reviewID = reviewArray[i].$id;
-			        		}
-			        	}
-			        	if (userExists) {
-			        		reviewToEdit = reviews.child(reviewID);
-			        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
-			        		calcAvg(team);
-			        		$location.path('#/view1');
-			        	}
-			        	else {
-			        		//check that (no radios) || (all comments) == null
-			        		if (checkZero(q1, q2, q3, q4, q5)) { //not all radios completed
-			        			//throw an error
-					        	$("#slide-text2").slideDown();
-			        		}
-			        		else if (isCmtsBlank(cmt1, cmt2, cmt3, cmt4, cmt5)) { //no comments
-			        			$("#slide-text2").hide();
-								submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
-			        			if (submit_alert) {
-			        				reviews.push(evaluation);
-					        		calcAvg(team);
-			        				$location.path('#/view1');
-			        			}
-			        		}
-			        		else {
-			        			reviews.push(evaluation);
+	        	var reviews = team.child('reviews');
+	        	var reviewID;
+	        	var reviewToEdit;
+	        	var reviewArray = $firebaseArray(reviews);
+	        	reviewArray.$loaded().then(function() {
+	        		var userExists = false;
+		        	for (var i = 0; i < reviewArray.length; i++) {
+		        		if (reviewArray[i].user == evaluation.user && !userExists) {
+		        			userExists = true;
+		        			reviewID = reviewArray[i].$id;
+		        		}
+		        	}
+		        	if (userExists) {
+		        		reviewToEdit = reviews.child(reviewID);
+		        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
+		        		calcAvg(team);
+		        		$location.path('#/view1');
+		        	}
+		        	else {
+		        		//check that (no radios) || (all comments) == null
+		        		if (checkZero(q1, q2, q3, q4, q5)) { //not all radios completed
+		        			//throw an error
+				        	$("#slide-text2").slideDown();
+		        		}
+		        		else if (isCmtsBlank(cmt1, cmt2, cmt3, cmt4, cmt5)) { //no comments
+		        			$("#slide-text2").hide();
+							submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
+		        			if (submit_alert) {
+		        				reviews.push(evaluation);
 				        		calcAvg(team);
-			        			$location.path('#/view1');
-			        		}
-			        	}
-		        	});
-		        }
+		        				$location.path('#/view1');
+		        			}
+		        		}
+		        		else {
+		        			reviews.push(evaluation);
+			        		calcAvg(team);
+		        			$location.path('#/view1');
+		        		}
+		        	}
+	        	});
 		    }
 	    } //this closes the for
 	} //this closes onSubmit
