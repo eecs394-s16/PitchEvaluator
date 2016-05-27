@@ -55,6 +55,13 @@ angular
         return route === $location.path();
     };
 
+    $scope.onLogin = function() {
+    	if ($location.path() == "/login") {
+    		return true;
+    	}
+    	return false;
+    }
+
     $scope.$watch(function(scope) { return scope.role },
         function(newValue, oldValue) {
             if (newValue=='Admin') {

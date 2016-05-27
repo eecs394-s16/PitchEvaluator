@@ -25,15 +25,18 @@
 <body ng-controller="indexCtrl">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-8">
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <img ng-hide="onLogin()" class="logo" src="login/PitchEvaluator-logo-text.png">        
+      </div>
+      <div class="col-sm-4 col-sm-offset-4">
         <ul id="userinfo-ul">
           <li class="userli">{{session}}</li>
           <li class="userli">{{user}}</li>
           <li class="userli" ng-hide="adminFlag">{{role}}</li>
         </ul>
       </div>
-    </div>
-    <div class="row">
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1" ng-show="loggedin">

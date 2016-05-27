@@ -12,22 +12,17 @@
 html,body{
 	background: rgb(103, 58, 183);
 }
+
 .nav{
 	background: white;
-  margin-top: 110px;
+  margin-top: 10px;
   min-height: 40px;
 }
 
 .container{
-  
-/*  padding-left: 110px;
-  margin-left: 0;
-  margin-right: 0; */
   background: white;
-  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14),0 2px 16px 1px rgba(0,0,0,0.12),0 4px 5px -2px rgba(0,0,0,0.2);
   width: 100%;
   min-height: 100vh;
-
 }
 
 .form_content {
@@ -45,13 +40,17 @@ html,body{
 }
 
 #userinfo-ul {
-  padding-top: 10px;
-  padding-right: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+  float: right;
 }
 
 .userli {
-	float: right;
   color: white;
   list-style-type: none;
   margin-right: 10px;
+  text-align: right;
+
+  font-family: "Helvetica";
+  line-height: 26px;
 }
