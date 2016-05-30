@@ -11,10 +11,7 @@ angular
 	$rootScope.role = null;
 	$rootScope.sessionRef = null;
 	$scope.login_background = null;
-	
 
-
-	
 
 	// // TESTING PURPOSES..........
 	// $rootScope.user = 'Admin';
@@ -50,8 +47,8 @@ angular
 				$scope.user = $rootScope.user;
 				$scope.tabs = [
 	      	{ link : '/view1', label : 'Overview' },
-	      	{ link : '/addTeam', label : 'Add Team' },
-					{ link : '/newSession', label : 'Create Session'},
+	      	{ link : '/addTeam', label : 'Add a Team' },
+					{ link : '/newSession', label : 'Create a New Session'},
 		    ];
 			}
 			else if ($rootScope.role == 'Judge') {
@@ -85,15 +82,16 @@ angular
 
 	if($location.path() === "/login"){
 		$scope.login_background = {
-			"background": "rgb(103, 58, 183)"
-    	} 
-    	console.log($location.path());
-    }   
+			// "background": "rgb(103, 58, 183)"
+			"background": "rgb(251, 247, 255)"
+    	}
+    	// console.log($location.path());
+    }
 	if($location.path() != "/login"){
 		$scope.login_background = {
 			"background": "rgb(251, 247, 255)"
-    	} 
-    	console.log($location.path());
+    	}
+    	// console.log($location.path());
 	}
 
   	$scope.isActive = function(route) {
@@ -120,5 +118,3 @@ angular
      );
 
  });
-
-

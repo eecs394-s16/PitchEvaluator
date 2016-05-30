@@ -67,9 +67,10 @@ angular
     }); //end temp.$loaded
 
     //Function to store the team in the teamService
-    $scope.saveTeam = function(teamName) {
-      teamService.set(teamName);
-      $location.path('view2');
+    $scope.saveTeam = function(teamID, teamName) {
+      $rootScope.teamID = teamID;
+      $rootScope.teamName = teamName;
+      $location.path('team');
     }
 
     $scope.setSelectedTab = function(tab) {

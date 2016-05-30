@@ -25,6 +25,7 @@ angular
 
     $scope.avg = {};
     team.$loaded(function() {
+      $rootScope.teamName = team.name;
       $scope.avg.q1 = team.q1Val;
       $scope.avg.q2 = team.q2Val;
       $scope.avg.q3 = team.q3Val;

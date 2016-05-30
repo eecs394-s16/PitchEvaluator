@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-10">
 			<h1>Team Data</h1>
-			
+
 		</div>
 	</div>
 
@@ -20,9 +20,9 @@
 						<th class="col-xs-2 metric">Team Average</th>
 					</tr>
 				</thead>
-				<tbody id="sortable">
+				<tbody>
 					<tr class="row table_row" ng-repeat="team in teamList  | orderBy:'rank'">
-						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a> 	<a href="#"  ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file" ></a></td>
+						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.$id)">{{team.name}}</a> 	<a href="#"  ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file" ></a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
@@ -49,7 +49,7 @@
 				<span id="download_text">Download</span>
 				<p id="download_opiton">Summary without Comments</p>
 		</button>
-			
+
 		<button type="button" class="col-sm-offset-1 col-sm-2  btn btn-primary download_btn" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
 				<img id = "download" src="http://tristatesound.com/wp-content/uploads/2014/12/867-arrow-pointing-down-inside-a-circle-outline-icon.png">
 				<span id="download_text">Download</span>
