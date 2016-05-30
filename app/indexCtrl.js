@@ -29,15 +29,15 @@ angular
 	// userService.set('Me');
 	// // END
 
-	// TESTING PURPOSES..........
-	$rootScope.user = 'New Team';
-	$rootScope.role = 'Team';
-	$rootScope.session = "Test Session";
-	$rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIzGu8j1-UDUYTj795B";
-	$rootScope.loggedin = true;
-	$rootScope.teamID = "-KIzGxTmvXpcgrwOl3Q_";
-	userService.set('New Team');
-	// END
+	// // TESTING PURPOSES..........
+	// $rootScope.user = 'New Team';
+	// $rootScope.role = 'Team';
+	// $rootScope.session = "Test Session";
+	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIzGu8j1-UDUYTj795B";
+	// $rootScope.loggedin = true;
+	// $rootScope.teamID = "-KIzGxTmvXpcgrwOl3Q_";
+	// userService.set('New Team');
+	// // END
 
 	$rootScope.$watch(function(rootScope) {return rootScope.role},
 		function() {
