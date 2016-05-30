@@ -32,21 +32,24 @@ angular
 	$rootScope.$watch(function(rootScope) {return rootScope.role},
 		function() {
 			if ($rootScope.role == 'Admin') {
+				$scope.user = $rootScope.user;
 				$scope.tabs = [
-			      { link : '/view1', label : 'Overview' },
-			      { link : '/view2', label : 'Review' },
-			      { link : '/addTeam', label : 'Add Team' },
-						{ link : '/newSession', label : 'Create Session'},
+			      	{ link : '/view1', label : 'Overview' },
+			      	{ link : '/view2', label : 'Review' },
+			      	{ link : '/addTeam', label : 'Add Team' },
+					{ link : '/newSession', label : 'Create Session'},
 			    ];
 			}
 			else if ($rootScope.role == 'Judge') {
+				$scope.user = $rootScope.user;
 				$scope.tabs = [
-			      { link : '/judge', label : 'Overview' },
-			      { link : '/view2', label : 'Review Teams' },
-						{ link : '/view1', label : 'Summary' }
+			      	{ link : '/judge', label : 'Overview' },
+			      	{ link : '/view2', label : 'Review Teams' },
+					{ link : '/view1', label : 'Summary' }
 			    ];
 			}
 			else {
+				$scope.user = $rootScope.user;
 				$scope.tabs = [{ link : '/login', label : 'TemViewNotImplemented' }];
 			}
 		});
@@ -60,6 +63,7 @@ angular
 		$rootScope.session = null;
 		$rootScope.role = null;
 		$rootScope.sessionRef = null;
+		$scope.adminFlag = false;
 		$location.path('login');
 	}
 
