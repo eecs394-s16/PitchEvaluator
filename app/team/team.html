@@ -1,0 +1,66 @@
+<body>
+<div class="container" ng-style='view2.css'>
+	<div class="row">
+		<div class="col-sm-10">
+			<h1>Judge Reviews for {{user}}</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<table class="table">
+				<thead>
+					<tr class="row">
+            <th class="col-xs-2 metric">Judge</th>
+						<th class="col-xs-2 metric">Problem/Need</th>
+						<th class="col-xs-2 metric">Demo</th>
+						<th class="col-xs-2 metric">Cust. Insight</th>
+						<th class="col-xs-2 metric">Business</th>
+						<th class="col-xs-2 metric">Continue Working</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="row table_row" ng-repeat="review in reviews">
+            <td class="col-xs-2 value">{{review.user}}</td>
+						<td class="col-xs-2 value">{{review.q1}}</td>
+						<td class="col-xs-2 value">{{review.q2}}</td>
+						<td class="col-xs-2 value">{{review.q3}}</td>
+						<td class="col-xs-2 value">{{review.q4}}</td>
+						<td class="col-xs-2 value">{{review.continue}}</td>
+					</tr>
+				</tbody>
+
+				<tbody>
+          <tr class="row table_row"></tr>
+          <tr class="row table_row"></tr>
+					<tr class="row table_row">
+						<td class="col-xs-2 name">Average</td>
+						<td class="col-xs-2">{{avg.q1}}</td>
+						<td class="col-xs-2">{{avg.q2}}</td>
+						<td class="col-xs-2">{{avg.q3}}</td>
+						<td class="col-xs-2">{{avg.q4}}</td>
+						<td class="col-xs-2"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+    <div class="col-sm-10">
+      <h2>Judges Comments</h2>
+      <div ng-repeat="review in reviews" class="comments">
+        <p>Judge: {{review.user}}</p>
+        <p ng-if="check(review.cmt1)">Problem/Need: {{review.cmt1}}</p>
+        <p ng-if="check(review.cmt2)">Demo: {{review.cmt2}}</p>
+        <p ng-if="check(review.cmt3)">Customer Insight: {{review.cmt3}}</p>
+        <p ng-if="check(review.cmt4)">Business: {{review.cmt4}}</p>
+        <p ng-if="check(review.cmt5)">Continue Work: {{review.cmt5}}</p>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>

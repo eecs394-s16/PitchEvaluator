@@ -11,6 +11,9 @@ angular
         }
         else return false;
       }
+      else if ($rootScope.role == 'Team') {
+        if (action=='TeamView') return true;
+      }
       else return false;
     }
 

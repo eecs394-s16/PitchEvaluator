@@ -93,6 +93,8 @@ angular
                 teams.forEach(function(team) {
                   if (booly) return;
                   if (team.name == $scope.user) {
+                    console.log(team);
+                    $rootScope.teamID = team.$id;
                     checkPassword(team.teamPass);
                     booly = true;
                     return;

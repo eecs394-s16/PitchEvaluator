@@ -29,28 +29,39 @@ angular
 	// userService.set('Me');
 	// // END
 
+	// TESTING PURPOSES..........
+	$rootScope.user = 'New Team';
+	$rootScope.role = 'Team';
+	$rootScope.session = "Test Session";
+	$rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIzGu8j1-UDUYTj795B";
+	$rootScope.loggedin = true;
+	$rootScope.teamID = "-KIzGxTmvXpcgrwOl3Q_";
+	userService.set('New Team');
+	// END
+
 	$rootScope.$watch(function(rootScope) {return rootScope.role},
 		function() {
 			if ($rootScope.role == 'Admin') {
 				$scope.user = $rootScope.user;
 				$scope.tabs = [
-			      	{ link : '/view1', label : 'Overview' },
-			      	{ link : '/view2', label : 'Review' },
-			      	{ link : '/addTeam', label : 'Add Team' },
+	      	{ link : '/view1', label : 'Overview' },
+	      	{ link : '/addTeam', label : 'Add Team' },
 					{ link : '/newSession', label : 'Create Session'},
-			    ];
+		    ];
 			}
 			else if ($rootScope.role == 'Judge') {
 				$scope.user = $rootScope.user;
 				$scope.tabs = [
-			      	{ link : '/judge', label : 'Overview' },
-			      	{ link : '/view2', label : 'Review Teams' },
+	      	{ link : '/judge', label : 'Overview' },
+	      	{ link : '/view2', label : 'Review Teams' },
 					{ link : '/view1', label : 'Summary' }
-			    ];
+		    ];
 			}
 			else {
 				$scope.user = $rootScope.user;
-				$scope.tabs = [{ link : '/login', label : 'TemViewNotImplemented' }];
+				$scope.tabs = [
+					{ link : '/login', label : 'Team Overview' }
+				];
 			}
 		});
 
