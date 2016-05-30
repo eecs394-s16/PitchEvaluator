@@ -37,8 +37,8 @@ angular
      );
 
     $scope.login = function() {
-      console.log("user:",$scope.user);
-      console.log("pass:",$scope.pass);
+      // console.log("user:",$scope.user);
+      // console.log("pass:",$scope.pass);
       if (!$scope.session) {
         $scope.warning = true;
         document.querySelector('#warning').innerHTML = "*Please select your session";
@@ -98,6 +98,11 @@ angular
                     return;
                   }
                 });
+                if (!booly) {
+                  $scope.warning = true;
+                  $scope.loading = false;
+                  document.querySelector('#warning').innerHTML = "*Team does not exist";
+                }
 
               });
             }
@@ -143,7 +148,7 @@ angular
         else {
           $scope.warning = true;
           $scope.loading = false;
-          document.querySelector('#warning').innerHTML = "*Incorrect username and/or password";
+          document.querySelector('#warning').innerHTML = "*Incorrect password";
         }
       }
     }
