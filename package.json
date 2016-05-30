@@ -32,5 +32,9 @@
   },
   "dependencies": {
     "firebase-token-generator": "^2.0.0"
+  },
+  "engines": {
+    "node": "4.4.2",
+    "npm": "2.15.0"
   }
 }
