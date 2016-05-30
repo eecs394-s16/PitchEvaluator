@@ -43,6 +43,7 @@ html,body{
   margin-top: 15px;
   margin-right: 10px;
   float: right;
+  clear: both;
 }
 
 .userli {
