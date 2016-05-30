@@ -4,23 +4,23 @@
   </div>
   <div ng-hide="loading">
 
-    
+
     <div class="row">
       <div class="col-sm-4 col-sm-offset-4">
         <img class="logo" src="login/PitchEvaluator-logo-pen-white.png">
       </div>
-    </div> 
+    </div>
 
     <div class="login_form">
      <div class="row">
         <div class="col-sm-4 right_space"></div>
-        
-        <div class="form_body col-sm-4">    
+
+        <div class="form_body col-sm-4">
           <select class="form-control" id="session-select" ng-model="session" ng-options="session.name as session.name for session in sessionsArr">
             <option ng-show="loadingSessions" disabled selected>Loading...</option>
             <option ng-hide="loadingSessions" disabled selected value="">Select a session</option>
           </select>
-          
+
           <select class="form-control" ng-model="role" ng-options="role as role for role in roles">
             <option disabled selected value="">Select your role</option>
           </select>
@@ -30,17 +30,14 @@
           <input class="form-control" type="text" placeholder="Your name" ng-model="user" ng-hide="adminFlag">
           <input class="form-control" type="password" placeholder="Password" ng-model="pass">
           <br>
-
+          <p id="warning" ng-show="warning" style="color:red;">*Invalid login</p>
+          <br ng-show="warning">
           <input class="btn btn-primary" type="button" value="Login" ng-click="login()">
-        </div>  
+        </div>
 
-        <div class="col-sm-4 right_space"></div> 
+        <div class="col-sm-4 right_space"></div>
 
     </div>
-      
-      <br>
-      <br>
-      <span id="warning" ng-show="warning" style="color:red;">*Invalid login</span>
     </div><!-- EOF login_form-->
   </div> <!-- EOF loading -->
 </div>

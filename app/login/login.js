@@ -8,7 +8,7 @@ angular
     $scope.role = null;
     $scope.user = "";
     $scope.pass = "";
-    $scope.session = "";
+    $scope.session = null;
     $scope.warning = false;
     $scope.loadingSessions = true;
     if ($rootScope.loggedin) {
@@ -37,12 +37,25 @@ angular
      );
 
     $scope.login = function() {
-      // console.log("user:",$scope.user);
-      // console.log("pass:",$scope.pass);
+      console.log("user:",$scope.user);
+      console.log("pass:",$scope.pass);
       if (!$scope.session) {
-        console.log('Please select a session');
+        $scope.warning = true;
+        document.querySelector('#warning').innerHTML = "*Please select your session";
         return;
       }
+      if (!$scope.role) {
+        $scope.warning = true;
+        document.querySelector('#warning').innerHTML = "*Please select your role";
+        return;
+      }
+      if ($scope.user=="" || $scope.pass=="") {
+        $scope.warning = true;
+        document.querySelector('#warning').innerHTML = "*Please input your username and/or password";
+        return;
+      }
+
+
 
       $scope.loading = true;
       if ($scope.role=='Admin') {
@@ -130,6 +143,7 @@ angular
         else {
           $scope.warning = true;
           $scope.loading = false;
+          document.querySelector('#warning').innerHTML = "*Incorrect username and/or password";
         }
       }
     }
