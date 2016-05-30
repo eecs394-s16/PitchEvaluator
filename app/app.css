@@ -54,3 +54,13 @@ html,body{
   font-family: "Helvetica";
   line-height: 26px;
 }
+
+.logout {
+  font-weight: bold;
+  color: white;
+}
+
+a.logout:hover {
+  color: gray;
+  text-decoration: none;
+}

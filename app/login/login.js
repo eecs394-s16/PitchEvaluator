@@ -140,8 +140,6 @@ angular
                 // console.log($rootScope.sessionRef);
                 password = null;
                 $scope.loading = false;
-                console.log($scope.user);
-                console.log($rootScope.user);
                 redirect();
               }
             });
