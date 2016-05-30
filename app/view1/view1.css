@@ -4,3 +4,32 @@
 tr:hover {
 	background: rgb(245, 238, 247);
 }
+#download{
+	width: 20px;
+	padding-left:5px;
+	margin-top: -5px;
+}
+#download_text{
+	font-size: 2rem;
+	color: white;
+}
+#download_opiton{
+	font-size: 1rem;
+}
+.download_btn{
+    margin-left: 15px;
+}
+}
+
+#download .btn-primary:hover {
+    color: #fff;
+    background-color: #4e2a84;
+    border-color: #401f68;
+}
+
+/*.download_btn_without_content{
+	float: left;
+}
+.download_btn_with_content{
+	float: right;
+}*/

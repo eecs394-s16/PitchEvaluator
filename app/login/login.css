@@ -2,9 +2,13 @@
  	padding: 0;
  	background: rgb(103, 58, 183);
  }
-
-.logo {
+.logo{
 	width: 100%;
+}
+.logo_text{
+	width: 500px;
+	float: left;
+    margin-top: -18.9px;
 }
 
 .login_form { 	
@@ -28,7 +32,8 @@ hr {
 .btn-primary {
 	background: rgb(103, 58, 183)!important;
 	font-size: 16px;
+	border: #4e2a84;
 }
-.right_space {
+/*.right_space {
 	background: rgb(103, 58, 183);
-}
+}*/

@@ -3,11 +3,12 @@
 	<div class="row">
 		<div class="col-sm-10">
 			<h1>Team Data</h1>
+			
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-12">
 			<table class="table">
 				<thead>
 					<tr class="row">
@@ -21,7 +22,7 @@
 				</thead>
 				<tbody id="sortable">
 					<tr class="row table_row" ng-repeat="team in teamList  | orderBy:'rank'">
-						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
+						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a> 	<a href="#"  ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file" ></a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
@@ -42,30 +43,19 @@
 			</table>
 		</div>
 	</div>
-
-	<h1>Download Summary Data</h1>
-
-	<a href='#' ng-click='downloadCSV({ filename: "summary-data.csv" })'>Download CSV Summary Data without Comments</a>
-	<br>
-	<a href="#" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>Download CSV Summary Data with Comments</a>
-
-	<h1>Download an Individual Team's Data</h1>
-
-	<div class="col-sm-10">
-		<table>
-			<thead>
-				<tr class="row">
-					<th class="col-xs-6">Team/Product</th>
-					<th class="col-xs-6">Download CSV</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="row table_row" ng-repeat="team in teamArray">
-					<td class="col-xs-6">{{team.name}}</td>
-					<td class="col-xs-6"><a href='#' ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'>{{team.name}} CSV</a></td>
-				</tr>
-			</tbody>
-		</table>		
+	<div class="row">
+		<button type="button" class="col-sm-2 btn btn-primary download_btn" ng-click='downloadCSV({ filename: "summary-data.csv" })'>
+				<img id = "download" src="http://tristatesound.com/wp-content/uploads/2014/12/867-arrow-pointing-down-inside-a-circle-outline-icon.png">
+				<span id="download_text">Download</span>
+				<p id="download_opiton">Summary without Comments</p>
+		</button>
+			
+		<button type="button" class="col-sm-offset-1 col-sm-2  btn btn-primary download_btn" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
+				<img id = "download" src="http://tristatesound.com/wp-content/uploads/2014/12/867-arrow-pointing-down-inside-a-circle-outline-icon.png">
+				<span id="download_text">Download</span>
+				<p id="download_opiton">Summary with Comments</p>
+		</button>
+		<div class="col-sm-7"></div>
 	</div>
 
 </div>

@@ -9,9 +9,9 @@
 .comment {
   /*text-indent: 10px;*/
 }
-html,body{
+/*html,body{
 	background: rgb(103, 58, 183);
-}
+}*/
 
 .nav{
 	background: white;
@@ -25,25 +25,24 @@ html,body{
   min-height: 100vh;
 }
 
-.form_content {
-	background: rgb(245, 238, 247) !important;
-	background: white;
-	padding-left: 10%;
-	padding-right: 10%;
-	min-height: 1000px;
+
+#title_bar{
+  height: 62px;
+  background: rgb(103, 58, 183);
 }
 
+/*.navi,.form_content{
+  background: rgb(251, 247, 255);
+}*/
 #title {
-	margin-left: 10%;
-    font-size: 3rem;
-    color: white;
+  margin-left: 10%;
+  font-size: 3rem;
+  color: white;
 }
 
 #userinfo-ul {
-  margin-top: 15px;
-  margin-right: 10px;
+  margin-right: 20px;
   float: right;
-  clear: both;
 }
 
 .userli {
@@ -59,6 +58,13 @@ html,body{
 .logout {
   font-weight: bold;
   color: white;
+  float: right;
+  margin-top: -27px;
+}
+
+.user{
+  float: right;
+  margin-right: 80px;
 }
 
 a.logout:hover {
