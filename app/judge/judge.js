@@ -33,6 +33,8 @@ angular
     $scope.reviewedTeams = [];
     $scope.notReviewedTeams = [];
     var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
+    var averagesRef = teamsRef.parent().child("averages");
+    $scope.averagesArray = $firebaseArray(averagesRef);
     var teamList = $firebaseArray(teamsRef);
     teamList.$loaded(function() {
       //teamList.sort(function(a,b) {return a.rank-b.rank});

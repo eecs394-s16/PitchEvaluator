@@ -3,7 +3,6 @@ angular
   .module('PitchEvaluator')
   .controller('View1Ctrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
 
-
     loggedinCheck.check();
     if (!permissionsService.isPermitted('Overview')) {
       // if ($rootScope.role == 'Judge') {
@@ -25,6 +24,9 @@ angular
       temp.forEach(function(session) {
         if (session.name==$rootScope.session) {
           var teamsRef = new Firebase(session.ref+"/teams");
+          var averagesRef = teamsRef.parent().child("averages");
+          $scope.averagesArray = $firebaseArray(averagesRef);
+          console.log($scope.averagesArray);
           $scope.teamArray = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList.$loaded(function() {
@@ -111,134 +113,135 @@ angular
 
     //sam's Download Team Data CSV
 
-    class Team {
-      constructor(ToP, PoN, Demo, CI, Business, TA, rank) {
-        this.Team_or_Product = ToP;
-        this.Problem_or_Need = PoN;
-        this.Demo = Demo;
-        this.Customer_Insight = CI;
-        this.Business = Business;
-        this.Team_Average = TA;
-        this.Rank = rank;
-      }
+  class Team {
+    constructor(ToP, PoN, Demo, CI, Business, TA, rank) {
+      this.Team_or_Product = ToP;
+      this.Problem_or_Need = PoN;
+      this.Demo = Demo;
+      this.Customer_Insight = CI;
+      this.Business = Business;
+      this.Team_Average = TA;
+      this.Rank = rank;
+    }
   }
 
-    class Eval {
-      constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI,
-        CIComments, Business, BusinessComments, GenComments) {
-        this.Team_Name = teamName;
-        this.Reviewer = Reviewer;
-        this.Problem_or_Need = PoN;
-        this.Problem_or_Need_Comments = PoNComments;
-        this.Demo = Demo;
-        this.Demo_Comments = DemoComments;
-        this.Customer_Insight = CI;
-        this.Customer_Insight_Comments = CIComments;
-        this.Business = Business;
-        this.Business_Comments = BusinessComments;
-        this.General_Comments = GenComments;
-      }
+  class Eval {
+    constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI,
+      CIComments, Business, BusinessComments, GenComments) {
+      this.Team_Name = teamName;
+      this.Reviewer = Reviewer;
+      this.Problem_or_Need = PoN;
+      this.Problem_or_Need_Comments = PoNComments;
+      this.Demo = Demo;
+      this.Demo_Comments = DemoComments;
+      this.Customer_Insight = CI;
+      this.Customer_Insight_Comments = CIComments;
+      this.Business = Business;
+      this.Business_Comments = BusinessComments;
+      this.General_Comments = GenComments;
+    }
   }
 
-    function convertArrayOfObjectsToCSV(args) {
-        var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+  function convertArrayOfObjectsToCSV(args) {
+    var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-        data = args.data || null;
-        if (data == null || !data.length) {
-            return null;
-        }
+    data = args.data || null;
+    if (data == null || !data.length) {
+        return null;
+    }
 
-        columnDelimiter = args.columnDelimiter || ',';
-        lineDelimiter = args.lineDelimiter || '\n';
+    columnDelimiter = args.columnDelimiter || ',';
+    lineDelimiter = args.lineDelimiter || '\n';
 
-        keys = Object.keys(data[0]);
+    keys = Object.keys(data[0]);
 
-        result = '';
-        result += keys.join(columnDelimiter);
+    result = '';
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    data.forEach(function(item) {
+        ctr = 0;
+        keys.forEach(function(key) {
+            if (ctr > 0) result += columnDelimiter;
+
+            result += item[key];
+            ctr++;
+        });
         result += lineDelimiter;
+    });
 
-        data.forEach(function(item) {
-            ctr = 0;
-            keys.forEach(function(key) {
-                if (ctr > 0) result += columnDelimiter;
+    return result;
+  }
 
-                result += item[key];
-                ctr++;
-            });
-            result += lineDelimiter;
-        });
+  $scope.downloadCSV = function(args) {
+    var data, filename, link;
 
-        return result;
-    }
-    $scope.downloadCSV = function(args) {
-        var data, filename, link;
-
-        var csv = convertArrayOfObjectsToCSV({
-            data: teamsForCSV
-        });
-        if (csv == null)
-            return;
-
-        filename = args.filename || 'export.csv';
-
-        if (!csv.match(/^data:text\/csv/i)) {
-            csv = 'data:text/csv;charset=utf-8,' + csv;
-        }
-        data = encodeURI(csv);
-
-        link = document.createElement('a');
-        link.setAttribute('href', data);
-        link.setAttribute('download', filename);
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    $scope.downloadFullCSV = function(args) {
-      var data, filename, link;
-      var csv = convertArrayOfObjectsToCSV({
-        data: fullCSV
-      });
-      if (csv == null)
+    var csv = convertArrayOfObjectsToCSV({
+        data: teamsForCSV
+    });
+    if (csv == null)
         return;
-      filename = args.filename || 'export.csv';
-       if (!csv.match(/^data:text\/csv/i)) {
-            csv = 'data:text/csv;charset=utf-8,' + csv;
-        }
-        data = encodeURI(csv);
 
-        link = document.createElement('a');
-        link.setAttribute('href', data);
-        link.setAttribute('download', filename);
+    filename = args.filename || 'export.csv';
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    if (!csv.match(/^data:text\/csv/i)) {
+        csv = 'data:text/csv;charset=utf-8,' + csv;
     }
+    data = encodeURI(csv);
 
-    $scope.downloadTeamCSV = function(args) {
-      var data, filename, link, index;
-      index = args.index;
-      console.log(index);
-      var csv = convertArrayOfObjectsToCSV({
-        data: teamArray[index]
-      });
-      if (csv == null)
-        return;
-      filename = args.filename || 'export.csv';
-       if (!csv.match(/^data:text\/csv/i)) {
-            csv = 'data:text/csv;charset=utf-8,' + csv;
-        }
-        data = encodeURI(csv);
+    link = document.createElement('a');
+    link.setAttribute('href', data);
+    link.setAttribute('download', filename);
 
-        link = document.createElement('a');
-        link.setAttribute('href', data);
-        link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+  $scope.downloadFullCSV = function(args) {
+    var data, filename, link;
+    var csv = convertArrayOfObjectsToCSV({
+      data: fullCSV
+    });
+    if (csv == null)
+      return;
+    filename = args.filename || 'export.csv';
+     if (!csv.match(/^data:text\/csv/i)) {
+          csv = 'data:text/csv;charset=utf-8,' + csv;
+      }
+      data = encodeURI(csv);
+
+      link = document.createElement('a');
+      link.setAttribute('href', data);
+      link.setAttribute('download', filename);
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  }
+
+  $scope.downloadTeamCSV = function(args) {
+    var data, filename, link, index;
+    index = args.index;
+    console.log(index);
+    var csv = convertArrayOfObjectsToCSV({
+      data: teamArray[index]
+    });
+    if (csv == null)
+      return;
+    filename = args.filename || 'export.csv';
+     if (!csv.match(/^data:text\/csv/i)) {
+          csv = 'data:text/csv;charset=utf-8,' + csv;
+      }
+      data = encodeURI(csv);
+
+      link = document.createElement('a');
+      link.setAttribute('href', data);
+      link.setAttribute('download', filename);
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
 });

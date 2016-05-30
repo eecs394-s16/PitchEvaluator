@@ -251,8 +251,53 @@ angular
 				ovrAvg: teamavg
 			});
 
+			calcOvrAvg(team);
+
 		});
 
+	}
+
+	var calcOvrAvg = function(team) {
+		var q1sum = 0;
+		var q2sum = 0;
+		var q3sum = 0;
+		var q4sum = 0;
+		var ovrsum = 0;
+
+		var q1, q2, q3, q4, ovr;
+
+		var teamsArray = $firebaseArray(team.parent());
+
+		teamsArray.$loaded().then(function() {
+			for (var i = 0; i < teamsArray.length; i++) {
+				q1sum+= parseFloat(teamsArray[i].q1Val);
+				q2sum+= parseFloat(teamsArray[i].q2Val);
+				q3sum+= parseFloat(teamsArray[i].q3Val);
+				q4sum+= parseFloat(teamsArray[i].q4Val);
+				ovrsum+= parseFloat(teamsArray[i].ovrAvg);
+			};
+
+			q1 = q1sum/teamsArray.length;
+			q2 = q2sum/teamsArray.length;
+			q3 = q3sum/teamsArray.length;
+			q4 = q4sum/teamsArray.length;
+			ovr = ovrsum/teamsArray.length;
+
+			q1 = q1.toFixed(2);
+			q2 = q2.toFixed(2);
+			q3 = q3.toFixed(2);
+			q4 = q4.toFixed(2);
+			ovr = ovr.toFixed(2);
+
+			team.parent().parent().child("averages").update({
+				q1avg: q1,
+				q2avg: q2,
+				q3avg: q3,
+				q4avg: q4,
+				ovrAvg: ovr			
+			});
+
+		});
 	}
 
 	var checkZero = function(q1, q2, q3, q4, q5) {
