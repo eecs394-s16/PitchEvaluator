@@ -20,7 +20,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8080 -c-1",
+    "start": "node server.js",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js  --single-run",
@@ -33,7 +33,8 @@
   "dependencies": {
     "firebase-token-generator": "^2.0.0",
     "http-server": "^0.6.1",
-    "bower": "^1.3.1"
+    "bower": "^1.3.1",
+    "express": "3.x"
   },
   "engines": {
     "node": "4.4.2",
