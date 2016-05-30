@@ -6,7 +6,7 @@ angular
         return true;
       }
       else if ($rootScope.role == 'Judge') {
-        if (action=='Overview' || action=='Review') {
+        if (action=='JudgeView' || action=='Review') {
           return true;
         }
         else return false;

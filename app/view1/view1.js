@@ -6,15 +6,13 @@ angular
 
     loggedinCheck.check();
     if (!permissionsService.isPermitted('Overview')) {
-      if ($rootScope.role != 'Team') {
-        $location.path('login');
+      // if ($rootScope.role == 'Judge') {
+      //   $location.path('judge');
+      // }
+      if ($rootScope.role == 'Team'){
+          $location.path('team');
       }
-      else {
-        
-      }
-
     }
-
 
     var teamsForCSV = [];
     var fullCSV = [];
@@ -36,8 +34,8 @@ angular
             for (var i = 0; i < $scope.teamList.length; i++) {
               //to make the simple team
               var curTeam = $scope.teamList[i];
-              var teamy = new Team(curTeam.name, curTeam.q1Val, 
-                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val, 
+              var teamy = new Team(curTeam.name, curTeam.q1Val,
+                curTeam.q2Val, curTeam.q3Val, curTeam.q4Val,
                 curTeam.ovrAvg, curTeam.rank);
               teamsForCSV.push(teamy);
             }//end for loop
@@ -126,7 +124,7 @@ angular
   }
 
     class Eval {
-      constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI, 
+      constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI,
         CIComments, Business, BusinessComments, GenComments) {
         this.Team_Name = teamName;
         this.Reviewer = Reviewer;
@@ -191,7 +189,7 @@ angular
         link = document.createElement('a');
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
- 
+
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -213,7 +211,7 @@ angular
         link = document.createElement('a');
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
- 
+
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

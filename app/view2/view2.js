@@ -52,7 +52,7 @@ angular
 	}
 	$scope.showComment = function(num) {
 		commentShowings[num] = commentShowings[num] === false ? true: false;
-		
+
 		$scope.toggleText[num] = commentShowings[num] ? 'Hide Comment' : 'Add Comment';
 		console.log($scope.toggleText);
 	}
@@ -318,7 +318,18 @@ angular
 	    var submit_alert;
 
 
-
+		function redirect() {
+			var role = $rootScope.role;
+			if (role=="Admin") {
+				$location.path('view1')
+			}
+			else if (role=="Judge") {
+				$location.path('judge')
+			}
+			else if (role=="Team") {
+				$location.path('team')
+			}
+		}
 		for (var i = 0; i < teamList.length; i++) {
 			if (teamList[i].name == curTeamName) {
 		        var teamRef = teamsRef + "/" + teamList[i].$id;
@@ -339,7 +350,7 @@ angular
 		        		reviewToEdit = reviews.child(reviewID);
 		        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5);
 		        		calcAvg(team);
-		        		$location.path('#/view1');
+								redirect();
 		        	}
 		        	else {
 		        		//check that (no radios) || (all comments) == null
@@ -353,13 +364,13 @@ angular
 		        			if (submit_alert) {
 		        				reviews.push(evaluation);
 				        		calcAvg(team);
-		        				$location.path('#/view1');
+		        				redirect();
 		        			}
 		        		}
 		        		else {
 		        			reviews.push(evaluation);
 			        		calcAvg(team);
-		        			$location.path('#/view1');
+		        			redirect();
 		        		}
 		        	}
 	        	});

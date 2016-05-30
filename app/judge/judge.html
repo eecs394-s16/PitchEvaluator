@@ -1,0 +1,48 @@
+<body>
+<div class="container" ng-style='view2.css'>
+	<div class="row">
+		<div class="col-sm-10">
+			<h1>Reviewed teams</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<table class="table">
+				<thead>
+					<tr class="row">
+						<th class="col-xs-2">Team/Product</th>
+						<th class="col-xs-2 metric">Problem/Need</th>
+						<th class="col-xs-2 metric">Demo</th>
+						<th class="col-xs-2 metric">Cust. Insight</th>
+						<th class="col-xs-2 metric">Business</th>
+						<th class="col-xs-2 metric">Team Average</th>
+					</tr>
+				</thead>
+				<tbody id="sortable">
+					<tr class="row table_row" ng-repeat="team in reviewedTeams | orderBy:'rank'">
+						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
+						<td class="col-xs-2 value">{{team.q1Val}}</td>
+						<td class="col-xs-2 value">{{team.q2Val}}</td>
+						<td class="col-xs-2 value">{{team.q3Val}}</td>
+						<td class="col-xs-2 value">{{team.q4Val}}</td>
+						<td class="col-xs-2 value">{{team.ovrAvg}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+  <div class="row">
+		<div class="col-sm-10">
+			<h1>Teams to be reviewed</h1>
+      <ul>
+        <li ng-repeat="team in notReviewedTeams">
+          <a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
+        </li>
+      </ul>
+		</div>
+	</div>
+
+</div>
+</body>

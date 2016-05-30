@@ -92,6 +92,19 @@ angular
         });
       }
 
+      function redirect() {
+  			var role = $rootScope.role;
+  			if (role=="Admin") {
+  				$location.path('view1')
+  			}
+  			else if (role=="Judge") {
+  				$location.path('judge')
+  			}
+  			else if (role=="Team") {
+  				$location.path('team')
+  			}
+  		}
+
       function checkPassword(password) {
         if ($scope.pass == password) {
           $scope.warning = false;
@@ -109,7 +122,7 @@ angular
                 // console.log($rootScope.sessionRef);
                 password = null;
                 $scope.loading = false;
-                $location.path('view1');
+                redirect();
               }
             });
           });

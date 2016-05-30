@@ -10,6 +10,16 @@ angular
         controller: 'View1Ctrl',
         css: 'view1/view1.css'
       })
+      .when('/judge', {
+        templateUrl: 'judge/judge.html',
+        controller: 'JudgeCtrl',
+        css: 'judge/judge.css'
+      })
+      .when('/team', {
+        templateUrl: 'team/team.html',
+        controller: 'TeamCtrl',
+        css: 'team/team.css'
+      })
       .when('/view2', {
         templateUrl: 'view2/view2.html',
         controller: 'View2Ctrl',

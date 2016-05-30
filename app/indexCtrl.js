@@ -10,6 +10,7 @@ angular
 	$rootScope.session = null;
 	$rootScope.role = null;
 	$rootScope.sessionRef = null;
+
 	// // TESTING PURPOSES..........
 	// $rootScope.user = 'Admin';
 	// $rootScope.role = 'Admin';
@@ -18,6 +19,16 @@ angular
 	// $rootScope.loggedin = true;
 	// userService.set('Admin');
 	// // END
+
+	// // TESTING PURPOSES..........
+	// $rootScope.user = 'Me';
+	// $rootScope.role = 'Judge';
+	// $rootScope.session = "Test Session";
+	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
+	// $rootScope.loggedin = true;
+	// userService.set('Me');
+	// // END
+
 	$rootScope.$watch(function(rootScope) {return rootScope.role},
 		function() {
 			if ($rootScope.role == 'Admin') {
@@ -30,8 +41,9 @@ angular
 			}
 			else if ($rootScope.role == 'Judge') {
 				$scope.tabs = [
-			      { link : '/view1', label : 'Overview' },
-			      { link : '/view2', label : 'Review' }
+			      { link : '/judge', label : 'Overview' },
+			      { link : '/view2', label : 'Review Teams' },
+						{ link : '/view1', label : 'Summary' }
 			    ];
 			}
 			else {
@@ -73,24 +85,5 @@ angular
             }
         }
      );
-
-	// $scope.isLogged = function(label) {
-	// 	if (label=="Login") {
-	// 		if ($rootScope.loggedin) return false;
-	// 		else return true;
-	// 	}
-	// 	else {
-	// 		return true;
-	// 	}
-	// }
-
-	// if (!userService.get()) {
-	// 	$rootScope.loggedin = false;
-	// 	$rootScope.user = null;
-	// 	$location.path('login')
-	// }
-	// else (
-	// 	$rootScope.loggedin = true;
-	// )
 
  });
