@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "firebase-token-generator": "^2.0.0",
+    "http-server": "^0.6.1",
     "bower": "^1.3.1"
   },
   "engines": {
