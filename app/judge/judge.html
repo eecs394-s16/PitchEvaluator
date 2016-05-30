@@ -2,7 +2,7 @@
 <div class="container" ng-style='view2.css'>
 	<div class="row">
 		<div class="col-sm-10">
-			<h1>Reviewed teams</h1>
+			<h3 style="color:#337ab7">Reviewed teams</h3>
 		</div>
 	</div>
 
@@ -45,10 +45,10 @@
 
   <div class="row">
 		<div class="col-sm-10">
-			<h1>Teams to be reviewed</h1>
-      <ul>
-        <li ng-repeat="team in notReviewedTeams">
-          <a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
+			<h3 style="color:#337ab7">Teams to be reviewed</h3>
+      <ul style="list-style-type:none; padding-left:3px">
+        <li ng-repeat="team in notReviewedTeams" class="to_review">
+          <a href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
         </li>
       </ul>
 		</div>

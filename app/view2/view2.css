@@ -92,6 +92,7 @@ form {
 
 .ui-slider-horizontal .ui-state-default {
 	background: #673AB7;
+  border:0;
 }
 
 /* Special styling for WebKit/Blink */

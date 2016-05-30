@@ -6,9 +6,10 @@
 	width: 100%;
 }
 .logo_text{
-	width: 500px;
-	float: left;
-    margin-top: -18.9px;
+	width:500px;
+    float: left;
+    margin-left: -60px;
+    margin-top: -39.9px;
 }
 
 .login_form { 	

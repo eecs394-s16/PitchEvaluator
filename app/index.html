@@ -29,7 +29,8 @@
     <div class="row" id="title_bar">
       <div>
         <a href="/app/#/view1">
-          <img ng-hide="onLogin()" class="logo_text" src="login/PitchEvaluator-logo.png">
+          <img ng-hide="onLogin()" class="logo_icon" src="login/PitchEvaluator-logo-pen-white copy.png">
+          <img ng-hide="onLogin()" class="logo_text" src="login/PitchEvaluator-logo-text.png">
         </a>
       </div>
       <div>
@@ -42,7 +43,7 @@
       </div>
 
     </div>
-    <div class="row navi" ng-style="login_background">
+    <div class="row navi" ng-style="login_background" ng-hide="onLogin()"> 
      <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1" ng-show="loggedin">

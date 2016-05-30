@@ -12,6 +12,12 @@
 /*html,body{
 	background: rgb(103, 58, 183);
 }*/
+.logo_icon{
+  width: 150px;
+  float: left;
+  margin-left: 0px;
+  margin-top: 10px;
+}
 
 .nav{
 	background: white;
@@ -27,7 +33,7 @@
 
 
 #title_bar{
-  height: 62px;
+  height: 100px;
   background: rgb(103, 58, 183);
 }
 
@@ -43,6 +49,7 @@
 #userinfo-ul {
   margin-right: 20px;
   float: right;
+  margin-top: 20px;
 }
 
 .userli {
@@ -65,6 +72,9 @@
 .user{
   float: right;
   margin-right: 80px;
+}
+.role{
+  float: right
 }
 
 a.logout:hover {
