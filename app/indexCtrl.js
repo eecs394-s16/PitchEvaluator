@@ -24,7 +24,7 @@ angular
 	// $rootScope.user = 'Me';
 	// $rootScope.role = 'Judge';
 	// $rootScope.session = "Test Session";
-	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIdcRUghsu2TwybVf5L";
+	// $rootScope.sessionRef = "https://pitchevaluator.firebaseio.com/sessions/-KIzGu8j1-UDUYTj795B";
 	// $rootScope.loggedin = true;
 	// userService.set('Me');
 	// // END

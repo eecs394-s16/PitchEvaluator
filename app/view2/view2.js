@@ -283,6 +283,7 @@ angular
 		    this.cmt4 = cmt4;
 		    this.q5 = q5;
 		    this.cmt5 = cmt5;
+				this.rank = -1;
 	    }
 	}
 

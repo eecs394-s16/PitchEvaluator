@@ -26,7 +26,7 @@ angular
         this.avg4 = 0;
         this.avgYes = 0;
         this.ovrAvg = 0;
-        this.rank = 0;
+        this.startRank = 0;
       }
       parse() {
         var temp = {
@@ -56,7 +56,7 @@ angular
       var ref = new Firebase($rootScope.sessionRef);
       ref.once("value", function(snapshot) {
         var count = snapshot.child("teams").numChildren();
-        newTeam.rank = count+1;
+        newTeam.startRank = count+1;
         var refTeams = new Firebase($rootScope.sessionRef + "/teams")
         var teams = new $firebaseArray(refTeams);
         teams.$loaded(function() {
