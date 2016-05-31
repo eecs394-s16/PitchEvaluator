@@ -22,18 +22,16 @@
   <link rel="stylesheet" href="login/login.css">
   <link rel="stylesheet" href="judge/judge.css">
 
-
 </head>
 <body ng-controller="indexCtrl">
   <div class="container-fluid">
     <div class="row" id="title_bar">
-      <div>
-        <a href="/app/#/view1">
-          <img ng-hide="onLogin()" class="logo_icon" src="login/PitchEvaluator-logo-pen-white copy.png">
-          <img ng-hide="onLogin()" class="logo_text" src="login/PitchEvaluator-logo-text.png">
+      <div class="col-sm-6 col-xs-8">
+        <a href="/">
+          <img ng-hide="onLogin()" class="logo_text" src="login/PitchEvaluator-logo-header.png">
         </a>
       </div>
-      <div>
+      <div class="col-sm-6 col-xs-4">
         <ul id="userinfo-ul">
           <li class="userli seesion">{{session}}</li>
           <li class="userli user"> {{user}}</li>

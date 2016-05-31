@@ -1,9 +1,11 @@
 # PitchEvaluator
 
 ##### Web application for pitch evaluation
+######URL:http://pitchevaluator.herokuapp.com/
 
 Waffle.io
 https://waffle.io/eecs394-s16/PitchEvaluator
+
 
 
 Install Instruction:

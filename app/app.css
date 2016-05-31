@@ -12,11 +12,10 @@
 /*html,body{
 	background: rgb(103, 58, 183);
 }*/
-.logo_icon{
-  width: 150px;
+
+.logo_text {
+  width: 80%;
   float: left;
-  margin-left: 0px;
-  margin-top: 10px;
 }
 
 .nav{
@@ -31,15 +30,10 @@
   min-height: 100vh;
 }
 
-
 #title_bar{
-  height: 100px;
   background: rgb(103, 58, 183);
 }
 
-/*.navi,.form_content{
-  background: rgb(251, 247, 255);
-}*/
 #title {
   margin-left: 10%;
   font-size: 3rem;
@@ -48,8 +42,8 @@
 
 #userinfo-ul {
   margin-right: 20px;
+  margin-top: 10px;
   float: right;
-  margin-top: 20px;
 }
 
 .userli {
@@ -65,14 +59,8 @@
 .logout {
   font-weight: bold;
   color: white;
-  float: right;
-  margin-top: -27px;
 }
 
-.user{
-  float: right;
-  margin-right: 80px;
-}
 .role{
   float: right
 }
