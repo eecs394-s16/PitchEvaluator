@@ -33,9 +33,9 @@
       </div>
       <div class="col-sm-6 col-xs-4">
         <ul id="userinfo-ul">
-          <li class="userli seesion">{{session}}</li>
-          <li class="userli user"> {{user}}</li>
-          <li class="userli role" ng-hide="adminFlag">{{role}}</li>
+          <li class="userli">{{session}}</li>
+          <li class="userli"> {{user}}</li>
+          <li class="userli" ng-hide="adminFlag">{{role}}</li>
           <li class="userli" ng-hide="onLogin()" ng-click="logOut()"><a class="logout" href="#">Logout</a></li>
         </ul>
       </div>
