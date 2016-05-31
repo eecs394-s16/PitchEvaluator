@@ -33,7 +33,7 @@ angular
 
       $rootScope.session = $scope.name;
       $rootScope.sessionRef = refNew.toString();
-      $location.path('#/view1');
+      $location.path('view1');
 
       // console.log($scope.name);
       // console.log($scope.desc);

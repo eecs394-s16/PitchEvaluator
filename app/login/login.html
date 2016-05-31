@@ -16,15 +16,16 @@
         <div class="col-sm-4 right_space"></div>
 
         <div class="form_body col-sm-4">
-          <select class="form-control" id="session-select" ng-model="session" ng-options="session.name as session.name for session in sessionsArr">
-            <option ng-show="loadingSessions" disabled selected>Loading...</option>
-            <option ng-hide="loadingSessions" disabled selected value="">Select a session</option>
-          </select>
 
           <select class="form-control" ng-model="role" ng-options="role as role for role in roles">
             <option disabled selected value="">Select your role</option>
           </select>
 
+          <select class="form-control" id="session-select" ng-model="session" ng-options="session.name as session.name for session in sessionsArr">
+            <option ng-show="loadingSessions" disabled selected>Loading...</option>
+            <option ng-hide="loadingSessions" disabled selected value="">Select a session</option>
+          </select>
+          
           <hr>
 
           <input class="form-control" type="text" placeholder="Your name" ng-model="user" ng-hide="adminFlag">

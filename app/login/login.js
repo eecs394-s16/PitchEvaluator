@@ -39,14 +39,14 @@ angular
     $scope.login = function() {
       // console.log("user:",$scope.user);
       // console.log("pass:",$scope.pass);
-      if (!$scope.session) {
-        $scope.warning = true;
-        document.querySelector('#warning').innerHTML = "*Please select your session";
-        return;
-      }
       if (!$scope.role) {
         $scope.warning = true;
         document.querySelector('#warning').innerHTML = "*Please select your role";
+        return;
+      }
+      if (!$scope.session && $scope.role!='Admin') {
+        $scope.warning = true;
+        document.querySelector('#warning').innerHTML = "*Please select your session";
         return;
       }
       if ($scope.user=="" || $scope.pass=="") {
@@ -93,7 +93,7 @@ angular
                 teams.forEach(function(team) {
                   if (booly) return;
                   if (team.name == $scope.user) {
-                    console.log(team);
+                    // console.log(team);
                     $rootScope.teamID = team.$id;
                     checkPassword(team.teamPass);
                     booly = true;
@@ -137,7 +137,12 @@ angular
           var temp = new $firebaseArray(sessListRef);
           temp.$loaded(function() {
             temp.forEach(function(session) {
-              if (session.name== $scope.session) {
+              if ($scope.session==null) {
+                password = null;
+                $scope.loading = false;
+                redirect();
+              }
+              else if (session.name== $scope.session) {
                 $rootScope.sessionRef = session.ref;
                 // console.log($rootScope.sessionRef);
                 password = null;
