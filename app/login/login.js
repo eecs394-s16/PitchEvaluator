@@ -34,8 +34,20 @@ angular
               $scope.user = '';
             }
         }
-     );
+    );
 
+	$("#namefield").keypress(function(e) {
+		if(e.which == 13) {
+			$scope.login();
+		}
+	});
+	
+	$("#passfield").keypress(function(e) {
+		if(e.which == 13) {
+			$scope.login();
+		}
+	});
+	
     $scope.login = function() {
       // console.log("user:",$scope.user);
       // console.log("pass:",$scope.pass);
