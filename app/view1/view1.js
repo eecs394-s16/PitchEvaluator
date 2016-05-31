@@ -112,6 +112,7 @@ angular
       update: $scope.dragEnd
     });
 
+   
     //sam's Download Team Data CSV
 
   class Team {
@@ -180,8 +181,10 @@ angular
     var csv = convertArrayOfObjectsToCSV({
         data: teamsForCSV
     });
-    if (csv == null)
+    if (csv == null){
+        window.alert("No Evaulation Report Available");
         return;
+    }
 
     filename = args.filename || 'export.csv';
 
@@ -204,8 +207,10 @@ angular
     var csv = convertArrayOfObjectsToCSV({
       data: fullCSV
     });
-    if (csv == null)
-      return;
+    if (csv == null){
+        window.alert("No Evaulation Report Available");
+        return;  
+    }
     filename = args.filename || 'export.csv';
      if (!csv.match(/^data:text\/csv/i)) {
           csv = 'data:text/csv;charset=utf-8,' + csv;
@@ -228,8 +233,10 @@ angular
     var csv = convertArrayOfObjectsToCSV({
       data: teamArray[index]
     });
-    if (csv == null)
+    if (csv == null){
+      window.alert("No Evaulation Report Available");
       return;
+    }
     filename = args.filename || 'export.csv';
      if (!csv.match(/^data:text\/csv/i)) {
           csv = 'data:text/csv;charset=utf-8,' + csv;

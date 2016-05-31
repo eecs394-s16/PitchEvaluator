@@ -80,6 +80,7 @@ angular
 		$location.path('login');
 	}
 
+
 	$rootScope.$on('$locationChangeSuccess', function(event){
 	  // console.log($location.path());
 		if($location.path() === "/login"){
