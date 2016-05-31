@@ -80,19 +80,20 @@ angular
 		$location.path('login');
 	}
 
-	if($location.path() === "/login"){
-		$scope.login_background = {
-			// "background": "rgb(103, 58, 183)"
-			"background": "rgb(251, 247, 255)"
-    	}
-    	// console.log($location.path());
-    }
-	if($location.path() != "/login"){
-		$scope.login_background = {
-			"background": "rgb(251, 247, 255)"
-    	}
-    	// console.log($location.path());
-	}
+	$rootScope.$on('$locationChangeSuccess', function(event){
+	  // console.log($location.path());
+		if($location.path() === "/login"){
+			$scope.login_background = {
+				"background": "rgb(103, 58, 183)"
+	    	}
+	    }
+		if($location.path() != "/login"){
+			$scope.login_background = {
+				"background": "rgb(251, 247, 255)"
+	    	}
+		}
+	})
+
 
   	$scope.isActive = function(route) {
         return route === $location.path();
