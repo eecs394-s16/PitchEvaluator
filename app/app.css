@@ -14,7 +14,7 @@
 }*/
 
 .logo_text {
-  width: 90%;
+  width: 80%;
   float: left;
 }
 
@@ -42,6 +42,7 @@
 
 #userinfo-ul {
   margin-right: 20px;
+  margin-top: 10px;
   float: right;
 }
 
