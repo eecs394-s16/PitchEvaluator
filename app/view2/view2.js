@@ -10,7 +10,7 @@ angular
 	}
 
 	$scope.toggleText= [];
-	for (let i=0; i<6; i++) {
+	for (var i=0; i<6; i++) {
 		$scope.toggleText.push('Add Comment');
 	}
 
@@ -60,13 +60,13 @@ angular
 		//@TODO: Change this user to the correct one
 		var user = $rootScope.user;
 		var booly = false;
-		for (let team of teamList) {
+		for (var team of teamList) {
 			if (team.name==$scope.selectedTeam) {
-				let teamRef = new Firebase($rootScope.sessionRef+"/teams/"+team.$id);
+				var teamRef = new Firebase($rootScope.sessionRef+"/teams/"+team.$id);
 				if (teamRef.child('reviews')) {
 					var reviews = $firebaseArray(teamRef.child('reviews'));
 					reviews.$loaded(function() {
-						for (let review of reviews) {
+						for (var review of reviews) {
 							if (review.user == user) {
 								// console.log(review);
 								updateValues(review);
@@ -294,7 +294,7 @@ angular
 				q2avg: q2,
 				q3avg: q3,
 				q4avg: q4,
-				ovrAvg: ovr			
+				ovrAvg: ovr
 			});
 
 		});

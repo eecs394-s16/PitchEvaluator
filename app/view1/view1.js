@@ -88,21 +88,21 @@ angular
 
       if (start<end) {
         $scope.teamList[start].rank = end+1;
-        for (let i=start+1; i<=end;i++) {
+        for (var i=start+1; i<=end;i++) {
           $scope.teamList[i].rank-=1;
         }
       }
       else {
         $scope.teamList[start].rank = end+1;
-        for (let i=end; i<start;i++) {
+        for (var i=end; i<start;i++) {
           $scope.teamList[i].rank+=1;
         }
       }
-      for (let i=0; i<$scope.teamList.length;i++) {
+      for (var i=0; i<$scope.teamList.length;i++) {
         $scope.teamList.$save(i);
       }
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank})
-      // for (let i=0; i<$scope.teamList.length;i++) {
+      // for (var i=0; i<$scope.teamList.length;i++) {
       //   console.log($scope.teamList[i].name, $scope.teamList[i].rank);
       // }
     }

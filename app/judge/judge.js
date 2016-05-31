@@ -86,28 +86,28 @@ angular
 
       if (start<end) {
         $scope.reviewedTeams[start].rank = end+1;
-        for (let i=start+1; i<=end;i++) {
+        for (var i=start+1; i<=end;i++) {
           $scope.reviewedTeams[i].rank-=1;
         }
       }
       else {
         $scope.reviewedTeams[start].rank = end+1;
-        for (let i=end; i<start;i++) {
+        for (var i=end; i<start;i++) {
           $scope.reviewedTeams[i].rank+=1;
         }
       }
 
-      // for (let i=0; i<$scope.reviewedTeams.length;i++) {
+      // for (var i=0; i<$scope.reviewedTeams.length;i++) {
       //   console.log($scope.reviewedTeams[i].name, $scope.reviewedTeams[i].rank);
       // }
       // console.log($scope.reviewedTeams);
-      for (let team of $scope.reviewedTeams) {
+      for (var team of $scope.reviewedTeams) {
         var teamref = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
         teamref.update({rank: team.rank});
       }
 
       $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank})
-      // for (let i=0; i<$scope.reviewedTeams.length;i++) {
+      // for (var i=0; i<$scope.reviewedTeams.length;i++) {
       //   console.log($scope.reviewedTeams[i].name, $scope.reviewedTeams[i].rank);
       // }
     }
