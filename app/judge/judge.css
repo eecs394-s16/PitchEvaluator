@@ -2,3 +2,16 @@
 	border-bottom: black;
     font-size: 16px;
 }
+
+/*tr {
+	color: green;
+}*/
+
+
+.green {
+  color: green;
+}
+
+.red {
+	color: red;
+}

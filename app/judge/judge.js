@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('PitchEvaluator')
-  .controller('JudgeCtrl', function($rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
+  .controller('JudgeCtrl', function($timeout, $rootScope, $scope, permissionsService, $firebaseObject, $firebaseArray, $location, loggedinCheck, teamService, userService, db_url) {
 
     loggedinCheck.check();
 
@@ -11,6 +11,8 @@ angular
       }
     }
 
+
+    $scope.teamClasses = [];
     $scope.saveTeam = function(teamName) {
       teamService.set(teamName);
       $location.path('view2');
@@ -58,6 +60,7 @@ angular
                 ovrAvg: team.ovrAvg
               }
               $scope.reviewedTeams.push(temp);
+              $scope.teamClasses.push(null);
               rankings($scope.reviewedTeams);
               $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank});
               break;
@@ -85,17 +88,35 @@ angular
           end = ui.item.index();//get the new and old index
 
       if (start<end) {
+        for (var i=0; i<start;i++) {
+          $scope.teamClasses[i] = null;
+        }
+        for (var i=end+1; i<$scope.reviewedTeams.length;i++) {
+          $scope.teamClasses[i] = null;
+        }
+
         $scope.reviewedTeams[start].rank = end+1;
+        $scope.teamClasses[start] = 'green';
         for (var i=start+1; i<=end;i++) {
           $scope.reviewedTeams[i].rank-=1;
+          $scope.teamClasses[i] = 'red';
         }
       }
       else {
+        for (var i=0; i<end;i++) {
+          $scope.teamClasses[i] = null;
+        }
+        for (var i=start+1; i<$scope.reviewedTeams.length;i++) {
+          $scope.teamClasses[i] = null;
+        }
         $scope.reviewedTeams[start].rank = end+1;
+        $scope.teamClasses[start] = 'red';
         for (var i=end; i<start;i++) {
           $scope.reviewedTeams[i].rank+=1;
+          $scope.teamClasses[i] = 'green';
         }
       }
+
 
       // for (var i=0; i<$scope.reviewedTeams.length;i++) {
       //   console.log($scope.reviewedTeams[i].name, $scope.reviewedTeams[i].rank);
@@ -107,6 +128,11 @@ angular
       }
 
       $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank})
+      $timeout(function() {
+        for (var i=0; i<$scope.teamClasses.length;i++) {
+          $scope.teamClasses[i] = null;
+        }
+      }, 2500);
       // for (var i=0; i<$scope.reviewedTeams.length;i++) {
       //   console.log($scope.reviewedTeams[i].name, $scope.reviewedTeams[i].rank);
       // }
