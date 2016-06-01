@@ -79,7 +79,7 @@ angular
 
     $scope.dragStart = function(e, ui) {
       ui.item.data('start', ui.item.index());
-       console.log(ui.item.index());
+      console.log(ui.item.index());
 
     }// create a temporary attribute on the element with old index
     $scope.dragEnd = function(e, ui) {
@@ -112,7 +112,7 @@ angular
       update: $scope.dragEnd
     });
 
-   
+
     //sam's Download Team Data CSV
 
   class Team {
@@ -209,7 +209,7 @@ angular
     });
     if (csv == null){
         window.alert("No Evaulation Report Available");
-        return;  
+        return;
     }
     filename = args.filename || 'export.csv';
      if (!csv.match(/^data:text\/csv/i)) {

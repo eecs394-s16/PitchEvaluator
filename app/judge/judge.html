@@ -20,8 +20,8 @@
 					</tr>
 				</thead>
 				<tbody id="sortable">
-					<tr class="row table_row" ng-repeat="team in reviewedTeams | orderBy:'rank'">
-						<td class="col-xs-2 name"><a href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
+					<tr class="row table_row" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'" >
+						<td class="col-xs-2 name"><a ng-class="teamClasses[team.rank-1]" href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
 						<td class="col-xs-2 value">{{team.q1Val}}</td>
 						<td class="col-xs-2 value">{{team.q2Val}}</td>
 						<td class="col-xs-2 value">{{team.q3Val}}</td>
