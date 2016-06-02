@@ -21,7 +21,7 @@
 				</thead>
 				<tbody>
 					<tr class="row table_row" ng-repeat="review in reviews">
-            			<td class="col-xs-2 value">{{review.user}}</td>
+            			<td class="col-xs-2 value"><b>{{review.user}}</b></td>
 						<td class="col-xs-2 value">{{review.q1}}</td>
 						<td class="col-xs-2 value">{{review.q2}}</td>
 						<td class="col-xs-2 value">{{review.q3}}</td>
@@ -54,7 +54,7 @@
 		</div>
     	<table>
 	      <thead>
-	      	<tr class="row table_head">
+	      	<tr class="row table_head" style="border-bottom: 1px solid #ddd;">
     			<th class="col-xs-2 metric">Judge</th>
 				<th class="col-xs-2 metric">Problem/Need</th>
 				<th class="col-xs-2 metric">Demo</th>
@@ -66,7 +66,7 @@
 	      </thead>
 	      <tbody>
 				<tr ng-repeat="review in reviews" class="comments row" style="border-top: 1px solid #ddd;">
-					<td class ="col-xs-2 cmt_judge" >{{review.user}}</td>
+					<td class ="col-xs-2 cmt_judge" ><b>{{review.user}}</b></td>
 	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt1}}</span></td>
 	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt2}}</span></td>
 	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt3}}</span></td>
