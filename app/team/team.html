@@ -2,7 +2,7 @@
 <div class="container" ng-style='view2.css'>
 	<div class="row">
 		<div class="col-sm-10">
-			<h1>Judge Reviews for {{teamName}}</h1>
+			<h3 style="padding-left:8px">Judge Reviews for {{teamName}}</h3>
 		</div>
 	</div>
 
@@ -11,7 +11,7 @@
 			<table class="table">
 				<thead>
 					<tr class="row">
-            <th class="col-xs-2 metric">Judge</th>
+            			<th class="col-xs-2 metric">Judge</th>
 						<th class="col-xs-2 metric">Problem/Need</th>
 						<th class="col-xs-2 metric">Demo</th>
 						<th class="col-xs-2 metric">Cust. Insight</th>
@@ -21,7 +21,7 @@
 				</thead>
 				<tbody>
 					<tr class="row table_row" ng-repeat="review in reviews">
-            <td class="col-xs-2 value">{{review.user}}</td>
+            			<td class="col-xs-2 value">{{review.user}}</td>
 						<td class="col-xs-2 value">{{review.q1}}</td>
 						<td class="col-xs-2 value">{{review.q2}}</td>
 						<td class="col-xs-2 value">{{review.q3}}</td>
@@ -47,18 +47,35 @@
 	</div>
 
 	<div class="row">
-    <div class="col-sm-10">
-      <h2>Judges Comments</h2>
-      <div ng-repeat="review in reviews" class="comments">
-        <p>Judge: {{review.user}}</p>
-        <p ng-if="check(review.cmt1)">Problem/Need: {{review.cmt1}}</p>
-        <p ng-if="check(review.cmt2)">Demo: {{review.cmt2}}</p>
-        <p ng-if="check(review.cmt3)">Customer Insight: {{review.cmt3}}</p>
-        <p ng-if="check(review.cmt4)">Business: {{review.cmt4}}</p>
-        <p ng-if="check(review.cmt5)">Continue Work: {{review.cmt5}}</p>
-        <br>
-        <br>
-      </div>
+    <div class="col-sm-12">
+
+    	<div class="col-sm-10">
+			<h3 >Comments</h3>
+		</div>
+    	<table>
+	      <thead>
+	      	<tr class="row table_head">
+    			<th class="col-xs-2 metric">Judge</th>
+				<th class="col-xs-2 metric">Problem/Need</th>
+				<th class="col-xs-2 metric">Demo</th>
+				<th class="col-xs-2 metric">Cust. Insight</th>
+				<th class="col-xs-2 metric">Business</th>
+				<th class="col-xs-2 metric">Continue Working</th>
+			</tr>
+	      	
+	      </thead>
+	      <tbody>
+				<tr ng-repeat="review in reviews" class="comments row" style="border-top: 1px solid #ddd;">
+					<td class ="col-xs-2 cmt_judge" >{{review.user}}</td>
+	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt1}}</span></td>
+	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt2}}</span></td>
+	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt3}}</span></td>
+	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt4}}</span></td>
+	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt5}}</span></td>	
+				</tr>
+		  </tbody>
+	      
+      </table>
     </div>
   </div>
 

@@ -11,6 +11,7 @@ angular
 	$rootScope.role = null;
 	$rootScope.sessionRef = null;
 	$scope.login_background = null;
+	$scope.hideUser = true;
 
 
 	// // TESTING PURPOSES..........
@@ -87,11 +88,13 @@ angular
 			$scope.login_background = {
 				"background": "rgb(103, 58, 183)"
 	    	}
+	    	$scope.hideUser = true;
 	    }
 		if($location.path() != "/login"){
 			$scope.login_background = {
 				"background": "rgb(251, 247, 255)"
 	    	}
+	    	$scope.hideUser = false;
 		}
 	})
 

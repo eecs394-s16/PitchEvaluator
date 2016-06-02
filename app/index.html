@@ -33,8 +33,8 @@
       </div>
       <div class="col-sm-6 col-xs-4">
         <ul id="userinfo-ul">
-          <li class="userli">{{session}}</li>
-          <li class="userli"> {{user}}</li>
+          <li class="userli session" ng-hide = "hideUser"><img src="session_icon.png" class="session_icon"> {{session}}</li>
+          <li class="userli userName" ng-hide = "hideUser"> <img src="user_icon.png" class="user_icon">  {{user}}</li>
           <li class="userli" ng-hide="adminFlag">{{role}}</li>
           <li class="userli" ng-hide="onLogin()" ng-click="logOut()"><a class="logout" href="#">Logout</a></li>
         </ul>

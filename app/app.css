@@ -69,3 +69,12 @@ a.logout:hover {
   color: gray;
   text-decoration: none;
 }
+.session{
+  font-size:2rem;
+}
+.session_icon{
+  width: 20px;
+}
+.user_icon{
+  width: 15px;
+}
