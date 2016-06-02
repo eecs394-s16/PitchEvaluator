@@ -38,7 +38,8 @@ angular
               var curTeam = $scope.teamList[i];
               var teamy = new Team(curTeam.name, curTeam.q1Val,
                 curTeam.q2Val, curTeam.q3Val, curTeam.q4Val,
-                curTeam.ovrAvg, curTeam.rank);
+                curTeam.q5Val, curTeam.q6Val, curTeam.q7Val,
+                curTeam.ovrAvg);
               teamsForCSV.push(teamy);
             }//end for loop
 
@@ -51,8 +52,10 @@ angular
                 reviewsSnap.forEach(function(childSnapshot) {
                   //save each review as an object, from which you can grab field's
                   var rev = childSnapshot.val();
-                  var fullEval = new Eval(rev.teamName, rev.user, rev.q1, rev.cmt1, rev.q2, rev.cmt2, rev.q3, rev.cmt3,
-                    rev.q4, rev.cmt4, rev.cmt5);
+                  var fullEval = new Eval(rev.teamName, rev.user, rev.q1, rev.cmt1, 
+                    rev.q2, rev.cmt2, rev.q3, rev.cmt3, rev.q4, rev.cmt4, 
+                    rev.q5, rev.cmt5, rev.q6, rev.cmt6, rev.q7, rev.cmt7, 
+                    rev.q8, rev.cmt8);
                   fullCSV.push(fullEval);
                   tempTeam.push(fullEval);
                 }); //end review loop
@@ -116,31 +119,44 @@ angular
     //sam's Download Team Data CSV
 
   class Team {
-    constructor(ToP, PoN, Demo, CI, Business, TA, rank) {
-      this.Team_or_Product = ToP;
-      this.Problem_or_Need = PoN;
-      this.Demo = Demo;
-      this.Customer_Insight = CI;
-      this.Business = Business;
+    constructor(name, q1, q2, q3, q4, 
+      q5, q6, q7, TA) {
+      this.Team_Name = name;
+      this.Value_Prop = q1;
+      this.Q_and_A = q2;
+      this.Product_Market_Fit = q3;
+      this.Understands_Customers = q4;
+      this.Customer_Acquisition = q5;
+      this.Financial_Model = q6;
+      this.Pitch = q7;
       this.Team_Average = TA;
-      this.Rank = rank;
+
     }
   }
 
   class Eval {
-    constructor(teamName, Reviewer, PoN, PoNComments, Demo, DemoComments, CI,
-      CIComments, Business, BusinessComments, GenComments) {
+    constructor(teamName, Reviewer, 
+      q1, q1c, q2, q2c, q3, q3c, q4, q4c, 
+      q5, q5c, q6, q6c, q7, q7c, q8, q8c) {
       this.Team_Name = teamName;
       this.Reviewer = Reviewer;
-      this.Problem_or_Need = PoN;
-      this.Problem_or_Need_Comments = PoNComments;
-      this.Demo = Demo;
-      this.Demo_Comments = DemoComments;
-      this.Customer_Insight = CI;
-      this.Customer_Insight_Comments = CIComments;
-      this.Business = Business;
-      this.Business_Comments = BusinessComments;
-      this.General_Comments = GenComments;
+
+      this.Value_Prop = q1;
+      this.Value_Prop_Comments = q1c;
+      this.Q_and_A = q2;
+      this.Q_and_A_Comments = q2c;
+      this.Product_Market_Fit = q3;
+      this.Product_Market_Fit_Comments = q3c;
+      this.Understands_Customers = q4;
+      this.Understands_Customers_Comments = q4c;
+      this.Customer_Acquisition = q5;
+      this.Customer_Acquisition_Comments = q5c;
+      this.Financial_Model = q6;
+      this.Financial_Model_Comments = q6c;
+      this.Pitch = q7;
+      this.Pitch_Comments = q7c;
+      this.Continue = q8;
+      this.Continue_Comments = q8c;
     }
   }
 
