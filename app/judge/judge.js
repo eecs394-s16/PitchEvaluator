@@ -48,6 +48,12 @@ angular
           for (var review of reviews) {
             if (review.user==$rootScope.user) {
               alreadyReviewed = true;
+              var cont;
+              if (review.q8 == 0) {
+                cont = "No";
+              } else {
+                cont = "Yes";
+              }
               var temp = {
                 teamID: team.$id,
                 reviewID: review.$id,
@@ -56,6 +62,10 @@ angular
                 q2Val: review.q2,
                 q3Val: review.q3,
                 q4Val: review.q4,
+                q5Val: review.q5,
+                q6Val: review.q6,
+                q7Val: review.q7,
+                cont: cont,
                 rank: review.rank,
                 ovrAvg: team.ovrAvg
               }

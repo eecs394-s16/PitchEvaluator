@@ -1,5 +1,4 @@
-<body>
-<div class="container" ng-style='view2.css'>
+<div class="container-fluid" ng-style='view2.css'>
 	<div class="row">
 		<div class="col-sm-10">
 			<h3 style="color:#337ab7">Reviewed teams</h3>
@@ -7,43 +6,61 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-12">
 			<table class="table">
 				<thead>
 					<tr class="row">
-						<th class="col-xs-2">Team/Product</th>
-						<th class="col-xs-2 metric">Problem/Need</th>
-						<th class="col-xs-2 metric">Demo</th>
-						<th class="col-xs-2 metric">Cust. Insight</th>
-						<th class="col-xs-2 metric">Business</th>
-						<th class="col-xs-2 metric">Team Average</th>
+						<td class="table-teamname">Team</td>			
+						<td class="table-rank">Rank</td>
+						<td class="table-qval">Q1</td>
+						<td class="table-qval">Q2</td>
+						<td class="table-qval">Q3</td>
+						<td class="table-qval">Q4</td>
+						<td class="table-qval">Q5</td>
+						<td class="table-qval">Q6</td>
+						<td class="table-qval">Q7</td>
+						<td class="table-continue">Continue?</td>
+						<td class="table-ovravg">Avg</td>
 					</tr>
 				</thead>
 				<tbody id="sortable">
 					<tr class="row table_row" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'" >
-						<td class="col-xs-2 name"><a ng-class="teamClasses[team.rank-1]" href="" ng-click="saveTeam(team.name)">{{team.name}}</a></td>
-						<td class="col-xs-2 value">{{team.q1Val}}</td>
-						<td class="col-xs-2 value">{{team.q2Val}}</td>
-						<td class="col-xs-2 value">{{team.q3Val}}</td>
-						<td class="col-xs-2 value">{{team.q4Val}}</td>
-						<td class="col-xs-2 value">{{team.ovrAvg}}</td>
-					</tr>
+						<td class="col-xs-2 name">
+							<a ng-class="teamClasses[team.rank-1]" href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
+						</td>
+						<td class="table-rank">{{team.rank}}</td>
+						<td class="table-qval">{{team.q1Val}}</td>
+						<td class="table-qval">{{team.q2Val}}</td>
+						<td class="table-qval">{{team.q3Val}}</td>
+						<td class="table-qval">{{team.q4Val}}</td>
+						<td class="table-qval">{{team.q5Val}}</td>
+						<td class="table-qval">{{team.q6Val}}</td>
+						<td class="table-qval">{{team.q7Val}}</td>
+						<td class="table-continue">{{team.cont}}</td>	
+						<td class="table-ovravg">{{team.ovrAvg}}</td>
+
 				</tbody>
 				<tbody>
 					<tr class="row table_row">
 						<td class="col-xs-2 name">Average</td>
-						<td class="col-xs-2">{{averagesArray[1].$value}}</td>
-						<td class="col-xs-2">{{averagesArray[2].$value}}</td>
-						<td class="col-xs-2">{{averagesArray[3].$value}}</td>
-						<td class="col-xs-2">{{averagesArray[4].$value}}</td>
-						<td class="col-xs-2">{{averagesArray[0].$value}}</td>
+						<td class="table-qval">Rank</td>
+						<td class="table-qval">{{averagesArray[1].$value}}</td>
+						<td class="table-qval">{{averagesArray[2].$value}}</td>
+						<td class="table-qval">{{averagesArray[3].$value}}</td>
+						<td class="table-qval">{{averagesArray[4].$value}}</td>
+						<td class="table-qval">{{averagesArray[5].$value}}</td>
+						<td class="table-qval">{{averagesArray[6].$value}}</td>
+						<td class="table-qval">{{averagesArray[7].$value}}</td>
+						<td class="table-continue">#</td>
+						<td class="table-ovravg">{{averagesArray[0].$value}}</td>
+	
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 
-  <div class="row">
+  	<div class="row">
 		<div class="col-sm-10">
 			<h3 style="color:#337ab7">Teams to be reviewed</h3>
       <ul style="list-style-type:none; padding-left:3px">
@@ -55,4 +72,3 @@
 	</div>
 
 </div>
-</body>

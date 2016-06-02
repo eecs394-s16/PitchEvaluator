@@ -30,6 +30,9 @@ angular
       $scope.avg.q2 = team.q2Val;
       $scope.avg.q3 = team.q3Val;
       $scope.avg.q4 = team.q4Val;
+      $scope.avg.q5 = team.q5Val;
+      $scope.avg.q6 = team.q6Val;
+      $scope.avg.q7 = team.q7Val;
     });
 
     $scope.check = function(str) {

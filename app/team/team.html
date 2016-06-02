@@ -1,5 +1,4 @@
-<body>
-<div class="container" ng-style='view2.css'>
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-10">
 			<h3 style="padding-left:8px">Judge Reviews for {{teamName}}</h3>
@@ -7,38 +6,45 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-12">
 			<table class="table">
 				<thead>
-					<tr class="row">
-            			<th class="col-xs-2 metric">Judge</th>
-						<th class="col-xs-2 metric">Problem/Need</th>
-						<th class="col-xs-2 metric">Demo</th>
-						<th class="col-xs-2 metric">Cust. Insight</th>
-						<th class="col-xs-2 metric">Business</th>
-						<th class="col-xs-2 metric">Continue Working</th>
+					<tr class="row table_head">
+            			<th class="table-teamname metric">Judge</th>
+						<th class="table-qval metric">Q1</th>
+						<th class="table-qval metric">Q2</th>
+						<th class="table-qval metric">Q3</th>
+						<th class="table-qval metric">Q4</th>
+						<th class="table-qval metric">Q5</th>
+						<th class="table-qval metric">Q6</th>
+						<th class="table-qval metric">Q7</th>
+						<th class="table-qval metric">Continue?</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class="row table_row" ng-repeat="review in reviews">
-            			<td class="col-xs-2 value"><b>{{review.user}}</b></td>
-						<td class="col-xs-2 value">{{review.q1}}</td>
-						<td class="col-xs-2 value">{{review.q2}}</td>
-						<td class="col-xs-2 value">{{review.q3}}</td>
-						<td class="col-xs-2 value">{{review.q4}}</td>
-						<td class="col-xs-2 value">{{review.continue}}</td>
+            			<td class="table-teamname">{{review.user}}</td>
+						<td class="table-qval value">{{review.q1}}</td>
+						<td class="table-qval value">{{review.q2}}</td>
+						<td class="table-qval value">{{review.q3}}</td>
+						<td class="table-qval value">{{review.q4}}</td>
+						<td class="table-qval value">{{review.q5}}</td>
+						<td class="table-qval value">{{review.q6}}</td>
+						<td class="table-qval value">{{review.q7}}</td>
+						<td class="table-qval value">{{review.continue}}</td>
 					</tr>
 				</tbody>
 
 				<tbody>
-          <tr class="row table_row"></tr>
-          <tr class="row table_row"></tr>
 					<tr class="row table_row">
-						<td class="col-xs-2 name">Average</td>
-						<td class="col-xs-2">{{avg.q1}}</td>
-						<td class="col-xs-2">{{avg.q2}}</td>
-						<td class="col-xs-2">{{avg.q3}}</td>
-						<td class="col-xs-2">{{avg.q4}}</td>
+            			<td class="table-teamname"><b>Average</b></td>
+						<td class="table-qval value">{{avg.q1}}</td>
+						<td class="table-qval value">{{avg.q2}}</td>
+						<td class="table-qval value">{{avg.q3}}</td>
+						<td class="table-qval value">{{avg.q4}}</td>
+						<td class="table-qval value">{{avg.q5}}</td>
+						<td class="table-qval value">{{avg.q6}}</td>
+						<td class="table-qval value">{{avg.q7}}</td>
 						<td class="col-xs-2"></td>
 					</tr>
 				</tbody>
@@ -47,37 +53,36 @@
 	</div>
 
 	<div class="row">
-    <div class="col-sm-12">
-
-    	<div class="col-sm-10">
-			<h3 >Comments</h3>
+    	<div class="col-sm-12">
+			<h3>Comments</h3>
+    		<table class="table">
+	      		<thead>
+	      			<tr class="row table_head" style="border-bottom: 3px solid #ddd;">
+		    			<th class="table-teamname">Judge</th>
+						<th class="table-qval metric">Q1</th>
+						<th class="table-qval metric">Q2</th>
+						<th class="table-qval metric">Q3</th>
+						<th class="table-qval metric">Q4</th>
+						<th class="table-qval metric">Q5</th>
+						<th class="table-qval metric">Q6</th>
+						<th class="table-qval metric">Q7</th>
+						<th class="table-qval metric">Continue?</th>
+					</tr>
+			    </thead>
+			    <tbody>
+					<tr ng-repeat="review in reviews" class="row table_row" style="border-top: 1px solid #ddd;">
+						<td class ="table-teamname">{{review.user}}</td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt1)">{{review.cmt1}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt2)">{{review.cmt2}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt3)">{{review.cmt3}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt4)">{{review.cmt4}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt5)">{{review.cmt5}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt6)">{{review.cmt6}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt7)">{{review.cmt7}}</span></td>
+		    			<td class="table-qval"><span ng-if="check(review.cmt8)">{{review.cmt8}}</span></td>
+					</tr>
+				</tbody> 
+		    </table>
 		</div>
-    	<table>
-	      <thead>
-	      	<tr class="row table_head" style="border-bottom: 3px solid #ddd;">
-    			<th class="col-xs-2 metric">Judge</th>
-				<th class="col-xs-2 metric">Problem/Need</th>
-				<th class="col-xs-2 metric">Demo</th>
-				<th class="col-xs-2 metric">Cust. Insight</th>
-				<th class="col-xs-2 metric">Business</th>
-				<th class="col-xs-2 metric">Continue Working</th>
-			</tr>
-	      	
-	      </thead>
-	      <tbody>
-				<tr ng-repeat="review in reviews" class="comments row" style="border-top: 1px solid #ddd;">
-					<td class ="col-xs-2 cmt_judge" ><b>{{review.user}}</b></td>
-	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt1}}</span></td>
-	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt2}}</span></td>
-	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt3}}</span></td>
-	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt4}}</span></td>
-	    			<td class="col-xs-2 sum_cmt"><span ng-if="check(review.cmt1)">{{review.cmt5}}</span></td>	
-				</tr>
-		  </tbody>
-	      
-      </table>
-    </div>
-  </div>
-
+ 	</div>
 </div>
-</body>

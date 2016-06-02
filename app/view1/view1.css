@@ -1,24 +1,28 @@
-.addTeam{
+.addTeam {
 	padding-left: 8px;
 }
+
 tr:hover {
 	background: rgb(245, 238, 247);
 }
-#download{
+
+#download {
 	width: 20px;
 	padding-left:5px;
 	margin-top: -5px;
 }
-#download_text{
+
+#download_text {
 	font-size: 2rem;
 	color: white;
 }
-#download_opiton{
+
+#download_option {
 	font-size: 1rem;
 }
-.download_btn{
+
+.download_btn {
     margin-left: 15px;
-}
 }
 
 #download .btn-primary:hover {
@@ -26,10 +30,23 @@ tr:hover {
     background-color: #4e2a84;
     border-color: #401f68;
 }
-
-/*.download_btn_without_content{
-	float: left;
+/*
+.table-teamname {
+	width: 7.5%;
 }
-.download_btn_with_content{
-	float: right;
+
+.table-rank {
+	width: 2.5%;
+}
+
+.table-qval {
+	width: 10%;
+}
+
+.table-continue {
+	width: 10%;
+}
+
+.table-ovravg {
+	width: 10%;
 }*/

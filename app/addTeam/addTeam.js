@@ -20,12 +20,6 @@ angular
         this.product=product;
         this.desc=desc;
         this.teamPass = teamPass;
-        this.avg1 = 0;
-        this.avg2 = 0;
-        this.avg3 = 0;
-        this.avg4 = 0;
-        this.avgYes = 0;
-        this.ovrAvg = 0;
         this.startRank = 0;
       }
       parse() {
