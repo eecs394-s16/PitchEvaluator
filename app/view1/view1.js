@@ -48,7 +48,6 @@ angular
               snapshot.forEach(function(childSnapshot) {
                 var teamSnap = childSnapshot;
                 var reviewsSnap = teamSnap.child("reviews");
-                // console.log("team has" + reviewsSnap.numChildren() + "reviews");
                 reviewsSnap.forEach(function(childSnapshot) {
                   //save each review as an object, from which you can grab field's
                   var rev = childSnapshot.val();
@@ -105,9 +104,6 @@ angular
         $scope.teamList.$save(i);
       }
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank})
-      // for (var i=0; i<$scope.teamList.length;i++) {
-      //   console.log($scope.teamList[i].name, $scope.teamList[i].rank);
-      // }
     }
 
     $('#sortable').sortable({
@@ -115,9 +111,7 @@ angular
       update: $scope.dragEnd
     });
 
-
-    //sam's Download Team Data CSV
-
+//Team Class for Summary CSV w/o comments
   class Team {
     constructor(name, q1, q2, q3, q4, 
       q5, q6, q7, TA) {
@@ -134,13 +128,13 @@ angular
     }
   }
 
+//Eval Class for Summary CSV w/ Comments & Individual Team CSVs
   class Eval {
     constructor(teamName, Reviewer, 
       q1, q1c, q2, q2c, q3, q3c, q4, q4c, 
       q5, q5c, q6, q6c, q7, q7c, q8, q8c) {
       this.Team_Name = teamName;
       this.Reviewer = Reviewer;
-
       this.Value_Prop = q1;
       this.Value_Prop_Comments = q1c;
       this.Q_and_A = q2;
