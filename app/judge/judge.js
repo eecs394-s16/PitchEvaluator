@@ -18,17 +18,18 @@ angular
       $location.path('view2');
     }
 
-    function rankings(teams) {
+    function rankings() {
+      console.log($scope.reviewedTeams);
       var count = 0;
-      for (var i=0; i<teams.length; i++) {
-        if (teams[i].rank!=-1) {
+      for (var i=0; i<$scope.reviewedTeams.length; i++) {
+        if ($scope.reviewedTeams[i].rank!=-1) {
           count+=1;
         }
       }
-      for (var i=0; i<teams.length; i++) {
-        if (teams[i].rank==-1) {
+      for (var i=0; i<$scope.reviewedTeams.length; i++) {
+        if ($scope.reviewedTeams[i].rank==-1) {
           count += 1;
-          teams[i].rank = count;
+          $scope.reviewedTeams[i].rank = count;
         }
       }
     }
@@ -40,8 +41,7 @@ angular
     var teamList = $firebaseArray(teamsRef);
     teamList.$loaded(function() {
       //teamList.sort(function(a,b) {return a.rank-b.rank});
-      teamList.forEach(function(team) {
-        //console.log(team);
+      teamList.forEach(function(team, index) {
         var reviews = $firebaseArray(new Firebase($rootScope.sessionRef+"/teams/"+team.$id+"/reviews"));
         var alreadyReviewed = false;
         reviews.$loaded(function() {
@@ -71,18 +71,19 @@ angular
               }
               $scope.reviewedTeams.push(temp);
               $scope.teamClasses.push(null);
-              rankings($scope.reviewedTeams);
-              $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank});
               break;
             }
           }
           if (!alreadyReviewed) {
             $scope.notReviewedTeams.push(team);
           }
-        })
+          rankings();
+          if (index==($scope.reviewedTeams.length-1)) {
+            $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank});
+          }
+        });
 
       });
-
 
     }) //end teamList.$loaded
 
