@@ -29,8 +29,8 @@
 					</tr>
 				</thead>
 				<tbody id="sortable">
-					<tr class="row table_row dragable" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'" >
-						<td class="col-xs-2 name">
+					<tr class="row table_row dragable" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'">
+						<td class="table-teamname">
 							<a ng-class="teamClasses[team.rank-1]" href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
 						</td>
 						<td class="table-rank">{{team.rank}}</td>
@@ -47,7 +47,7 @@
 				</tbody>
 				<tbody>
 					<tr class="row table_row dragable">
-						<td class="col-xs-2 name">Class Average</td>
+						<td class="table-teamname">Class Average</td>
 						<td class="table-qval">Rank</td>
 						<td class="table-qval">{{averagesArray[1].$value}}</td>
 						<td class="table-qval">{{averagesArray[2].$value}}</td>

@@ -92,6 +92,7 @@ angular
                 q7Val: review.q7,
                 cont: cont,
                 rank: review.rank,
+                avgrank: team.rank,
                 ovrAvg: team.ovrAvg
               }
               $scope.reviewedTeams.push(temp);

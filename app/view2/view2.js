@@ -353,7 +353,6 @@ angular
 				ovrAvg: teamavg
 			});
 
-			calcJudgeAvg(team);
 			calcOvrAvg(team);
 
 		});
@@ -490,7 +489,7 @@ angular
 
 	// 			});
 
-	// 			var averagesRef = team.parent().parent().child('averages');
+	// 			var averagesRef = team.parent().parent().child('averages').child('users');
 
 	// 			var userAvg = averagesRef.child($rootScope.user);
 
