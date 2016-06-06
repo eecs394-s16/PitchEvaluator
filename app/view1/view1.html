@@ -28,7 +28,6 @@
 					<tr class="row table_row" ng-repeat="team in teamList">
 						<td class="table-teamname">
 							<a href="#" ng-click="saveTeam(team.$id)">{{team.name}}</a>
-							<!-- <a href="#" ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file"></a> -->
 						</td>
 						<td class="table-rank">{{team.rank}}</td>
 						<td class="table-qval">{{team.q1Val}}</td>
@@ -82,13 +81,13 @@
 			</table>
 		</div>	
 		<div class="col-sm-3">
-			<button type="button" class="btn btn-primary" ng-click='downloadCSV({ filename: "summary-data.csv" })'>
+			<button type="button" class="btn btn-primary btn-download" ng-click='downloadCSV({ filename: "summary-data.csv" })'>
 				<span id="download_text">Download</span>
 				<p id="download_option">Summary without Comments</p>
 			</button>
 		</div>
 		<div class="col-sm-3">
-			<button type="button" class="btn btn-primary" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
+			<button type="button" class="btn btn-primary btn-download" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
 				<span id="download_text">Download</span>
 				<p id="download_option">Summary with Comments</p>
 			</button>

@@ -15,24 +15,19 @@ angular
     $scope.warning = false;
 
     class Team {
-      constructor(name,product,desc, teamPass) {
-        this.name=name;
-        this.product=product;
-        this.desc=desc;
+      constructor(name, product, desc, teamPass) {
+        this.name = name;
+        this.product = product;
+        this.desc = desc;
         this.teamPass = teamPass;
         this.startRank = 0;
+        this.reviewed = false;
       }
       parse() {
         var temp = {
           name: this.name,
           product: this.product,
           desc: this.desc,
-          avg1: this.avg1,
-          avg2: this.avg2,
-          avg3: this.avg3,
-          avg4: this.avg4,
-          avgYes: this.avgYes,
-          ovrAvg: this.ovrAvg
         }
         return temp;
       }

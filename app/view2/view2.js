@@ -132,59 +132,62 @@ angular
 	}
 
 
-	var reviewUpdate = function (team, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5, q6, cmt6, q7, cmt7, q8, cmt8) {
+	var reviewUpdate = function (review, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5, q6, cmt6, q7, cmt7, q8, cmt8) {
+		review.parent().parent().update({
+			reviewed: true
+		});
 		if (q1 != 0) {
-			team.update({q1: q1});
+			review.update({q1: q1});
 		}
 		if (q2 != 0) {
-			team.update({q2: q2});
+			review.update({q2: q2});
 		}
 		if (q3 != 0) {
-			team.update({q3: q3});
+			review.update({q3: q3});
 		}
 		if (q4 != 0) {
-			team.update({q4: q4});
+			review.update({q4: q4});
 		}
 		if (q5 != 0) {
-			team.update({q5: q5});
+			review.update({q5: q5});
 		}
 		if (q6 != 0) {
-			team.update({q6: q6});
+			review.update({q6: q6});
 		}
 		if (q7 != 0) {
-			team.update({q7: q7});
+			review.update({q7: q7});
 		}
 		if (q8 != undefined) {
-			team.update({q8: q8});
+			review.update({q8: q8});
 		}
 		if (cmt1 != "") {
-			team.update({cmt1: cmt1});
+			review.update({cmt1: cmt1});
 		}
 		if (cmt2 != "") {
-			team.update({cmt2: cmt2});
+			review.update({cmt2: cmt2});
 		}
 		if (cmt3 != "") {
-			team.update({cmt3: cmt3});
+			review.update({cmt3: cmt3});
 		}
 		if (cmt4 != "") {
-			team.update({cmt4: cmt4});
+			review.update({cmt4: cmt4});
 		}
 		if (cmt5 != "") {
-			team.update({cmt5: cmt5});
+			review.update({cmt5: cmt5});
 		}
 		if (cmt6 != "") {
-			team.update({cmt6: cmt6});
+			review.update({cmt6: cmt6});
 		}
 		if (cmt7 != "") {
-			team.update({cmt7: cmt7});
+			review.update({cmt7: cmt7});
 		}
 		if (cmt8 != "") {
-			team.update({cmt8: cmt8});
+			review.update({cmt8: cmt8});
 		}
 		if (q1 != 0 && q2 != 0 && q3 != 0 && q4 != 0 && q5 != 0 && q6 != 0 && q7 != 0) {
 			var teamavg = (parseFloat(q1) + parseFloat(q2) + parseFloat(q3) + parseFloat(q4) + parseFloat(q5) + parseFloat(q6) + parseFloat(q7))/7.0;
 			teamavg = teamavg.toFixed(2);
-			team.update({teamavgval: teamavg});
+			review.update({teamavgval: teamavg});
 		}
 	}
 
@@ -375,18 +378,24 @@ angular
 		var teamsArray = $firebaseArray(team.parent());
 
 		teamsArray.$loaded().then(function() {
-			var reviewedCount = teamsArray.length;
+			var reviewedCount = 0;
 
 			for (var i = 0; i < teamsArray.length; i++) {
-				q1sum+= parseFloat(teamsArray[i].q1Val);
-				q2sum+= parseFloat(teamsArray[i].q2Val);
-				q3sum+= parseFloat(teamsArray[i].q3Val);
-				q4sum+= parseFloat(teamsArray[i].q4Val);
-				q5sum+= parseFloat(teamsArray[i].q5Val);
-				q6sum+= parseFloat(teamsArray[i].q6Val);
-				q7sum+= parseFloat(teamsArray[i].q7Val);
-				q8sum+= parseFloat(teamsArray[i].q8Val);
-				ovrsum+= parseFloat(teamsArray[i].ovrAvg);					
+				if (teamsArray[i].q1Val != undefined) {
+					q1sum+= parseFloat(teamsArray[i].q1Val);
+					q2sum+= parseFloat(teamsArray[i].q2Val);
+					q3sum+= parseFloat(teamsArray[i].q3Val);
+					q4sum+= parseFloat(teamsArray[i].q4Val);
+					q5sum+= parseFloat(teamsArray[i].q5Val);
+					q6sum+= parseFloat(teamsArray[i].q6Val);
+					q7sum+= parseFloat(teamsArray[i].q7Val);
+					q8sum+= parseFloat(teamsArray[i].q8Val);
+					ovrsum+= parseFloat(teamsArray[i].ovrAvg);
+				}
+
+				if (teamsArray[i].reviewed == true) {
+					reviewedCount++;
+				}					
 			};
 
 			q1 = q1sum/reviewedCount;
@@ -532,7 +541,7 @@ angular
 		        		reviewToEdit = reviews.child(reviewID);
 		        		reviewUpdate(reviewToEdit, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5, q6, cmt6, q7, cmt7, q8, cmt8);
 		        		calcAvg(team);
-								redirect();
+						redirect();
 		        	}
 		        	else {
 		        		//check that (no radios) || (all comments) == null
@@ -545,6 +554,7 @@ angular
 							submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
 		        			if (submit_alert) {
 		        				reviews.push(evaluation);
+		        				reviews.parent().update({reviewed: true});
 				        		calcAvg(team);
 		        				redirect();
 		        			}
