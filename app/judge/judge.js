@@ -18,17 +18,29 @@ angular
     }
 
     function rankings() {
+      // console.log('RANKINGSSSS');
+      // for (var i=0; i<$scope.reviewedTeams.length; i++) {
+      //   console.log(i,'=',$scope.reviewedTeams[i].rank);
+      // }
       var count = 0;
       for (var i=0; i<$scope.reviewedTeams.length; i++) {
         if ($scope.reviewedTeams[i].rank!=-1) {
+          // console.log('Assigned')
           count+=1;
         }
       }
+      // console.log('count=', count);
       for (var i=0; i<$scope.reviewedTeams.length; i++) {
         if ($scope.reviewedTeams[i].rank==-1) {
+          // console.log('NotAssigned')
           count += 1;
           $scope.reviewedTeams[i].rank = count;
         }
+      }
+      // console.log('count=', count);
+      for (var team of $scope.reviewedTeams) {
+        var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
+        revRef.update({rank: team.rank});
       }
     }
 
@@ -76,8 +88,8 @@ angular
           if (!alreadyReviewed) {
             $scope.notReviewedTeams.push(team);
           }
-          rankings();
           if (index==($scope.reviewedTeams.length-1)) {
+            rankings();
             $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank});
           }
         });
@@ -106,13 +118,17 @@ angular
         }
 
         $scope.reviewedTeams[start].rank = end+1;
-        $scope.teamClasses[start] = 'green';
         for (var i=start+1; i<=end;i++) {
           $scope.reviewedTeams[i].rank-=1;
-          $scope.teamClasses[i] = 'red';
+        }
+
+        $scope.teamClasses[end] = 'red';
+        for (var i=start; i<end;i++) {
+          $scope.teamClasses[i] = 'green';
         }
       }
       else {
+        console.log('start>end');
         for (var i=0; i<end;i++) {
           $scope.teamClasses[i] = null;
         }
@@ -120,11 +136,15 @@ angular
           $scope.teamClasses[i] = null;
         }
         $scope.reviewedTeams[start].rank = end+1;
-        $scope.teamClasses[start] = 'red';
         for (var i=end; i<start;i++) {
           $scope.reviewedTeams[i].rank+=1;
-          $scope.teamClasses[i] = 'green';
         }
+
+        $scope.teamClasses[end] = 'green';
+        for (var i=end+1; i<=start;i++) {
+          $scope.teamClasses[i] = 'red';
+        }
+
       }
 
 
@@ -135,9 +155,9 @@ angular
       for (var team of $scope.reviewedTeams) {
         var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
         revRef.update({rank: team.rank});
-        
+
         var team = new Firebase($rootScope.sessionRef+"/teams/"+team.teamID);
-        calcAvgRank(team);      
+        calcAvgRank(team);
       }
 
       $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank})
