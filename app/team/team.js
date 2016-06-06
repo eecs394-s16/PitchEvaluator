@@ -21,7 +21,7 @@ angular
     var team = new $firebaseObject(teamRef);
 
     var reviewRef = new Firebase($rootScope.sessionRef + "/teams/" + $rootScope.teamID + "/reviews");
-    $scope.reviews = new $firebaseArray(reviewRef);
+    $scope.reviews = $firebaseArray(reviewRef);
 
     $scope.avg = {};
     team.$loaded(function() {
@@ -41,7 +41,7 @@ angular
     }
     $scope.reviews.$loaded(function() {
       $scope.reviews.forEach(function(review) {
-        if (review.q5=="1") {
+        if (review.q8=="1") {
           review.continue = "Yes";
         }
         else {

@@ -1,10 +1,12 @@
 <div class="container-fluid" ng-style='view2.css'>
 	<div class="row">
 		<div class="col-sm-3">
-			<h3 style="color:#337ab7">Reviewed teams</h3>
-		</div> 
-		<div class="col-sm-7 drag_remind">
-			<span><img src="judge/Cursor-Move-512.png" id="cursor_move"> Drag and drop to rank the teams</span>
+			<h3 class="judge-page-h3">Reviewed teams</h3>
+		</div>
+		<div class="col-sm-9">
+			<img src="judge/Cursor-Move-512.png" id="drag-reminder-img">
+			<h4 id="drag-reminder"><strong>Drag and drop to stack rank the teams!</strong></h4>
+			<p>(Unfortunately, this feature is only functional with a mouse at the moment (no touch-screen dragging/dropping).</p>
 		</div>
 	</div>
 
@@ -54,24 +56,22 @@
 						<td class="table-qval">{{averagesArray[5].$value}}</td>
 						<td class="table-qval">{{averagesArray[6].$value}}</td>
 						<td class="table-qval">{{averagesArray[7].$value}}</td>
-						<td class="table-continue">#</td>
+						<td class="table-continue">{{averagesArray[8].$value}}</td>
 						<td class="table-ovravg">{{averagesArray[0].$value}}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<!-- <div class="row">
-		<div class="col-sm-12">
-			<h1>Don't forget to drag and drop teams to stack rank!</h1>
-		</div>
-	</div> -->
   	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-md-6 col-sm-12">
 			<h3 class="judge-page-h3">Teams to be reviewed</h3>
 		    <ul class="judge-page-ul list-group">
 		        <li ng-repeat="team in notReviewedTeams" class="to_review list-group-item">
 		          	<a href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
+		        </li>
+		        <li ng-hide="notReviewedTeams.length">
+		        	<h4>All teams have been reviewed!</h4>
 		        </li>
 		    </ul>
 		</div>

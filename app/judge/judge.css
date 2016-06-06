@@ -23,9 +23,19 @@ tr.table_row.dragable{
 	list-style-type: none;
 }
 
-#cursor_move{
-	width: 15px;
+#drag-reminder-img {
+	float: left;
+	width: 2.5%;
+	margin-top: 7px;
+	margin-right: 10px;
 }
-.drag_remind{
-	padding-top: 20px;
+
+#drag-reminder {
+	/*float: right;*/
+}
+
+@media screen and (max-width: 960px) {
+	#drag-reminder-img {
+		display: none;
+	}
 }
