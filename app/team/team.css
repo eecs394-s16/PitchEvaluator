@@ -1,6 +1,11 @@
-.table_head{
-	border-bottom: 1px solid #ddd;
+.question-text {
+	font-weight: bold;
 }
-h3{
-	padding-left: 8px;
+
+.comment-text {
+	font-size: 1.25em;
+}
+
+li {
+	list-style-type: none;
 }
