@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-10">
-			<h3 style="padding-left:8px">Judge Reviews for {{teamName}}</h3>
+			<h2>Judge Reviews for {{teamName}}</h2>
 		</div>
 	</div>
 
@@ -19,6 +19,7 @@
 						<th class="table-qval metric">Q6</th>
 						<th class="table-qval metric">Q7</th>
 						<th class="table-qval metric">Continue?</th>
+						<th class="table-qval metric">Overall</th>						
 					</tr>
 				</thead>
 				<tbody>
@@ -31,21 +32,34 @@
 						<td class="table-qval value">{{review.q5}}</td>
 						<td class="table-qval value">{{review.q6}}</td>
 						<td class="table-qval value">{{review.q7}}</td>
-						<td class="table-qval value">{{review.continue}}</td>
+						<td class="table-qval value">{{review.cont}}</td>
+						<td class="table-qval value">{{review.ovr}}</td>
 					</tr>
 				</tbody>
-
 				<tbody>
 					<tr class="row table_row">
-            			<td class="table-teamname"><b>Average</b></td>
-						<td class="table-qval value">{{avg.q1}}</td>
-						<td class="table-qval value">{{avg.q2}}</td>
-						<td class="table-qval value">{{avg.q3}}</td>
-						<td class="table-qval value">{{avg.q4}}</td>
-						<td class="table-qval value">{{avg.q5}}</td>
-						<td class="table-qval value">{{avg.q6}}</td>
-						<td class="table-qval value">{{avg.q7}}</td>
-						<td class="col-xs-2"></td>
+            			<td class="table-teamname"><b>{{teamName}} Average</b></td>
+						<td class="table-qval value">{{teamAvg.q1}}</td>
+						<td class="table-qval value">{{teamAvg.q2}}</td>
+						<td class="table-qval value">{{teamAvg.q3}}</td>
+						<td class="table-qval value">{{teamAvg.q4}}</td>
+						<td class="table-qval value">{{teamAvg.q5}}</td>
+						<td class="table-qval value">{{teamAvg.q6}}</td>
+						<td class="table-qval value">{{teamAvg.q7}}</td>
+						<td class="table-qval value">{{teamAvg.q8}}</td>
+						<td class="table-qval value">{{teamAvg.ovrAvg}}</td>
+					</tr>
+					<tr class="row table_row">
+						<td class="table-teamname"><b>Class Average</b></td>
+						<td class="table-qval value">{{avg[1].$value}}</td>
+						<td class="table-qval value">{{avg[2].$value}}</td>
+						<td class="table-qval value">{{avg[3].$value}}</td>
+						<td class="table-qval value">{{avg[4].$value}}</td>
+						<td class="table-qval value">{{avg[5].$value}}</td>
+						<td class="table-qval value">{{avg[6].$value}}</td>
+						<td class="table-qval value">{{avg[7].$value}}</td>
+						<td class="table-qval value">{{avg[8].$value}}</td>
+						<td class="table-qval value">{{avg[0].$value}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -54,35 +68,57 @@
 
 	<div class="row">
     	<div class="col-sm-12">
-			<h3>Comments</h3>
-    		<table class="table">
-	      		<thead>
-	      			<tr class="row table_head" style="border-bottom: 3px solid #ddd;">
-		    			<th class="table-teamname">Judge</th>
-						<th class="table-qval metric">Q1</th>
-						<th class="table-qval metric">Q2</th>
-						<th class="table-qval metric">Q3</th>
-						<th class="table-qval metric">Q4</th>
-						<th class="table-qval metric">Q5</th>
-						<th class="table-qval metric">Q6</th>
-						<th class="table-qval metric">Q7</th>
-						<th class="table-qval metric">Continue?</th>
-					</tr>
-			    </thead>
-			    <tbody>
-					<tr ng-repeat="review in reviews" class="row table_row" style="border-top: 1px solid #ddd;">
-						<td class ="table-teamname">{{review.user}}</td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt1)">{{review.cmt1}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt2)">{{review.cmt2}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt3)">{{review.cmt3}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt4)">{{review.cmt4}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt5)">{{review.cmt5}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt6)">{{review.cmt6}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt7)">{{review.cmt7}}</span></td>
-		    			<td class="table-qval"><span ng-if="check(review.cmt8)">{{review.cmt8}}</span></td>
-					</tr>
-				</tbody> 
-		    </table>
+			<h2>Comments</h2>
+			<ul>
+				<li>
+					<h4>Q1: Concise (less than 3 minutes) and informative interactive demo provided that linked value proposition to targeted customer.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts1">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q2: Questions answered concisely and accurately and feedback listened to.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts2">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q3: Team has Product Market Fit.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts3">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q4: The team has a good understanding of their target users and customers who would buy/use their solution.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts4">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q5: Solid customer acquisition and market traction results.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts5">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q6: Financial model and pricing are viable.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts6">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q7: The overall pitch was compelling and left you wanting to learn more.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts7">{{cmt}}</li>
+					</ul>
+				</li>
+				<li>
+					<h4>Q8: Words of advice from judges as you move forward.</h5>
+					<ul>
+						<li ng-repeat="cmt in cmts8">{{cmt}}</li>
+					</ul>
+				</li>			
+			</ul>    		
 		</div>
  	</div>
 </div>
