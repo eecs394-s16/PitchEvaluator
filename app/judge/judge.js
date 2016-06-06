@@ -38,15 +38,15 @@ angular
       // }
       var count = 0;
       for (var i=0; i<$scope.reviewedTeams.length; i++) {
-        if ($scope.reviewedTeams[i].rank!=-1) {
-          // console.log('Assigned')
+        if ($scope.reviewedTeams[i].rank!='none') {
+          // console.log('Assigned');
           count+=1;
         }
       }
       // console.log('count=', count);
       for (var i=0; i<$scope.reviewedTeams.length; i++) {
-        if ($scope.reviewedTeams[i].rank==-1) {
-          // console.log('NotAssigned')
+        if ($scope.reviewedTeams[i].rank=='none') {
+          // console.log('NotAssigned');
           count += 1;
           $scope.reviewedTeams[i].rank = count;
         }
@@ -64,12 +64,14 @@ angular
     var averagesRef = teamsRef.parent().child("averages");
     $scope.averagesArray = $firebaseArray(averagesRef);
     var teamList = $firebaseArray(teamsRef);
+    var teamsLoadedCount = 0;
     teamList.$loaded(function() {
       //teamList.sort(function(a,b) {return a.rank-b.rank});
       teamList.forEach(function(team, index) {
         var reviews = $firebaseArray(new Firebase($rootScope.sessionRef+"/teams/"+team.$id+"/reviews"));
         var alreadyReviewed = false;
         reviews.$loaded(function() {
+          teamsLoadedCount+=1;
           for (var review of reviews) {
             if (review.user==$rootScope.user) {
               alreadyReviewed = true;
@@ -103,7 +105,7 @@ angular
           if (!alreadyReviewed) {
             $scope.notReviewedTeams.push(team);
           }
-          if (index==($scope.reviewedTeams.length-1)) {
+          if (teamsLoadedCount==teamList.length) {
             rankings();
             $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank});
           }
@@ -143,7 +145,7 @@ angular
         }
       }
       else {
-        console.log('start>end');
+        // console.log('start>end');
         for (var i=0; i<end;i++) {
           $scope.teamClasses[i] = null;
         }

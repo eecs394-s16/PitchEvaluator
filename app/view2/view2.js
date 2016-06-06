@@ -261,7 +261,7 @@ angular
 			$("#q5slider").append(el);
 		}
 	});
-	
+
 	$("#q6slider").slider({
 		min: 0,
 		step: 1,
@@ -275,7 +275,7 @@ angular
 			$("#q6slider").append(el);
 		}
 	});
-	
+
 	$("#q7slider").slider({
 		min: 0,
 		step: 1,
@@ -392,7 +392,7 @@ angular
 
 				if (teamsArray[i].reviewed == true) {
 					reviewedCount++;
-				}					
+				}
 			};
 
 			q1 = q1sum/reviewedCount;
@@ -477,7 +477,7 @@ angular
 	// 						ovrsum += ovravg;
 	// 						console.log("ovr: " + ovrsum);
 
-	// 						reviewCounter++;	
+	// 						reviewCounter++;
 
 	// 						reviewer = review.user;
 
@@ -562,13 +562,13 @@ angular
 		    this.cmt4 = cmt4;
 		    this.q5 = q5;
 		    this.cmt5 = cmt5;
-			this.q6 = q6;
+				this.q6 = q6;
 		    this.cmt6 = cmt6;
 		    this.q7 = q7;
 		    this.cmt7 = cmt7;
 		    this.q8 = q8;
 		    this.cmt8 = cmt8;
-			this.rank = -1;
+				this.rank = 'none';
 	    }
 	}
 
