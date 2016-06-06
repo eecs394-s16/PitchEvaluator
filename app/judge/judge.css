@@ -3,19 +3,22 @@
     font-size: 16px;
 }
 
-
-/*tr {
-	color: green;
-}*/
-
-
 .green {
-  color: green;
+  	color: rgba(0, 255, 0, 0.8);
 }
 
 .red {
-	color: red;
+	color: rgba(255, 0, 0, 0.8);
 }
+
 .table_row{
 	cursor: move;
+}
+
+.judge-page-h3 {
+	color: #337AB7;
+}
+
+.judge-page-ul {
+	list-style-type: none;
 }
