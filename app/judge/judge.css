@@ -26,12 +26,12 @@ tr.table_row.dragable{
 #drag-reminder-img {
 	float: left;
 	width: 2.5%;
-	margin-top: 7px;
+	margin-top: 21px;
 	margin-right: 10px;
 }
 
 #drag-reminder {
-	/*float: right;*/
+	margin-top: 20px;
 }
 
 @media screen and (max-width: 960px) {
