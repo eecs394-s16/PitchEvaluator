@@ -353,16 +353,14 @@ angular
 				ovrAvg: teamavg
 			});
 
+			calcJudgeAvg(team);
 			calcOvrAvg(team);
-			console.log("out of calcOvrAvg");
 
 		});
 
 	}
 
 	var calcOvrAvg = function(team) {
-		console.log("in calcOvrAvg");
-
 		var q1sum = 0;
 		var q2sum = 0;
 		var q3sum = 0;
@@ -432,6 +430,110 @@ angular
 
 		});
 	}
+
+	// var calcJudgeAvg = function(team) {
+	// 	var q1sum = 0;
+	// 	var q2sum = 0;
+	// 	var q3sum = 0;
+	// 	var q4sum = 0;
+	// 	var q5sum = 0;
+	// 	var q6sum = 0;
+	// 	var q7sum = 0;
+	// 	var q8sum = 0;
+	// 	var ovrsum = 0;
+	// 	var reviewCounter = 0;
+	// 	var reviewer;
+
+	// 	var q1, q2, q3, q4, q5, q6, q7, q8, ovr;
+
+	// 	var teamsArray = $firebaseArray(team.parent());
+	// 	var reviewArray = $firebaseArray(team.child('reviews'));
+
+	// 	teamsArray.$loaded().then(function() {
+	// 		for (var i = 0; i < teamsArray.length; i++) {
+	// 			var reviews = $firebaseArray(new Firebase($rootScope.sessionRef+"/teams/"+teamsArray[i].$id+"/reviews"));
+	// 			reviews.$loaded().then(function() {
+	// 				for (var review of reviews) {
+	// 					if (review.user == $rootScope.user) {
+	// 						console.log(review);
+	// 						q1sum += parseFloat(review.q1);
+	// 						q2sum += parseFloat(review.q2);
+	// 						q3sum += parseFloat(review.q3);
+	// 						q4sum += parseFloat(review.q4);
+	// 						q5sum += parseFloat(review.q5);
+	// 						q6sum += parseFloat(review.q6);
+	// 						q7sum += parseFloat(review.q7);
+	// 						q8sum += parseFloat(review.q8);
+
+	// 						console.log("q1: " + q1sum);
+	// 						console.log("q2: " + q2sum);
+	// 						console.log("q3: " + q3sum);
+	// 						console.log("q4: " + q4sum);
+	// 						console.log("q5: " + q5sum);
+	// 						console.log("q6: " + q6sum);
+	// 						console.log("q7: " + q7sum);
+	// 						console.log("q8: " + q8sum);
+
+	// 						var ovravg = (review.q1+review.q2+review.q3+review.q4+review.q5+review.q6+review.q7)/7;
+	// 						ovrsum += ovravg;
+	// 						console.log("ovr: " + ovrsum);
+
+	// 						reviewCounter++;	
+
+	// 						reviewer = review.user;
+
+	// 						var userAvgRef = team.parent().parent().child('averages').child(reviewer);
+	// 						userAvgRef.update({reviewCounter: reviewCounter});
+
+	// 					}
+	// 				}
+
+	// 			});
+
+	// 			var averagesRef = team.parent().parent().child('averages');
+
+	// 			var userAvg = averagesRef.child($rootScope.user);
+
+	// 			reviewCounter = userAvg.reviewCounter;
+	// 			console.log("is it still 0? " + reviewCounter);
+
+	// 			q1 = q1sum/reviewCounter;
+	// 			q2 = q2sum/reviewCounter;
+	// 			q3 = q3sum/reviewCounter;
+	// 			q4 = q4sum/reviewCounter;
+	// 			q5 = q5sum/reviewCounter;
+	// 			q6 = q6sum/reviewCounter;
+	// 			q7 = q7sum/reviewCounter;
+	// 			q8 = q8sum/reviewCounter;
+	// 			ovr = ovrsum/reviewCounter;
+
+	// 			q1 = q1.toFixed(2);
+	// 			q2 = q2.toFixed(2);
+	// 			q3 = q3.toFixed(2);
+	// 			q4 = q4.toFixed(2);
+	// 			q5 = q5.toFixed(2);
+	// 			q6 = q6.toFixed(2);
+	// 			q7 = q7.toFixed(2);
+	// 			q8 = q8.toFixed(2);
+	// 			ovr = ovr.toFixed(2);
+
+	// 			usrAvg.update({
+	// 				q1avg: q1,
+	// 				q2avg: q2,
+	// 				q3avg: q3,
+	// 				q4avg: q4,
+	// 				q5avg: q5,
+	// 				q6avg: q6,
+	// 				q7avg: q7,
+	// 				q8avg: q8,
+	// 				ovravg: ovr
+	// 			});
+
+	// 		};
+
+	// 	});
+
+	// }
 
 	var checkZero = function(q1, q2, q3, q4, q5, q6, q7, q8) {
 		if (q1 != 0 && q2 != 0 && q3 != 0 && q4 != 0 && q5 != 0 && q6 != 0 && q7 != 0 && q8 != undefined) {
