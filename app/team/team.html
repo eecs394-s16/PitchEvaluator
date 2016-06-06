@@ -11,6 +11,7 @@
 				<thead>
 					<tr class="row table_head">
             			<th class="table-teamname metric">Judge</th>
+						<th class="table-qval metric">Rank</th>
 						<th class="table-qval metric">Q1</th>
 						<th class="table-qval metric">Q2</th>
 						<th class="table-qval metric">Q3</th>
@@ -25,6 +26,7 @@
 				<tbody>
 					<tr class="row table_row" ng-repeat="review in reviews">
             			<td class="table-teamname">{{review.user}}</td>
+						<td class="table-qval value">{{review.rank}}</td>
 						<td class="table-qval value">{{review.q1}}</td>
 						<td class="table-qval value">{{review.q2}}</td>
 						<td class="table-qval value">{{review.q3}}</td>
@@ -39,6 +41,7 @@
 				<tbody>
 					<tr class="row table_row">
             			<td class="table-teamname"><b>{{teamName}} Average</b></td>
+						<td class="table-qval value">{{teamAvg.rank}}</td>
 						<td class="table-qval value">{{teamAvg.q1}}</td>
 						<td class="table-qval value">{{teamAvg.q2}}</td>
 						<td class="table-qval value">{{teamAvg.q3}}</td>
@@ -51,6 +54,7 @@
 					</tr>
 					<tr class="row table_row">
 						<td class="table-teamname"><b>Class Average</b></td>
+						<td class="table-qval value">Rank</td>
 						<td class="table-qval value">{{avg[1].$value}}</td>
 						<td class="table-qval value">{{avg[2].$value}}</td>
 						<td class="table-qval value">{{avg[3].$value}}</td>

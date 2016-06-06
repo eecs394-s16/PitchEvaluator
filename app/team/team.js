@@ -46,6 +46,7 @@ angular
       $scope.teamAvg.q6 = team.q6Val;
       $scope.teamAvg.q7 = team.q7Val;
       $scope.teamAvg.q8 = team.q8Val;
+      $scope.teamAvg.rank = team.rank;
       $scope.teamAvg.ovrAvg = team.ovrAvg;
     });
 
