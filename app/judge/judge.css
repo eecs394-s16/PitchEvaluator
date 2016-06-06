@@ -11,7 +11,7 @@
 	color: rgba(255, 0, 0, 0.8);
 }
 
-.table_row{
+tr.table_row.dragable{
 	cursor: move;
 }
 
@@ -21,4 +21,11 @@
 
 .judge-page-ul {
 	list-style-type: none;
+}
+
+#cursor_move{
+	width: 15px;
+}
+.drag_remind{
+	padding-top: 20px;
 }

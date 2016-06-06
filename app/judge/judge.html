@@ -1,7 +1,10 @@
 <div class="container-fluid" ng-style='view2.css'>
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-3">
 			<h3 style="color:#337ab7">Reviewed teams</h3>
+		</div> 
+		<div class="col-sm-7 drag_remind">
+			<span><img src="judge/Cursor-Move-512.png" id="cursor_move"> Drag and drop to rank the teams</span>
 		</div>
 	</div>
 
@@ -24,7 +27,7 @@
 					</tr>
 				</thead>
 				<tbody id="sortable">
-					<tr class="row table_row" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'" >
+					<tr class="row table_row dragable" ng-class="teamClasses[team.rank-1]" ng-repeat="team in reviewedTeams | orderBy:'rank'" >
 						<td class="col-xs-2 name">
 							<a ng-class="teamClasses[team.rank-1]" href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
 						</td>
@@ -41,7 +44,7 @@
 
 				</tbody>
 				<tbody>
-					<tr class="row table_row">
+					<tr class="row table_row dragable">
 						<td class="col-xs-2 name">Class Average</td>
 						<td class="table-qval">Rank</td>
 						<td class="table-qval">{{averagesArray[1].$value}}</td>
@@ -58,16 +61,16 @@
 			</table>
 		</div>
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-sm-12">
 			<h1>Don't forget to drag and drop teams to stack rank!</h1>
 		</div>
-	</div>
+	</div> -->
   	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-12">
 			<h3 class="judge-page-h3">Teams to be reviewed</h3>
-		    <ul class="judge-page-ul">
-		        <li ng-repeat="team in notReviewedTeams" class="to_review">
+		    <ul class="judge-page-ul list-group">
+		        <li ng-repeat="team in notReviewedTeams" class="to_review list-group-item">
 		          	<a href="" ng-click="saveTeam(team.name)">{{team.name}}</a>
 		        </li>
 		    </ul>

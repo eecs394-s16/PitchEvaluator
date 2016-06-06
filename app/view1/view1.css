@@ -23,7 +23,9 @@ tr:hover {
 
 .btn-download {
 	width: 70%;
-    margin: 0 auto;
+    margin-left:50px;
+    margin-top: 8px;
+    min-width: 135px;
 }
 
 #download .btn-primary:hover {
@@ -34,4 +36,9 @@ tr:hover {
 
 .table-container {
 	margin-top: 10px;
+}
+
+.container-fluid{
+	background: white;
+
 }
