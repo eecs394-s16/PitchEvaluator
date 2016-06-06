@@ -18,6 +18,8 @@ angular
     var tempTeam = [];
     var teamArray = [];
 
+    var ref = new Firebase(db_url);
+
     var sessListRef = new Firebase(db_url+"/sessionList");
     var temp = new $firebaseArray(sessListRef);
     temp.$loaded(function() {
@@ -26,7 +28,6 @@ angular
           var teamsRef = new Firebase(session.ref+"/teams");
           var averagesRef = teamsRef.parent().child("averages");
           $scope.averagesArray = $firebaseArray(averagesRef);
-          console.log($scope.averagesArray);
           $scope.teamArray = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList.$loaded(function() {
@@ -84,7 +85,10 @@ angular
       console.log(ui.item.index());
 
     }// create a temporary attribute on the element with old index
+    
     $scope.dragEnd = function(e, ui) {
+      console.log('dragend');
+
       var start = ui.item.data('start'),
           end = ui.item.index();//get the new and old index
 
@@ -100,9 +104,13 @@ angular
           $scope.teamList[i].rank+=1;
         }
       }
+
+      var teamsRef = new Firebase(ref.child("teams"));
+
       for (var i=0; i<$scope.teamList.length;i++) {
         $scope.teamList.$save(i);
       }
+
       $scope.teamList.sort(function(a,b) {return a.rank-b.rank})
     }
 
@@ -110,6 +118,28 @@ angular
       start: $scope.dragStart,
       update: $scope.dragEnd
     });
+
+    var calcAvgRank = function(team) {
+      var rank;
+      var ranksum = 0;
+
+      var reviewArray = $firebaseArray(team.child("reviews"));
+
+      reviewArray.$loaded().then(function() {
+        for (var i = 0; i < teamsArray.length; i++) {
+          ranksum += parseFloat(teamsArray[i]);
+        }
+
+        rank = ranksum/reviewArray.length;
+        rank = rank.toFixed(2);
+
+        team.update({
+          rank: rank
+        })
+
+      });
+
+    }
 
 //Team Class for Summary CSV w/o comments
   class Team {

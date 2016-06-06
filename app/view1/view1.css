@@ -21,8 +21,9 @@ tr:hover {
 	font-size: 1rem;
 }
 
-.download_btn {
-    margin-left: 15px;
+.btn {
+	width: 70%;
+    margin: 0 auto;
 }
 
 #download .btn-primary:hover {
@@ -30,23 +31,7 @@ tr:hover {
     background-color: #4e2a84;
     border-color: #401f68;
 }
-/*
-.table-teamname {
-	width: 7.5%;
-}
 
-.table-rank {
-	width: 2.5%;
+.table-container {
+	margin-top: 10px;
 }
-
-.table-qval {
-	width: 10%;
-}
-
-.table-continue {
-	width: 10%;
-}
-
-.table-ovravg {
-	width: 10%;
-}*/

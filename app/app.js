@@ -2,7 +2,7 @@
 
 angular
   .module('PitchEvaluator', ['ngRoute', 'firebase'])
-  .constant('db_url', "https://pitchevaluator.firebaseio.com/")
+  .constant('db_url', "https://pitchevaluator.firebaseio.com")
   .config(function($routeProvider) {
     $routeProvider
       .when('/view1', {

@@ -11,7 +11,6 @@ angular
       }
     }
 
-
     $scope.teamClasses = [];
     $scope.saveTeam = function(teamName) {
       teamService.set(teamName);
@@ -19,7 +18,6 @@ angular
     }
 
     function rankings() {
-      console.log($scope.reviewedTeams);
       var count = 0;
       for (var i=0; i<$scope.reviewedTeams.length; i++) {
         if ($scope.reviewedTeams[i].rank!=-1) {
@@ -33,6 +31,7 @@ angular
         }
       }
     }
+
     $scope.reviewedTeams = [];
     $scope.notReviewedTeams = [];
     var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
@@ -134,8 +133,11 @@ angular
       // }
       // console.log($scope.reviewedTeams);
       for (var team of $scope.reviewedTeams) {
-        var teamref = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
-        teamref.update({rank: team.rank});
+        var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
+        revRef.update({rank: team.rank});
+        
+        var team = new Firebase($rootScope.sessionRef+"/teams/"+team.teamID);
+        calcAvgRank(team);      
       }
 
       $scope.reviewedTeams.sort(function(a,b) {return a.rank-b.rank})
@@ -153,5 +155,30 @@ angular
       start: $scope.dragStart,
       update: $scope.dragEnd
     });
+
+    var calcAvgRank = function(team) {
+      var rank;
+      var ranksum = 0;
+
+      var reviewArray = $firebaseArray(team.child("reviews"));
+
+      reviewArray.$loaded().then(function() {
+        console.log(reviewArray);
+        for (var i = 0; i < reviewArray.length; i++) {
+          ranksum += parseFloat(reviewArray[i].rank);
+        }
+
+        console.log(ranksum);
+
+        rank = ranksum/reviewArray.length;
+        rank = rank.toFixed(2);
+
+        team.update({
+          rank: rank
+        })
+
+      });
+
+    }
 
   })

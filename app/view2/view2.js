@@ -50,15 +50,17 @@ angular
 		7: false,
 		8: false,
 	}
+
 	$scope.checkComment = function(num) {
 		return commentShowings[num];
 	}
+
 	$scope.showComment = function(num) {
 		commentShowings[num] = commentShowings[num] === false ? true: false;
 
 		$scope.toggleText[num] = commentShowings[num] ? 'Hide Comment' : 'Add Comment';
-		console.log($scope.toggleText);
 	}
+
 	function getData(name) {
 		//@TODO: Change this user to the correct one
 		var user = $rootScope.user;
@@ -107,6 +109,7 @@ angular
 		document.getElementById("q7textarea").value = null;
 		document.getElementById("q8textarea").value = null;
 	}
+
 	function updateValues(review) {
 		$("#q1slider").slider( "option", "value", review.q1 );
 		$("#q2slider").slider( "option", "value", review.q2 );
@@ -285,7 +288,7 @@ angular
 	});
 
 	var calcAvg = function(team) {
-		var q1, q2, q3, q4, q5, q6, q7;
+		var q1, q2, q3, q4, q5, q6, q7, q8, rank, teamavg;
 		var q1sum = 0;
 		var q2sum = 0;
 		var q3sum = 0;
@@ -293,7 +296,8 @@ angular
 		var q5sum = 0;
 		var q6sum = 0;
 		var q7sum = 0;
-		var teamavg = 0;
+		var q8sum = 0;
+		var ranksum = 0;
 
 		var reviewArray = $firebaseArray(team.child('reviews'));
 
@@ -306,6 +310,8 @@ angular
 				q5sum += parseFloat(reviewArray[i].q5);
 				q6sum += parseFloat(reviewArray[i].q6);
 				q7sum += parseFloat(reviewArray[i].q7);
+				q8sum += parseFloat(reviewArray[i].q8);
+				ranksum += parseFloat(reviewArray[i].rank);
 			};
 
 			q1 = q1sum/reviewArray.length;
@@ -315,6 +321,8 @@ angular
 			q5 = q5sum/reviewArray.length;
 			q6 = q6sum/reviewArray.length;
 			q7 = q7sum/reviewArray.length;
+			q8 = q8sum/reviewArray.length;
+			rank = ranksum/reviewArray.length;
 
 			teamavg = (q1 + q2 + q3 + q4 + q5 + q6 + q7)/7.0;
 
@@ -325,6 +333,8 @@ angular
 			q5 = q5.toFixed(2);
 			q6 = q6.toFixed(2);
 			q7 = q7.toFixed(2);
+			q8 = q8.toFixed(2);
+			rank = rank.toFixed(2);
 			teamavg = teamavg.toFixed(2);
 
 			team.update({
@@ -335,16 +345,21 @@ angular
 				q5Val: q5,
 				q6Val: q6,
 				q7Val: q7,
+				q8Val: q8,
+				rank: rank,
 				ovrAvg: teamavg
 			});
 
 			calcOvrAvg(team);
+			console.log("out of calcOvrAvg");
 
 		});
 
 	}
 
 	var calcOvrAvg = function(team) {
+		console.log("in calcOvrAvg");
+
 		var q1sum = 0;
 		var q2sum = 0;
 		var q3sum = 0;
@@ -352,13 +367,16 @@ angular
 		var q5sum = 0;
 		var q6sum = 0;
 		var q7sum = 0;
+		var q8sum = 0;
 		var ovrsum = 0;
 
-		var q1, q2, q3, q4, q5, q6, q7, ovr;
+		var q1, q2, q3, q4, q5, q6, q7, q8, ovr;
 
 		var teamsArray = $firebaseArray(team.parent());
 
 		teamsArray.$loaded().then(function() {
+			var reviewedCount = teamsArray.length;
+
 			for (var i = 0; i < teamsArray.length; i++) {
 				q1sum+= parseFloat(teamsArray[i].q1Val);
 				q2sum+= parseFloat(teamsArray[i].q2Val);
@@ -367,17 +385,19 @@ angular
 				q5sum+= parseFloat(teamsArray[i].q5Val);
 				q6sum+= parseFloat(teamsArray[i].q6Val);
 				q7sum+= parseFloat(teamsArray[i].q7Val);
-				ovrsum+= parseFloat(teamsArray[i].ovrAvg);
+				q8sum+= parseFloat(teamsArray[i].q8Val);
+				ovrsum+= parseFloat(teamsArray[i].ovrAvg);					
 			};
 
-			q1 = q1sum/teamsArray.length;
-			q2 = q2sum/teamsArray.length;
-			q3 = q3sum/teamsArray.length;
-			q4 = q4sum/teamsArray.length;
-			q5 = q5sum/teamsArray.length;
-			q6 = q6sum/teamsArray.length;
-			q7 = q7sum/teamsArray.length;
-			ovr = ovrsum/teamsArray.length;
+			q1 = q1sum/reviewedCount;
+			q2 = q2sum/reviewedCount;
+			q3 = q3sum/reviewedCount;
+			q4 = q4sum/reviewedCount;
+			q5 = q5sum/reviewedCount;
+			q6 = q6sum/reviewedCount;
+			q7 = q7sum/reviewedCount;
+			q8 = q8sum/reviewedCount;
+			ovr = ovrsum/reviewedCount;
 
 			q1 = q1.toFixed(2);
 			q2 = q2.toFixed(2);
@@ -386,6 +406,7 @@ angular
 			q5 = q5.toFixed(2);
 			q6 = q6.toFixed(2);
 			q7 = q7.toFixed(2);
+			q8 = q8.toFixed(2);
 			ovr = ovr.toFixed(2);
 
 			team.parent().parent().child("averages").update({
@@ -396,6 +417,7 @@ angular
 				q5avg: q5,
 				q6avg: q6,
 				q7avg: q7,
+				q8avg: q8,
 				ovrAvg: ovr
 			});
 

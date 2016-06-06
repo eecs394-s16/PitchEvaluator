@@ -28,9 +28,9 @@
 					<tr class="row table_row" ng-repeat="team in teamList">
 						<td class="table-teamname">
 							<a href="#" ng-click="saveTeam(team.$id)">{{team.name}}</a>
-							<a href="#" ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file"></a>
+							<!-- <a href="#" ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> <img id="download" src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519672-178_Download-128.png" title="Download CSV file"></a> -->
 						</td>
-						<td class="table-rank">Rank</td>
+						<td class="table-rank">{{team.rank}}</td>
 						<td class="table-qval">{{team.q1Val}}</td>
 						<td class="table-qval">{{team.q2Val}}</td>
 						<td class="table-qval">{{team.q3Val}}</td>
@@ -38,7 +38,7 @@
 						<td class="table-qval">{{team.q5Val}}</td>
 						<td class="table-qval">{{team.q6Val}}</td>
 						<td class="table-qval">{{team.q7Val}}</td>
-						<td class="table-continue">#</td>				
+						<td class="table-continue">{{team.q8Val}}</td>				
 						<td class="table-ovravg">{{team.ovrAvg}}</td>
 					</tr>
 				</tbody>
@@ -53,7 +53,7 @@
 						<td class="table-qval">{{averagesArray[5].$value}}</td>
 						<td class="table-qval">{{averagesArray[6].$value}}</td>
 						<td class="table-qval">{{averagesArray[7].$value}}</td>
-						<td class="table-continue">#</td>
+						<td class="table-continue">{{averagesArray[8].$value}}</td>
 						<td class="table-ovravg">{{averagesArray[0].$value}}</td>
 					</tr>
 				</tbody>
@@ -61,18 +61,38 @@
 		</div>
 	</div>
 	<div class="row">
-		<button type="button" class="col-sm-2 btn btn-primary download_btn" ng-click='downloadCSV({ filename: "summary-data.csv" })'>
-				<img id = "download" src="http://tristatesound.com/wp-content/uploads/2014/12/867-arrow-pointing-down-inside-a-circle-outline-icon.png">
+		<div class="col-sm-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Team Name</th>
+						<th>Download CSV</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="team in teamList">
+						<td>{{team.name}}</td>
+						<td>
+							<a href="#" ng-click='downloadTeamCSV({ filename: "team-data.csv", index: $index })'> 
+								<p>Download {{team.name}} data</p>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+		<div class="col-sm-3">
+			<button type="button" class="btn btn-primary" ng-click='downloadCSV({ filename: "summary-data.csv" })'>
 				<span id="download_text">Download</span>
 				<p id="download_option">Summary without Comments</p>
-		</button>
-
-		<button type="button" class="col-sm-offset-1 col-sm-2  btn btn-primary download_btn" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
-				<img id = "download" src="http://tristatesound.com/wp-content/uploads/2014/12/867-arrow-pointing-down-inside-a-circle-outline-icon.png">
+			</button>
+		</div>
+		<div class="col-sm-3">
+			<button type="button" class="btn btn-primary" ng-click='downloadFullCSV({ filename: "summary-data-with-comments.csv" })'>
 				<span id="download_text">Download</span>
 				<p id="download_option">Summary with Comments</p>
-		</button>
-		<div class="col-sm-7"></div>
-	</div>
+			</button>
+		</div>
 
+	</div>
 </div>
