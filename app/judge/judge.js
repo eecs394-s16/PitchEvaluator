@@ -81,6 +81,11 @@ angular
               } else {
                 cont = "Yes";
               }
+
+              var judgeSum = parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4) + parseFloat(review.q5) + parseFloat(review.q6) + parseFloat(review.q7);
+              var judgeAvg = judgeSum/7.0;
+              var judgeAvg = judgeAvg.toFixed(2);
+
               var temp = {
                 teamID: team.$id,
                 reviewID: review.$id,
@@ -95,7 +100,7 @@ angular
                 cont: cont,
                 rank: review.rank,
                 avgrank: team.rank,
-                ovrAvg: team.ovrAvg
+                ovrAvg: judgeAvg
               }
               $scope.reviewedTeams.push(temp);
               $scope.teamClasses.push(null);
