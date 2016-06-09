@@ -2,7 +2,7 @@
 
 ###### URL: http://pitchevaluator.herokuapp.com/
 
-###### Waffle.io: https://waffle.io/eecs394-s16/PitchEvaluator
+###### For a backlog of known issues and bugs, please see the associated Waffle.io for this repository: https://waffle.io/eecs394-s16/PitchEvaluator
 
 ## Introduction
 PitchEvaluator is an online grading platform initially built to move Northwestern’s NUVention class evaluations from paper to web.
@@ -10,7 +10,7 @@ PitchEvaluator is an online grading platform initially built to move Northwester
 Team Blue from EECS 394:
 [Dino Mujkic](http://github.com/dinomujki), [Yoni Pinto](http://github.com/ybpinto), [Sarah Yang](http://github.com/BaiyuY), [Samantha Trippy](http://github.com/samtrippy), [Taylor Xu Zheng](http://github.com/tz0531)
 ## User Stories
-The project is designed to improve the usability for three different kinds of users: professors of the class, judges who review student projects, and students who submit their projects within the class.
+The project is designed to improve the grading and feedback experience for three different kinds of users: professors of the class, judges who review student projects, and students who submit their projects for the class.
 ####Professor User Stories
 * As a professor, I want to see valuable aggregate data from completed reviews
 * As a professor, I want to be able to filter reviews/comments by judge
@@ -29,7 +29,7 @@ The project is designed to improve the usability for three different kinds of us
 * As a student, I want to see my team's scores and comments
 * As a student, I want to compare my team’s scores to other teams’ scores
 
-Installation instructions:
+Installation Instructions:
 --------------------
 
 1. Clone the repository to your own computer.
