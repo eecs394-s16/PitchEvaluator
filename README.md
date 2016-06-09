@@ -10,6 +10,8 @@ PitchEvaluator is an AngularJS-based web app initially built as an online gradin
 ## Contributors
 Team Blue from EECS 394:
 [Dino Mujkic](http://github.com/dinomujki), [Yoni Pinto](http://github.com/ybpinto), [Sarah Yang](http://github.com/BaiyuY), [Samantha Trippy](http://github.com/samtrippy), [Taylor Xu Zheng](http://github.com/tz0531)
+## Compatibility
+PitchEvaluator is fully supported on Chrome, Firefox, and Safari for desktop. Mobile browsers will have limited functionality with PitchEvaluator.
 ## User Stories
 The project is designed to improve the grading and feedback experience for three different kinds of users: professors of the class, judges who review student projects, and students who submit their projects for the class.
 ####Professor User Stories
