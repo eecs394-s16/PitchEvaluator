@@ -8,7 +8,7 @@
 PitchEvaluator is an online grading platform initially built to move Northwestern’s NUVention class evaluations from paper to web.
 ## Contributors
 Team Blue from EECS 394:
-[Dino Mujkic](github.com/dinomujki), [Yoni Pinto](github.com/ybpinto), [Sarah Yang](github.com/BaiyuY), [Samantha Trippy](github.com/samtrippy), [Taylor Xu Zheng](github.com/tz0531)
+[Dino Mujkic](http://github.com/dinomujki), [Yoni Pinto](http://github.com/ybpinto), [Sarah Yang](http://github.com/BaiyuY), [Samantha Trippy](http://github.com/samtrippy), [Taylor Xu Zheng](http://github.com/tz0531)
 ## User Stories
 The project is designed to improve the usability for three different kinds of users: professors of the class, judges who review student projects, and students who submit their projects within the class.
 ####Professor User Stories
