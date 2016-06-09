@@ -94,8 +94,8 @@ Table 1. View  folders
 
 
 
-####View File Structure
-As shown in Figure 3, please include the html, js, css file and image resources in the individual view File
+#### View Directory Structure
+As shown in Figure 3, please create a new directory for each view and include the html, js, css file and image resources in this folder.
 
 <img src="https://github.com/eecs394-s16/PitchEvaluator/blob/master/readme_pic/f3.png" alt="alt text" width="250
 %" height="250%">
