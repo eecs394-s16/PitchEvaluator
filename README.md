@@ -70,7 +70,7 @@ Table 1. View  folders
 | **services**           | All the service files | 
 | **bower_components**   | includes AngularJS dependencies | 
 
-	       
+
 
  Table 3. Individual files under “app” folder
 
@@ -85,7 +85,16 @@ Table 1. View  folders
 | **TabsCtrl.js**      | Controller for *navbar*                      | all      |
 | **user_icon.png**    | User  icon image                             | Header   |
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eecs394-s16/PitchEvaluator/blob/master/readme_pic/f1.png" alt="alt text" width="150
+%" height="150%" display="inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eecs394-s16/PitchEvaluator/blob/master/readme_pic/f2.png" alt="alt text" width="175
+%" height="175%" display="inline">
+
+*Figure 1. File outer layer structure*	     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	*Figure 2. Folder app structure*
+
+
+
 ####View File Structure
 As shown in Figure 3, please include the html, js, css file and image resources in the individual view File
 
-  
+<img src="https://github.com/eecs394-s16/PitchEvaluator/blob/master/readme_pic/f3.png" alt="alt text" width="250
+%" height="250%">
