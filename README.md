@@ -1,8 +1,8 @@
 # PitchEvaluator
 
-######URL:http://pitchevaluator.herokuapp.com/
+###### URL: http://pitchevaluator.herokuapp.com/
 
-######Waffle.io:https://waffle.io/eecs394-s16/PitchEvaluator
+###### Waffle.io: https://waffle.io/eecs394-s16/PitchEvaluator
 
 ## Introduction
 PitchEvaluator is an online grading platform initially built to move Northwestern’s NUVention class evaluations from paper to web.
@@ -29,7 +29,7 @@ The project is designed to improve the usability for three different kinds of us
 * As a student, I want to see my team's scores and comments
 * As a student, I want to compare my team’s scores to other teams’ scores
 
-Install Instruction:
+Installation instructions:
 --------------------
 
 1. Clone the repository to your own computer.
@@ -74,16 +74,16 @@ Table 1. View  folders
 
  Table 3. Individual files under “app” folder
 
-| File Name      | Description                                 |     |
-| :--------------|:--------------------------------------------|-----|
-|**app.css**     | Main CSS with *navbar*,*index.html* styling | all |
-|**app.js**        | Claim routing | /login |
-|** favicon.png**  |Favicon image | /Tab bar |
-|**index.html**    |Main html|  all |
-| **indexCtrl.js** |Controller for *index.html*|all |
-| **session_icon.png** |Session icon image |Header |
-| **TabsCtrl.js** |Controller for *navbar*|all |
-| **user_icon.png** |User  icon image |Header |
+| File Name            | Description                                  |          |
+| :--------------------|:---------------------------------------------|----------|
+| **app.css**          | Main CSS with *navbar*,*index.html* styling  | all      |
+| **app.js**           | Claim routing                                | /login   |
+| ** favicon.png**     | Favicon image                                | /Tab bar |
+| **index.html**       | Main html                                    | all      |
+| **indexCtrl.js**     | Controller for *index.html*                  | all      |
+| **session_icon.png** | Session icon image                           | Header   |
+| **TabsCtrl.js**      | Controller for *navbar*                      | all      |
+| **user_icon.png**    | User  icon image                             | Header   |
 
 ####View File Structure
 As shown in Figure 3, please include the html, js, css file and image resources in the individual view File
