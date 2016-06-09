@@ -2,10 +2,11 @@
 
 ###### URL: http://pitchevaluator.herokuapp.com/
 
-###### For a backlog of known issues and bugs, please see the associated Waffle.io for this repository: https://waffle.io/eecs394-s16/PitchEvaluator
+###### For a backlog of known issues and bugs, please see the associated Waffle.io for this repository: 
+###### https://waffle.io/eecs394-s16/PitchEvaluator
 
-## Introduction
-PitchEvaluator is an online grading platform initially built to move Northwestern’s NUVention class evaluations from paper to web.
+## Description
+PitchEvaluator is an AngularJS-based web app initially built as an online grading platform to move Northwestern’s NUVention class evaluations from paper to electronic format.
 ## Contributors
 Team Blue from EECS 394:
 [Dino Mujkic](http://github.com/dinomujki), [Yoni Pinto](http://github.com/ybpinto), [Sarah Yang](http://github.com/BaiyuY), [Samantha Trippy](http://github.com/samtrippy), [Taylor Xu Zheng](http://github.com/tz0531)
