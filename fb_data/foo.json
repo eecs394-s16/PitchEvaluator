@@ -1,0 +1,10 @@
+foo : {
+    "bar": 1,
+    "baz" : 2,
+    "biff": 3,
+    "bozo" : {
+        firstname : "Bozo",
+        middlename: "The",
+        lastname: "Clown"
+    }
+}

@@ -22,14 +22,14 @@ angular
     $scope.createSession = function() {
 
 
-
-      var refSessions = new Firebase(db_url + "/sessions");
+      var refSessions=firebase.database().ref('sessions');
+      //var refSessions = new Firebase(db_url + "/sessions");
       var newSession = new Session($scope.name,$scope.desc,$scope.judgePass);
       var refNew = refSessions.push(newSession);
       console.log(refNew.toString());
-
-      var refSessionList = new Firebase(db_url + "/sessionList");
-      refSessionList.push({name: $scope.name, ref: refNew.toString()});
+      var refSessionList=firebase.database().ref('sessionList');
+      //var refSessionList = new Firebase(db_url + "/sessionList");
+      if(refNew.path.o.length==2) refSessionList.push({name: $scope.name, ref: refNew.path.o[0]+"/"+refNew.path.o[1]});
 
       $rootScope.session = $scope.name;
       $rootScope.sessionRef = refNew.toString();

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+ <!-- <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 </head>
@@ -44,13 +44,14 @@
       </div>
 
     </div>
+    <a href="/newSession">New Session</a>
     <div class="row navi" ng-style="login_background" ng-hide="onLogin()">
      <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1" ng-show="loggedin">
             <ul class="nav nav-tabs">
               <li ng-class="{active: isActive('{{tab.link}}')}" ng-repeat="tab in tabs" tab="tab">
-                <a href="#{{tab.link}}">{{tab.label}}</a>
+                <a href="/#!{{tab.link}}">{{tab.label}}</a>
               </li>
             </ul>
           </div>
@@ -89,9 +90,13 @@
   <!-- <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script> -->
-  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+<!--  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>-->
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
 
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="indexCtrl.js"></script>

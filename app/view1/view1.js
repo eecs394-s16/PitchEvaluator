@@ -18,18 +18,22 @@ angular
     var tempTeam = [];
     var teamArray = [];
 
-    var ref = new Firebase(db_url);
-
-    var sessListRef = new Firebase(db_url+"/sessionList");
+    var ref = $rootScope.masterref;
+    var sessListRef = firebase.database().ref().child("sessionList");
+    //var sessListRef = new Firebase(db_url+"/sessionList");
     var temp = new $firebaseArray(sessListRef);
     temp.$loaded(function() {
       temp.forEach(function(session) {
         if (session.name==$rootScope.session) {
-          var teamsRef = new Firebase(session.ref+"/teams");
-          var averagesRef = teamsRef.parent().child("averages");
+          var teamsRef=firebase.database().ref(session.ref).child('teams')
+//          var teamsRef = new Firebase(session.ref+"/teams");
+          var averagesRef = teamsRef.parent.child("averages");
           $scope.averagesArray = $firebaseArray(averagesRef);
-          $scope.teamArray = $firebaseArray(new Firebase(session.ref+"/teams"));
-          $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
+          
+          $scope.teamArray = $firebaseArray(firebase.database().ref(session.ref).child("teams"));
+//          $scope.teamArray = $firebaseArray(new Firebase(session.ref+"/teams"));
+          $scope.teamList = $firebaseArray(firebase.database().ref(session.ref).child("teams"));
+      //    $scope.teamList = $firebaseArray(new Firebase(session.ref+"/teams"));
           $scope.teamList.$loaded(function() {
             $scope.teamList.sort(function(a,b) {return a.rank-b.rank});
 

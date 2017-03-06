@@ -41,7 +41,17 @@ angular
 	// $rootScope.teamID = "-KIzGxTmvXpcgrwOl3Q_";
 	// userService.set('New Team');
 	// // END
+    $rootScope.fbconfig = {
+    apiKey: "AIzaSyD9XgBYtKYFzKFChf7R8ZT6RU4k4AcoG3s",
+    authDomain: "pitchevaluator-e74d8.firebaseapp.com",
+    databaseURL: "https://pitchevaluator-e74d8.firebaseio.com",
+    storageBucket: "pitchevaluator-e74d8.appspot.com",
+    messagingSenderId: "866109741450"
+  };
+    $rootScope.masterref = firebase.initializeApp($rootScope.fbconfig);
 
+
+//  firebase.initializeApp(config);
 	$rootScope.$watch(function(rootScope) {return rootScope.role},
 		function() {
 			if ($rootScope.role == 'Admin') {
@@ -49,7 +59,7 @@ angular
 				$scope.tabs = [
 	      	{ link : '/view1', label : 'Overview' },
 	      	{ link : '/addTeam', label : 'Add a Team' },
-					{ link : '/newSession', label : 'Create a New Session'},
+			{ link : '/newSession', label : 'Create a New Session'},
 		    ];
 			}
 			else if ($rootScope.role == 'Judge') {

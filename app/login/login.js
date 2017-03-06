@@ -14,13 +14,22 @@ angular
     if ($rootScope.loggedin) {
       $location.path('view1');
     }
-    var sessRef = new Firebase(db_url + "/sessionList");
+//    var sessRef = new Firebase(db_url + "/sessionList");
+firebase.auth().signInAnonymously().catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log('error code'+errorCode);
+  console.log('error message:'+errorMessage);
+  // ...
+});
+        var sessRef = firebase.database().ref().child("sessionList");
     var sessArr = $firebaseArray(sessRef);
     sessArr.$loaded(function(data) {
       // console.log(data);
       $scope.sessionsArr = data;
       $scope.loadingSessions = false;
-      // $scope.sessionsArr.$add('newSess');
+    //  $scope.sessionsArr.$add('newSess');
     });
 
     $scope.$watch(function(scope) { return scope.role },
@@ -71,19 +80,22 @@ angular
 
       $scope.loading = true;
       if ($scope.role=='Admin') {
-        var passRef = new Firebase(db_url+"/adminpassword");
+        var passRef = firebase.database().ref().child("adminpassword");
+        //var passRef = new Firebase(db_url+"/adminpassword");
         var password = new $firebaseObject(passRef);
         password.$loaded(function(data) {
           checkPassword(data.$value);
         });
       }
       else if ($scope.role=='Judge') {
-        var sessListRef = new Firebase(db_url+"/sessionList");
+        var sessListRef = firebase.database().ref().child("sessionList");
+//        var sessListRef = new Firebase(db_url+"/sessionList");
         var temp = new $firebaseArray(sessListRef);
         temp.$loaded(function() {
           temp.forEach(function(session) {
             if (session.name==$scope.session) {
-              var ref = new Firebase(session.ref+'/judgePass');
+              var ref = firebase.database().ref().child("judgePass");
+              //var ref = new Firebase(session.ref+'/judgePass');
               var password = new $firebaseObject(ref);
               password.$loaded(function(data) {
                 checkPassword(data.$value);
@@ -93,12 +105,15 @@ angular
         });
       }
       else if ($scope.role=='Team') {
-        var sessListRef = new Firebase(db_url+"/sessionList");
+              var sessListRef = firebase.database().ref().child("sessionList");
+//        var sessListRef = new Firebase(db_url+"/sessionList");
         var temp = new $firebaseArray(sessListRef);
         temp.$loaded(function() {
           temp.forEach(function(session) {
             if (session.name==$scope.session) {
-              var ref = new Firebase(session.ref+'/teams');
+              var ref = firebase.database().ref().child("teams");
+              
+              //var ref = new Firebase(session.ref+'/teams');
               var teams = new $firebaseArray(ref);
               teams.$loaded(function() {
                 var booly = false;
@@ -145,7 +160,9 @@ angular
           $rootScope.loggedin = true;
           $rootScope.session = $scope.session;
           $rootScope.role = $scope.role;
-          var sessListRef = new Firebase(db_url+"/sessionList");
+//          var sessListRef = new Firebase(db_url+"/sessionList");
+          var sessListRef = firebase.database().ref().child("sessionList");
+
           var temp = new $firebaseArray(sessListRef);
           temp.$loaded(function() {
             temp.forEach(function(session) {
