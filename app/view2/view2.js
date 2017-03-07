@@ -267,7 +267,8 @@ angular
 				q4Val: q4,
 				q8Val: q8,
 				rank: rank,
-				ovrAvg: teamavg
+				ovrAvg: teamavg,
+				reviewed: true
 			});
 
 			calcOvrAvg(team);
