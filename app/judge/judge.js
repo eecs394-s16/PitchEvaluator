@@ -85,8 +85,8 @@ angular
                 cont = "Yes";
               }
 
-              var judgeSum = parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4) + parseFloat(review.q5) + parseFloat(review.q6) + parseFloat(review.q7);
-              var judgeAvg = judgeSum/7.0;
+              var judgeSum = parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4);
+              var judgeAvg = judgeSum/4.0;
               var judgeAvg = judgeAvg.toFixed(2);
 
               var temp = {
@@ -97,9 +97,6 @@ angular
                 q2Val: review.q2,
                 q3Val: review.q3,
                 q4Val: review.q4,
-                q5Val: review.q5,
-                q6Val: review.q6,
-                q7Val: review.q7,
                 cont: cont,
                 rank: review.rank,
                 avgrank: team.rank,

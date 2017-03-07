@@ -49,7 +49,14 @@ angular
     messagingSenderId: "866109741450"
   };
     $rootScope.masterref = firebase.initializeApp($rootScope.fbconfig);
-
+    $rootScope.questionsText=[
+        "Problem/Need team is pursuing was clearly explained and understood",
+        "The team has a good understanding of their target users and customers who would buy/use their solution.",
+        "Demo addresses the problem/need/ adequately.",
+        "The overall pitch was *compelling* and left you wanting to learn more.",
+        "Should the team pivot?",
+        "Words of advice you would like to provide the team as they move forward?"
+  ];
 
 //  firebase.initializeApp(config);
 	$rootScope.$watch(function(rootScope) {return rootScope.role},

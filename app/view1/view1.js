@@ -43,7 +43,7 @@ angular
               var curTeam = $scope.teamList[i];
               var teamy = new Team(curTeam.name, curTeam.q1Val,
                 curTeam.q2Val, curTeam.q3Val, curTeam.q4Val,
-                curTeam.q5Val, curTeam.q6Val, curTeam.q7Val,
+                curTeam.q5Val, 
                 curTeam.ovrAvg);
               teamsForCSV.push(teamy);
             }//end for loop
@@ -58,7 +58,7 @@ angular
                   var rev = childSnapshot.val();
                   var fullEval = new Eval(rev.teamName, rev.user, rev.rank, rev.q1, rev.cmt1, 
                     rev.q2, rev.cmt2, rev.q3, rev.cmt3, rev.q4, rev.cmt4, 
-                    rev.q5, rev.cmt5, rev.q6, rev.cmt6, rev.q7, rev.cmt7, 
+                    rev.q5, rev.cmt5, rev.q6, 
                     rev.q8, rev.cmt8);
                   fullCSV.push(fullEval);
                   tempTeam.push(fullEval);
@@ -148,15 +148,13 @@ angular
 //Team Class for Summary CSV w/o comments
   class Team {
     constructor(name, q1, q2, q3, q4, 
-      q5, q6, q7, TA) {
+      q5, TA) {
       this.Team_Name = name;
       this.Value_Prop = q1;
       this.Q_and_A = q2;
       this.Product_Market_Fit = q3;
       this.Understands_Customers = q4;
       this.Customer_Acquisition = q5;
-      this.Financial_Model = q6;
-      this.Pitch = q7;
       this.Team_Average = TA;
 
     }
@@ -180,10 +178,6 @@ angular
       this.Understands_Customers_Comments = q4c;
       this.Customer_Acquisition = q5;
       this.Customer_Acquisition_Comments = q5c;
-      this.Financial_Model = q6;
-      this.Financial_Model_Comments = q6c;
-      this.Pitch = q7;
-      this.Pitch_Comments = q7c;
       this.Continue = q8;
       this.Continue_Comments = q8c;
     }

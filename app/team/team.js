@@ -32,9 +32,6 @@ angular
     $scope.cmts2 = [];
     $scope.cmts3 = [];
     $scope.cmts4 = [];
-    $scope.cmts5 = [];
-    $scope.cmts6 = [];
-    $scope.cmts7 = [];
     $scope.cmts8 = [];
 
     $scope.teamAvg = {};
@@ -44,9 +41,6 @@ angular
       $scope.teamAvg.q2 = team.q2Val;
       $scope.teamAvg.q3 = team.q3Val;
       $scope.teamAvg.q4 = team.q4Val;
-      $scope.teamAvg.q5 = team.q5Val;
-      $scope.teamAvg.q6 = team.q6Val;
-      $scope.teamAvg.q7 = team.q7Val;
       $scope.teamAvg.q8 = team.q8Val;
       $scope.teamAvg.rank = team.rank;
       $scope.teamAvg.ovrAvg = team.ovrAvg;
@@ -84,24 +78,13 @@ angular
           $scope.cmts4.push(review.user + ": " + review.cmt4);
         }
 
-        if (check(review.cmt5)) {
-          $scope.cmts5.push(review.user + ": " + review.cmt5);
-        }
-
-        if (check(review.cmt6)) {
-          $scope.cmts6.push(review.user + ": " + review.cmt6);
-        }
-
-        if (check(review.cmt7)) {
-          $scope.cmts7.push(review.user + ": " + review.cmt7);
-        }
 
         if (check(review.cmt8)) {
           $scope.cmts8.push(review.user + ": " + review.cmt8);
         }
 
-        var sum = (parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4) + parseFloat(review.q5) + parseFloat(review.q6) + parseFloat(review.q7));
-        review.ovr = sum/7.0;
+        var sum = (parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4));
+        review.ovr = (sum/4.0);
         review.ovr = (review.ovr).toFixed(2);
  
         if (review.q8 == 1) {

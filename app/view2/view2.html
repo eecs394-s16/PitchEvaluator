@@ -24,8 +24,8 @@
 						<h3><b>Trade Show/Demo</b></h3>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Concise (less than 3 minutes) and informative interactive demo provided that linked value proposition to targeted customer.</h3>
-							</div>
+								<h3 class="panel-title">{{questionsText[0]}}</h3>
+						</div>
 							<div class="panel-body">
 						   		<fieldset>
 									<div id="q1slider" class="ratingslider"></div>
@@ -41,9 +41,9 @@
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Questions answered concisely and accurately and feedback listened to.</h3>
+								<h3 class="panel-title">{{questionsText[1]}}</h3>
 							</div>
-							<div class="panel-body">
+							<div class="pan7l-body">
 						   		<fieldset>
 						   			<div id="q2slider" class="ratingslider"></div>
 										<div class="input-textarea">
@@ -59,8 +59,8 @@
 						<h3><b>Pitch</b></h3>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Team has Product Market Fit.</h3>
-							</div>
+								<h3 class="panel-title">{{questionsText[2]}}</h3>
+				7		</div>
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q3slider" class="ratingslider"></div>
@@ -76,8 +76,8 @@
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">The team has a good understanding of their target users and customers who would buy/use their solution.</h3>
-							</div>
+								<h3 class="panel-title">{{questionsText[3]}}</h3>
+				7		</div>
 							<div class="panel-body">
 						   		<fieldset>
 						   			<div id="q4slider" class="ratingslider"></div>
@@ -91,60 +91,12 @@
 						   		</fieldset>
 							</div>
 						</div>
+						
+						
+						
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Solid customer acquisition and market traction results.</h3>
-							</div>
-							<div class="panel-body">
-						   		<fieldset>
-						   			<div id="q5slider" class="ratingslider"></div>
-										<div class="input-textarea">
-											<button class="btn btn-primary btn_comments(5) btn_cmt" ng-click="showComment(5)">{{toggleText[5]}}</button>
-										</div>
-							   		<div class="input-textarea" ng-show="checkComment(5)">
-							   			<label for="q5textarea">Comments</label>
-							   			<textarea class="form-control" id="q5textarea" rows="1"></textarea>
-							   		</div>
-						   		</fieldset>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Financial model and pricing are viable.</h3>
-							</div>
-							<div class="panel-body">
-						   		<fieldset>
-						   			<div id="q6slider" class="ratingslider"></div>
-										<div class="input-textarea">
-											<button class="btn btn-primary btn_comments(6) btn_cmt" ng-click="showComment(6)">{{toggleText[6]}}</button>
-										</div>
-							   		<div class="input-textarea" ng-show="checkComment(6)">
-							   			<label for="q6textarea">Comments</label>
-							   			<textarea class="form-control" id="q6textarea" rows="1"></textarea>
-							   		</div>
-						   		</fieldset>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">The overall pitch was <u>compelling</u> and left you wanting to learn more.</h3>
-							</div>
-							<div class="panel-body">
-						   		<fieldset>
-						   			<div id="q7slider" class="ratingslider"></div>
-										<div class="input-textarea">
-											<button class="btn btn-primary btn_comments(7) btn_cmt" ng-click="showComment(7)">{{toggleText[7]}}</button>
-										</div>
-							   		<div class="input-textarea" ng-show="checkComment(7)">
-							   			<label for="q7textarea">Comments</label>
-							   			<textarea class="form-control" id="q7textarea" rows="1"></textarea>
-							   		</div>
-						   		</fieldset>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Do you think the team should continue working on the app?</h3>
+								<h3 class="panel-title">{{questionsText[4]}}</h3>
 							</div>
 							<div class="panel-body">
 						   		<fieldset>
@@ -160,7 +112,7 @@
 											<button class="btn btn-primary btn_comments(8) btn_cmt" ng-click="showComment(8)">{{toggleText[8]}}</button>
 										</div>
 							   		<div class="input-textarea" ng-show="checkComment(8)">
-							   			<label for="q8textarea">Words of advice you would like to provide the team as they move forward?</label>
+							   			<label for="q8textarea">{{questionsText[5]}}</label>
 							   			<textarea class="form-control" id="q8textarea" rows="1"></textarea>
 							   		</div>
 						   		</fieldset>
