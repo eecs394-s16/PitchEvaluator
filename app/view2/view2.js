@@ -120,8 +120,8 @@ angular
 	}
 
 
-	var reviewUpdate = function (review, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q5, cmt5, q8, cmt8) {
-		review.parent().parent().update({
+	var reviewUpdate = function (review, q1, cmt1, q2, cmt2, q3, cmt3, q4, cmt4, q8, cmt8) {
+		review.parent.parent.update({
 			reviewed: true
 		});
 		if (q1 != 0) {
@@ -151,9 +151,6 @@ angular
 		}
 		if (cmt4 != "") {
 			review.update({cmt4: cmt4});
-		}
-		if (cmt5 != "") {
-			review.update({cmt5: cmt5});
 		}
 		if (cmt8 != "") {
 			review.update({cmt8: cmt8});
@@ -550,7 +547,7 @@ angular
 							submit_alert = confirm("You didn't type in any comments/ Are you sure you want to submit the form?");
 		        			if (submit_alert) {
 		        				reviews.push(evaluation);
-		        				reviews.parent().update({reviewed: true});
+		        				reviews.parent.update({reviewed: true});
 				        		calcAvg(team);
 		        				redirect();
 		        			}
