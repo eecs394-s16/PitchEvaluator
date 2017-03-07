@@ -57,8 +57,7 @@ angular
                   //save each review as an object, from which you can grab field's
                   var rev = childSnapshot.val();
                   var fullEval = new Eval(rev.teamName, rev.user, rev.rank, rev.q1, rev.cmt1, 
-                    rev.q2, rev.cmt2, rev.q3, rev.cmt3, rev.q4, rev.cmt4, 
-                    rev.q5, rev.cmt5, rev.q6, 
+                    rev.q2, rev.cmt2, rev.q3, rev.cmt3, rev.q4, 
                     rev.q8, rev.cmt8);
                   fullCSV.push(fullEval);
                   tempTeam.push(fullEval);
@@ -154,7 +153,6 @@ angular
       this.Q_and_A = q2;
       this.Product_Market_Fit = q3;
       this.Understands_Customers = q4;
-      this.Customer_Acquisition = q5;
       this.Team_Average = TA;
 
     }
@@ -164,7 +162,7 @@ angular
   class Eval {
     constructor(teamName, Reviewer, Rank, 
       q1, q1c, q2, q2c, q3, q3c, q4, q4c, 
-      q5, q5c, q6, q6c, q7, q7c, q8, q8c) {
+     q8, q8c) {
       this.Team_Name = teamName;
       this.Reviewer = Reviewer;
       this.Rank = Rank;
@@ -176,8 +174,6 @@ angular
       this.Product_Market_Fit_Comments = q3c;
       this.Understands_Customers = q4;
       this.Understands_Customers_Comments = q4c;
-      this.Customer_Acquisition = q5;
-      this.Customer_Acquisition_Comments = q5c;
       this.Continue = q8;
       this.Continue_Comments = q8c;
     }
