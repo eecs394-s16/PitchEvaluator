@@ -374,7 +374,7 @@ angular
 
 		var q1, q2, q3, q4, q5, q6, q7, q8, ovr;
 
-		var teamsArray = $firebaseArray(team.parent());
+		var teamsArray = $firebaseArray(team.parent);
 
 		teamsArray.$loaded().then(function() {
 			var reviewedCount = 0;
@@ -628,7 +628,7 @@ angular
 			if (teamList[i].name == curTeamName) {
 		       // var teamRef = teamsRef + "/" + teamList[i].$id;
 				var teamRef=teamList[i].$id;
-				var team=firebase.database().ref(teamsRef);
+				var team=firebase.database().ref($rootScope.sessionRef+"/teams/"+teamRef);
 		        //var team = new Firebase(teamRef);
 	        	var reviews = team.child('reviews');
 	        	var reviewID;
