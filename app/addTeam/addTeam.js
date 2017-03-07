@@ -42,11 +42,13 @@ angular
         // return;
       }
       var newTeam = new Team($scope.name,$scope.product,$scope.desc, $scope.teamPass);
-      var ref = new Firebase($rootScope.sessionRef);
+      var ref=firebase.database().ref($rootScope.sessionRef);
+      //var ref = new Firebase($rootScope.sessionRef);
       ref.once("value", function(snapshot) {
-        var count = snapshot.child("teams").numChildren();
+        var count = snapshot.child("teams").numChildren();//
         newTeam.startRank = count+1;
-        var refTeams = new Firebase($rootScope.sessionRef + "/teams")
+        var refTeams=firebase.database().ref($rootScope.sessionRef + "/teams");
+//        var refTeams = new Firebase($rootScope.sessionRef + "/teams")
         var teams = new $firebaseArray(refTeams);
         teams.$loaded(function() {
           var exists = false;

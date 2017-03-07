@@ -53,22 +53,25 @@ angular
       }
       // console.log('count=', count);
       for (var team of $scope.reviewedTeams) {
-        var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
+        var revRef=firebase.database().ref($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID);
+        //var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
         revRef.update({rank: team.rank});
       }
     }
 
     $scope.reviewedTeams = [];
     $scope.notReviewedTeams = [];
-    var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
-    var averagesRef = teamsRef.parent().child("averages");
+    var teamsRef=firebase.database().ref($rootScope.sessionRef+"/teams");
+    //var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
+    var averagesRef = teamsRef.parent.child("averages");
     $scope.averagesArray = $firebaseArray(averagesRef);
     var teamList = $firebaseArray(teamsRef);
     var teamsLoadedCount = 0;
     teamList.$loaded(function() {
       //teamList.sort(function(a,b) {return a.rank-b.rank});
       teamList.forEach(function(team, index) {
-        var reviews = $firebaseArray(new Firebase($rootScope.sessionRef+"/teams/"+team.$id+"/reviews"));
+       // var reviews = $firebaseArray(new Firebase($rootScope.sessionRef+"/teams/"+team.$id+"/reviews"));
+        var reviews = $firebaseArray(firebase.database().ref($rootScope.sessionRef+"/teams/"+team.$id+"/reviews"));
         var alreadyReviewed = false;
         reviews.$loaded(function() {
           teamsLoadedCount+=1;
@@ -175,10 +178,12 @@ angular
       // }
       // console.log($scope.reviewedTeams);
       for (var team of $scope.reviewedTeams) {
-        var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
+        var revRef = firebase.database().ref($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID);
+        //var revRef = (new Firebase($rootScope.sessionRef+"/teams/"+team.teamID+"/reviews/" + team.reviewID));
         revRef.update({rank: team.rank});
 
-        var team = new Firebase($rootScope.sessionRef+"/teams/"+team.teamID);
+ //       var team = new Firebase($rootScope.sessionRef+"/teams/"+team.teamID);
+        var team = firebase.database().ref($rootScope.sessionRef+"/teams/"+team.teamID);
         calcAvgRank(team);
       }
 

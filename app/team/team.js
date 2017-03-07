@@ -17,11 +17,13 @@ angular
       }
     }
 
-    var ref = new Firebase($rootScope.sessionRef);
-    var teamRef = new Firebase($rootScope.sessionRef + "/teams/" + $rootScope.teamID);
+    var ref=firebase.database().ref($rootScope.sessionRef)
+    //var ref = new Firebase($rootScope.sessionRef);
+    var teamRef=firebase.database().ref($rootScope.sessionRef + "/teams/" + $rootScope.teamID);
+    //var teamRef = new Firebase($rootScope.sessionRef + "/teams/" + $rootScope.teamID);
     var team = new $firebaseObject(teamRef);
-
-    var reviewRef = new Firebase($rootScope.sessionRef + "/teams/" + $rootScope.teamID + "/reviews");
+    var reviewRef=firebase.database().ref($rootScope.sessionRef + "/teams/" + $rootScope.teamID + "/reviews");
+    //var reviewRef = new Firebase($rootScope.sessionRef + "/teams/" + $rootScope.teamID + "/reviews");
     $scope.reviews = $firebaseArray(reviewRef);
 
     $scope.avg = $firebaseArray(ref.child("averages"));

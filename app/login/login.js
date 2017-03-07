@@ -94,7 +94,7 @@ firebase.auth().signInAnonymously().catch(function(error) {
         temp.$loaded(function() {
           temp.forEach(function(session) {
             if (session.name==$scope.session) {
-              var ref = firebase.database().ref().child("judgePass");
+              var ref = firebase.database().ref(session.ref).child("judgePass");
               //var ref = new Firebase(session.ref+'/judgePass');
               var password = new $firebaseObject(ref);
               password.$loaded(function(data) {
@@ -111,7 +111,7 @@ firebase.auth().signInAnonymously().catch(function(error) {
         temp.$loaded(function() {
           temp.forEach(function(session) {
             if (session.name==$scope.session) {
-              var ref = firebase.database().ref().child("teams");
+              var ref = firebase.database().ref(session.ref).child("teams");
               
               //var ref = new Firebase(session.ref+'/teams');
               var teams = new $firebaseArray(ref);

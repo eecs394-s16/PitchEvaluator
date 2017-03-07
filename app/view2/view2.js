@@ -15,7 +15,8 @@ angular
 	}
 
 	$scope.loadingTeams = true;
-	var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
+	var teamsRef=firebase.database().ref($rootScope.sessionRef+"/teams");
+//	var teamsRef = new Firebase($rootScope.sessionRef+"/teams");
 	var teamList = $firebaseArray(teamsRef);
 	teamList.$loaded(function() {
 	    $scope.loadingTeams = false;
@@ -67,7 +68,8 @@ angular
 		var booly = false;
 		for (var team of teamList) {
 			if (team.name==$scope.selectedTeam) {
-				var teamRef = new Firebase($rootScope.sessionRef+"/teams/"+team.$id);
+				var teamRef=firebase.database().ref($rootScope.sessionRef+"/teams/"+team.$id);
+//				var teamRef = new Firebase($rootScope.sessionRef+"/teams/"+team.$id);
 				if (teamRef.child('reviews')) {
 					var reviews = $firebaseArray(teamRef.child('reviews'));
 					reviews.$loaded(function() {
@@ -624,8 +626,10 @@ angular
 		}
 		for (var i = 0; i < teamList.length; i++) {
 			if (teamList[i].name == curTeamName) {
-		        var teamRef = teamsRef + "/" + teamList[i].$id;
-		        var team = new Firebase(teamRef);
+		       // var teamRef = teamsRef + "/" + teamList[i].$id;
+				var teamRef=teamList[i].$id;
+				var team=firebase.database().ref(teamsRef);
+		        //var team = new Firebase(teamRef);
 	        	var reviews = team.child('reviews');
 	        	var reviewID;
 	        	var reviewToEdit;
