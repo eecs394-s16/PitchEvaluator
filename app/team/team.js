@@ -62,25 +62,25 @@ angular
 
         if (check(review.cmt1)) {
           console.log("pushing");
-          $scope.cmts1.push(review.user + ": " + review.cmt1);
+          $scope.cmts1.push({user:review.user,comment: review.cmt1});
           console.log("pushed");
         }
 
         if (check(review.cmt2)) {
-          $scope.cmts2.push(review.user + ": " + review.cmt2);
+          $scope.cmts2.push({user:review.user,comment: review.cmt2});
         }
        
         if (check(review.cmt3)) {
-          $scope.cmts3.push(review.user + ": " + review.cmt3);
+          $scope.cmts3.push({user:review.user,comment: review.cmt3});
         } 
 
         if (check(review.cmt4)) {
-          $scope.cmts4.push(review.user + ": " + review.cmt4);
+          $scope.cmts4.push({user:review.user,comment: review.cmt4});
         }
 
 
         if (check(review.cmt8)) {
-          $scope.cmts8.push(review.user + ": " + review.cmt8);
+          $scope.cmts8.push({user:review.user,comment: review.cmt8});
         }
 
         var sum = (parseFloat(review.q1) + parseFloat(review.q2) + parseFloat(review.q3) + parseFloat(review.q4));
